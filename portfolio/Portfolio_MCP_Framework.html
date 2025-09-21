@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cafe24 Agent Framework - 김보선 포트폴리오</title>
+  <style>
+    :root{
+      --primary:#6366f1;
+      --primary-ink:#eef2ff;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --line:#e5e7eb;
+      --accent:#10b981;
+      --warn:#eab308;
+      --danger:#ef4444;
+    }
+
+    @page { size: A4; margin: 16mm; }
+
+    * { box-sizing: border-box; }
+    html, body { 
+      margin:0; padding:0; background: var(--bg); color: var(--ink);
+      font-family: 'Noto Sans KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      print-color-adjust: exact; -webkit-print-color-adjust: exact;
+    }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 20px; }
+
+    .screen-only { display: block; }
+    @media print { .screen-only { display: none !important; } }
+
+    .print-btn { 
+      position: sticky; top: 12px; float: right; 
+      background: var(--primary); color: var(--primary-ink); border: none; 
+      padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 600; 
+      box-shadow: 0 6px 14px rgba(99,102,241,.25);
+    }
+
+    .header {
+      background: linear-gradient(135deg, rgba(99,102,241,.18), rgba(16,185,129,.15));
+      border: 1px solid var(--line);
+      border-radius: 18px; padding: 20px; margin-bottom: 14px;
+      box-shadow: 0 10px 30px rgba(15,23,42,.04);
+    }
+
+    h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.02em; }
+    .sub { color: var(--muted); font-size: 14px; }
+
+    .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+    .meta { background: var(--card); border:1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+    .label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .value { font-size: 14px; font-weight: 600; margin-top: 4px; }
+
+    .kpi-chips { display:flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .chip { 
+      display:inline-flex; align-items:center; gap:6px; 
+      background: rgba(16,185,129,.1); color:#065f46; border:1px solid rgba(16,185,129,.25);
+      padding:6px 10px; border-radius: 999px; font-size: 13px; font-weight: 700;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .chip .delta-up { font-weight:900; }
+
+    .section { margin: 16px 0 0; }
+    .section > h2 { font-size: 18px; margin: 0 0 10px; letter-spacing: -0.01em; }
+
+    .card { 
+      background: var(--card); border:1px solid var(--line); border-radius: 14px; padding: 14px 16px; 
+      margin: 8px 0 14px; box-shadow: 0 10px 24px rgba(15,23,42,.04);
+      break-inside: avoid; page-break-inside: avoid;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+    @media (max-width: 900px){ .meta-grid{grid-template-columns:1fr 1fr}; .grid-3{grid-template-columns:1fr 1fr}; .grid-4{grid-template-columns:1fr 1fr}; }
+
+    .badges { display:flex; flex-wrap:wrap; gap:6px; }
+    .badge { background: #f1f5f9; border:1px solid var(--line); color:#0f172a; border-radius: 999px; padding:4px 8px; font-size:12px; }
+
+    ul.clean { margin: 8px 0 0 18px; }
+    ul.impact { list-style: none; padding-left: 0; margin: 8px 0 0; }
+    ul.impact li { position: relative; padding-left: 22px; margin: 6px 0; }
+    ul.impact li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 900; }
+
+    table { width: 100%; border-collapse: collapse; border:1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px; font-size: 13px; vertical-align: top; }
+    th { background:#f8fafc; text-align: left; color: #0f172a; }
+    tr:last-child td { border-bottom: none; }
+
+    .media-placeholder {
+      width: 100%; aspect-ratio: 16/9; border: 2px dashed #cbd5e1; border-radius: 12px; 
+      display:grid; place-items:center; color:#64748b; font-size: 14px; background: #f8fafc;
+    }
+
+    .qr-and-links { display:flex; gap: 12px; align-items:flex-start; }
+    .qr-box { width: 96px; height: 96px; border: 1px dashed #94a3b8; border-radius: 10px; display:grid; place-items:center; color:#64748b; font-size:12px; }
+    .links { flex: 1; }
+    .links a { color: var(--primary); text-decoration: underline; }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      color: var(--ink);
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(15,23,42,.08);
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(15,23,42,.12);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-btn.primary {
+      background: var(--primary);
+      color: var(--primary-ink);
+      border-color: var(--primary);
+    }
+
+    .nav-btn.primary:hover {
+      color: var(--primary-ink);
+      background: var(--primary);
+      opacity: 0.9;
+    }
+
+    @media print {
+      body{ background: white; }
+      .card{ box-shadow: none; }
+      a{ color: inherit; text-decoration: none; }
+      .nav-buttons { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-buttons screen-only">
+      <a href="index.html" class="nav-btn">
+        ← 포트폴리오 목록
+      </a>
+    </div>
+    
+    <button class="print-btn screen-only" onclick="window.print()">PDF로 내보내기</button>
+
+    <article class="project">
+      <header class="header">
+        <h1>Cafe24 Agent Framework</h1>
+        <div class="sub">사내 Agent 통합 관리 및 GUI 기반 개발 환경을 제공하는 MCP 플랫폼 구축</div>
+        <div class="meta-grid">
+          <div class="meta"><div class="label">기간 / Period</div><div class="value">2025.05 ~ 현재</div></div>
+          <div class="meta"><div class="label">역할 / Role</div><div class="value">MCP 아키텍트 · 팀장</div></div>
+          <div class="meta"><div class="label">소속 / Company</div><div class="value">Cafe24 · AI 인프라팀</div></div>
+
+        </div>
+        <div class="kpi-chips">
+          <div class="chip"><span class="delta-up">▲</span> 비 개발자를 위한 GUI 형태의 Multi Agent 제작 프로세스 구축</div>
+          <div class="chip"><span class="delta-up">▲</span> Custom MCP Dev Template 배포</div>
+          <div class="chip"><span class="delta-up">▲</span> 사내 주요 협업 툴 4개 중앙화</div>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2>① 개요 / Overview</h2>
+        <div class="card grid-2">
+          <div>
+            <div class="label">문맥 / Context</div>
+            <ul class="clean">
+              <li>팀별 분산된 Agent 개발로 표준화 부재</li>
+              <li>개발자 의존적인 Agent 제작 프로세스</li>
+              <li>워크플로·로그·권한 관리 기준 미흡</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">문제정의 / Problem</div>
+            <ul class="clean">
+              <li>중복 개발 및 운영 가시성 부족</li>
+              <li>배포/롤백 표준 부재로 장애 장기화</li>
+              <li>권한/감사 미흡으로 거버넌스 리스크</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>② 목표 & KPI / Goals & KPIs</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>목표 지표</th><th>Baseline</th><th>Target</th><th>Result</th><th>측정방법</th></tr></thead>
+            <tbody>
+              <tr><td>Agent 개발 리드타임</td><td>3일</td><td>1일</td><td>1일</td><td>템플릿 활용 로그</td></tr>
+              <tr><td>GUI 기반 제작률</td><td>0%</td><td>80%</td><td>85%</td><td>사용자 통계</td></tr>
+              <tr><td>협업툴 중앙화</td><td>0개</td><td>4개</td><td>4개</td><td>연동 시스템 수</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>③ 아키텍처 & 기술구현 / Architecture</h2>
+        <div class="card">
+          <div class="media-placeholder">MCP Server ↔ GUI Builder ↔ Core Engine ↔ Slack/Jira/Confluence/Salesforce</div>
+          <div style="margin-top:10px" class="badges">
+            <span class="badge">Python</span>
+            <span class="badge">LangChain</span>
+            <span class="badge">MySQL</span>
+            <span class="badge">GitLab</span>
+            <span class="badge">Odin</span>
+            <span class="badge">n8n</span>
+            <span class="badge">MCP</span>
+            <span class="badge">Slack API</span>
+            <span class="badge">Jira</span>
+            <span class="badge">Confluence</span>
+            <span class="badge">Salesforce</span>
+          </div>
+        </div>
+        <div class="card grid-3">
+          <div>
+            <div class="label">핵심 모듈</div>
+            <ul class="clean">
+              <li>MCP 아키텍처 설계</li>
+              <li>GUI 기반 Agent 빌더</li>
+              <li>Framework 구현</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">통합 연동</div>
+            <ul class="clean">
+              <li>Claude Code 연동</li>
+              <li>Custom GPT 확장</li>
+              <li>협업툴 4개 중앙화</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">운영 관리</div>
+            <ul class="clean">
+              <li>Core 엔진 통합 모듈</li>
+              <li>GUI 개발환경 표준화</li>
+              <li>버전/배포 관리</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>④ 주요 기능 / Key Features</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>기능</th><th>설명</th><th>기술스택</th><th>효과</th></tr></thead>
+            <tbody>
+              <tr><td>GUI Agent Builder</td><td>드래그앤드롭 방식 Agent 제작</td><td>React, n8n</td><td>개발자 의존도 완화</td></tr>
+              <tr><td>MCP 표준화</td><td>Model Context Protocol 기반 통합</td><td>Python, MCP</td><td>표준 프로세스 구축</td></tr>
+              <tr><td>협업툴 중앙화</td><td>Slack, Jira, Confluence, Salesforce 통합</td><td>각종 API</td><td>업무 효율성 극대화</td></tr>
+              <tr><td>Template 배포</td><td>Custom MCP Dev Template 제공</td><td>GitLab CI</td><td>개발 속도 향상</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑤ 결과 & 임팩트 / Results & Impact</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>지표</th><th>Before</th><th>After</th><th>증감</th><th>비고</th></tr></thead>
+            <tbody>
+              <tr><td>Agent 개발 리드타임</td><td>3일</td><td>1일</td><td>-67%</td><td>GUI 기반 제작</td></tr>
+              <tr><td>운영 표준화</td><td>팀별 개별 운영</td><td>중앙 통합 관리</td><td>+100%</td><td>거버넌스 강화</td></tr>
+              <tr><td>협업툴 연동</td><td>0개</td><td>4개</td><td>+400%</td><td>업무 통합성 향상</td></tr>
+            </tbody>
+          </table>
+          <ul class="impact">
+            <li>비개발자도 GUI를 통해 Multi Agent 제작 가능</li>
+            <li>MCP 프로토콜 기반 표준화로 확장성·안정성 확보</li>
+            <li>사내 주요 협업툴 중앙화로 업무 효율성 극대화</li>
+            <li>Agent 적용 가능 인프라 확장 (Claude Code, Custom GPT)</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑥ 기술적 도전과 해결 / Technical Challenges</h2>
+        <div class="card grid-2">
+          <div>
+            <div class="label">도전 과제</div>
+            <ul class="clean">
+              <li>다양한 협업툴 API 통합의 복잡성</li>
+              <li>GUI 기반 Agent 로직 구현의 한계</li>
+              <li>MCP 프로토콜 표준화 적용</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">해결 방안</div>
+            <ul class="clean">
+              <li>통합 API Gateway 구축으로 표준화</li>
+              <li>시각적 워크플로 엔진 개발</li>
+              <li>Custom MCP Template 개발·배포</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑦ 향후 계획 / Future Plans</h2>
+        <div class="card">
+          <ul class="impact">
+            <li>더 많은 협업툴 연동 확대 (Microsoft Teams, Notion 등)</li>
+            <li>AI 기반 Agent 자동 최적화 기능 추가</li>
+            <li>다국어 지원 및 글로벌 확장</li>
+            <li>실시간 모니터링 및 성능 분석 대시보드 강화</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑧ 링크 & 산출물 / Links & Deliverables</h2>
+        <div class="card qr-and-links">
+          <div class="qr-box">QR</div>
+          <div class="links">
+            <p><strong>Repository:</strong> Cafe24 Internal GitLab
+            <br/><strong>Documentation:</strong> Confluence - MCP Framework Guide
+            <br/><strong>Dashboard:</strong> Grafana - Agent Operations Monitor
+            <br/><strong>Demo:</strong> GUI Agent Builder Showcase</p>
+          </div>
+        </div>
+      </section>
+    </article>
+  </div>
+</body>
+</html> 

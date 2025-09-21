@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>[AICC] Cafe24 AI 챗봇 - 김보선 포트폴리오</title>
+  <style>
+    :root{
+      --primary:#6366f1;
+      --primary-ink:#eef2ff;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --line:#e5e7eb;
+      --accent:#10b981;
+      --warn:#eab308;
+      --danger:#ef4444;
+    }
+
+    @page { size: A4; margin: 16mm; }
+
+    * { box-sizing: border-box; }
+    html, body { 
+      margin:0; padding:0; background: var(--bg); color: var(--ink);
+      font-family: 'Noto Sans KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      print-color-adjust: exact; -webkit-print-color-adjust: exact;
+    }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 20px; }
+
+    .screen-only { display: block; }
+    @media print { .screen-only { display: none !important; } }
+
+    .print-btn { 
+      position: sticky; top: 12px; float: right; 
+      background: var(--primary); color: var(--primary-ink); border: none; 
+      padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 600; 
+      box-shadow: 0 6px 14px rgba(99,102,241,.25);
+    }
+
+    .header {
+      background: linear-gradient(135deg, rgba(99,102,241,.18), rgba(16,185,129,.15));
+      border: 1px solid var(--line);
+      border-radius: 18px; padding: 20px; margin-bottom: 14px;
+      box-shadow: 0 10px 30px rgba(15,23,42,.04);
+    }
+
+    h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.02em; }
+    .sub { color: var(--muted); font-size: 14px; }
+
+    .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+    .meta { background: var(--card); border:1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+    .label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .value { font-size: 14px; font-weight: 600; margin-top: 4px; }
+
+    .kpi-chips { display:flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .chip { 
+      display:inline-flex; align-items:center; gap:6px; 
+      background: rgba(16,185,129,.1); color:#065f46; border:1px solid rgba(16,185,129,.25);
+      padding:6px 10px; border-radius: 999px; font-size: 13px; font-weight: 700;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .chip .delta-up { font-weight:900; }
+
+    .section { margin: 16px 0 0; }
+    .section > h2 { font-size: 18px; margin: 0 0 10px; letter-spacing: -0.01em; }
+
+    .card { 
+      background: var(--card); border:1px solid var(--line); border-radius: 14px; padding: 14px 16px; 
+      margin: 8px 0 14px; box-shadow: 0 10px 24px rgba(15,23,42,.04);
+      break-inside: avoid; page-break-inside: avoid;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+    @media (max-width: 900px){ .meta-grid{grid-template-columns:1fr 1fr}; .grid-3{grid-template-columns:1fr 1fr}; .grid-4{grid-template-columns:1fr 1fr}; }
+
+    .badges { display:flex; flex-wrap:wrap; gap:6px; }
+    .badge { background: #f1f5f9; border:1px solid var(--line); color:#0f172a; border-radius: 999px; padding:4px 8px; font-size:12px; }
+
+    ul.clean { margin: 8px 0 0 18px; }
+    ul.impact { list-style: none; padding-left: 0; margin: 8px 0 0; }
+    ul.impact li { position: relative; padding-left: 22px; margin: 6px 0; }
+    ul.impact li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 900; }
+
+    table { width: 100%; border-collapse: collapse; border:1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px; font-size: 13px; vertical-align: top; }
+    th { background:#f8fafc; text-align: left; color: #0f172a; }
+    tr:last-child td { border-bottom: none; }
+
+    .media-placeholder {
+      width: 100%; aspect-ratio: 16/9; border: 2px dashed #cbd5e1; border-radius: 12px; 
+      display:grid; place-items:center; color:#64748b; font-size: 14px; background: #f8fafc;
+    }
+
+    .qr-and-links { display:flex; gap: 12px; align-items:flex-start; }
+    .qr-box { width: 96px; height: 96px; border: 1px dashed #94a3b8; border-radius: 10px; display:grid; place-items:center; color:#64748b; font-size:12px; }
+    .links { flex: 1; }
+    .links a { color: var(--primary); text-decoration: underline; }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      color: var(--ink);
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(15,23,42,.08);
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(15,23,42,.12);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-btn.primary {
+      background: var(--primary);
+      color: var(--primary-ink);
+      border-color: var(--primary);
+    }
+
+    .nav-btn.primary:hover {
+      color: var(--primary-ink);
+      background: var(--primary);
+      opacity: 0.9;
+    }
+
+    /* 코드 블록 스타일 */
+    .code-section {
+      background: transparent;
+      border-radius: 12px;
+      padding: 0;
+      margin: 16px 0;
+      overflow-x: auto;
+      box-shadow: none;
+      transition: all 0.3s ease;
+    }
+
+    .code-section.expanded {
+      background: #1e1e1e;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .code-header {
+      background: #2d2d2d;
+      color: #ffffff;
+      padding: 12px 16px;
+      margin: -20px -20px 16px -20px;
+      border-radius: 12px 12px 0 0;
+      font-weight: 600;
+      font-size: 14px;
+      border-bottom: 1px solid #404040;
+    }
+
+    .code-content {
+      color: #d4d4d4;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      display: none; /* 기본적으로 숨김 */
+    }
+
+    .code-toggle {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-bottom: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .code-toggle:hover {
+      background: #0056b3;
+    }
+
+    .code-toggle:after {
+      content: " ▼ 코드 보기";
+    }
+
+    .code-toggle.expanded:after {
+      content: " ▲ 코드 숨기기";
+    }
+
+    .code-comment {
+      color: #6a9955;
+    }
+
+    .code-keyword {
+      color: #569cd6;
+    }
+
+    .code-string {
+      color: #ce9178;
+    }
+
+    .code-function {
+      color: #dcdcaa;
+    }
+
+    .code-variable {
+      color: #9cdcfe;
+    }
+
+    /* 워크플로우 시퀀스 스타일 */
+    .workflow-sequence {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .workflow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 12px;
+      border-left: 4px solid #007bff;
+      transition: all 0.3s ease;
+    }
+
+    .workflow-step:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.1);
+    }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-content h3 {
+      margin: 0 0 10px 0;
+      color: #2c3e50;
+      font-size: 20px;
+    }
+
+    .step-content p {
+      margin: 0 0 15px 0;
+      color: #6c757d;
+      line-height: 1.6;
+    }
+
+    .step-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .detail-tag {
+      background: #e3f2fd;
+      color: #1976d2;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid #bbdefb;
+    }
+
+    /* 이슈 해결 섹션 스타일 개선 */
+    .issue-card {
+      margin: 16px 0;
+      border-left: 4px solid #ff6b6b;
+      background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+    }
+
+    .issue-card .label {
+      background: #ff6b6b;
+      color: white;
+      padding: 8px 16px;
+      margin: -14px -16px 16px -16px;
+      border-radius: 0 0 8px 0;
+      font-weight: 600;
+    }
+
+    .solution-card {
+      margin: 16px 0;
+      border-left: 4px solid #51cf66;
+      background: linear-gradient(135deg, #f3fff4 0%, #ffffff 100%);
+    }
+
+    .solution-card .label {
+      background: #51cf66;
+      color: white;
+      padding: 8px 16px;
+      margin: -14px -16px 16px -16px;
+      border-radius: 0 0 8px 0;
+      font-weight: 600;
+    }
+
+    .impact-highlight {
+      background: #e3f2fd;
+      border: 1px solid #bbdefb;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 12px 0;
+    }
+
+    .impact-highlight strong {
+      color: #1976d2;
+    }
+
+    .folder-section {
+      margin: 24px 0;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(15,23,42,.08);
+    }
+
+    .folder-header {
+      background: linear-gradient(135deg, var(--primary), #8b5cf6);
+      color: white;
+      padding: 16px 20px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .folder-content {
+      padding: 20px;
+      background: var(--card);
+    }
+
+    .code-item {
+      margin: 16px 0;
+    }
+
+    .code-item-title {
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border-left: 3px solid var(--primary);
+    }
+
+    .code-item-title:hover {
+      background: rgba(0, 123, 255, 0.1);
+      color: var(--primary);
+    }
+
+    .code-item-title::after {
+      content: " ▼";
+      font-size: 12px;
+      opacity: 0.7;
+      transition: transform 0.3s ease;
+      float: right;
+    }
+
+    .code-item-title.expanded::after {
+      transform: rotate(180deg);
+    }
+
+    /* 워크플로우 코드 섹션 스타일 */
+    .workflow-code-section {
+      margin-top: 20px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .workflow-code-section .code-item {
+      margin: 12px 0;
+    }
+
+    .workflow-code-section .code-item-title {
+      font-size: 13px;
+      padding: 6px 10px;
+    }
+
+    .code-description {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    @media print {
+      body{ background: white; }
+      .card{ box-shadow: none; }
+      a{ color: inherit; text-decoration: none; }
+      .nav-buttons { display: none !important; }
+      .code-section { background: #f8f9fa; color: #333; }
+      .code-header { background: #e9ecef; color: #333; }
+    }
+  </style>
+  </head>
+  <body>
+    <script>
+      function toggleCode(element) {
+        // 제목 클릭 시 해당 섹션의 코드 내용을 토글
+        const codeSection = element.closest('.code-item').querySelector('.code-section');
+        const codeContent = codeSection.querySelector('.code-content');
+        const isExpanded = codeContent.style.display === 'block';
+        
+        if (isExpanded) {
+          codeContent.style.display = 'none';
+          codeSection.classList.remove('expanded');
+          element.classList.remove('expanded');
+        } else {
+          codeContent.style.display = 'block';
+          codeSection.classList.add('expanded');
+          element.classList.add('expanded');
+        }
+      }
+    </script>
+  <div class="container">
+    <div class="nav-buttons screen-only">
+      <a href="index.html" class="nav-btn">
+        ← 포트폴리오 목록
+      </a>
+    </div>
+    
+    <button class="print-btn screen-only" onclick="window.print()">PDF로 내보내기</button>
+
+    <article class="project">
+      <header class="header">
+        <h1>[AICC] Cafe24 AI 챗봇</h1>
+        <div class="sub">고객센터 CS 자동화를 위한 AI 챗봇 및 STT 기반 상담 시스템 구축</div>
+        <div class="meta-grid">
+          <div class="meta"><div class="label">기간 / Period</div><div class="value">2023.03 ~ 2023.06</div></div>
+          <div class="meta"><div class="label">역할 / Role</div><div class="value">AI 시스템 설계 · PoC</div></div>
+          <div class="meta"><div class="label">소속 / Company</div><div class="value">Cafe24 · 서비스운영분석팀</div></div>
+
+        </div>
+        <div class="kpi-chips">
+          <div class="chip"><span class="delta-up">▲</span> 고객센터 CS 유입 30% 절감</div>
+          <div class="chip"><span class="delta-up">▲</span> 24시간 무중단 고객 지원</div>
+          <div class="chip"><span class="delta-up">▲</span> AI 챗봇 시스템 안정화</div>
+          <div class="chip"><span class="delta-up">▲</span> 사내 최초 LLM 서비스 배포</div>
+          <div class="chip"><span class="delta-up">▲</span> CRM 연동 자동화</div>
+          <div class="chip"><span class="delta-up">▲</span> RAG 교육 및 전담 인력 확보</div>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2>① 개요 / Overview</h2>
+        <div class="card grid-2">
+          <div>
+            <div class="label">문맥 / Context</div>
+            <ul class="clean">
+              <li>고객센터 CS 업무 부하 지속적 증가</li>
+              <li>반복적인 문의 유형의 높은 비중</li>
+              <li>24시간 고객 지원 체계 필요성</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">문제정의 / Problem</div>
+            <ul class="clean">
+              <li>상담원 업무 과부하로 인한 대기시간 증가</li>
+              <li>단순 반복 문의 처리의 비효율성</li>
+              <li>야간/휴일 고객 지원 공백</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>② 목표 & KPI / Goals & KPIs</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>목표 지표</th><th>Baseline</th><th>Target</th><th>Result</th><th>측정방법</th></tr></thead>
+            <tbody>
+              <tr><td>CS 유입량</td><td>100%</td><td>70%</td><td>70%</td><td>티켓 수 추적</td></tr>
+              <tr><td>자동 해결률</td><td>0%</td><td>60%</td><td>65%</td><td>챗봇 해결 완료율</td></tr>
+              <tr><td>고객 만족도</td><td>75%</td><td>85%</td><td>88%</td><td>챗봇 상담 후 설문</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>③ 데이터 수집 & 전처리 / Data Collection & Preprocessing</h2>
+        <div class="card">
+          <div class="label">Zendesk 고객센터 데이터 수집</div>
+          <ul class="clean">
+            <li><strong>API 기반 자동 수집:</strong> Zendesk Help Center API를 활용한 FAQ 및 고객 문의 데이터 수집</li>
+            <li><strong>데이터 정제:</strong> 개인정보 제거, 불필요한 텍스트 정리, 키워드 추출</li>
+            <li><strong>데이터베이스 저장:</strong> MySQL을 통한 구조화된 데이터 저장 및 관리</li>
+            <li><strong>실시간 업데이트:</strong> 새로운 FAQ 및 문의사항 자동 수집 및 반영</li>
+          </ul>
+        </div>
+        <div class="card grid-2">
+          <div>
+            <div class="label">수집 데이터 유형</div>
+            <ul class="clean">
+              <li>FAQ 문서 (제목, 내용, URL)</li>
+              <li>고객 문의사항 (제목, 내용, 카테고리)</li>
+              <li>상담원 답변 템플릿</li>
+              <li>키워드 및 태그 정보</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">데이터 처리 과정</div>
+            <ul class="clean">
+              <li>GPT를 활용한 키워드 자동 추출</li>
+              <li>정규표현식을 통한 텍스트 정제</li>
+              <li>중복 데이터 제거 및 통합</li>
+              <li>품질 검증 및 라벨링</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section">
+        <h2>④ 임베딩 & 벡터화 / Embedding & Vectorization</h2>
+        <div class="card">
+          <div class="label">RAG 기반 지식베이스 구축</div>
+          <ul class="clean">
+            <li><strong>텍스트 벡터화:</strong> OpenAI Embedding API를 활용한 고객센터 문서 벡터화</li>
+            <li><strong>Vector Store 관리:</strong> OpenAI Vector Store를 통한 임베딩 데이터 저장 및 관리</li>
+            <li><strong>유사도 검색:</strong> 코사인 유사도 기반 관련 문서 검색 및 랭킹</li>
+            <li><strong>실시간 업데이트:</strong> 새로운 문서 자동 임베딩 및 벡터 스토어 업데이트</li>
+          </ul>
+        </div>
+        <div class="card grid-2">
+          <div>
+            <div class="label">임베딩 처리 과정</div>
+            <ul class="clean">
+              <li>MySQL에서 미처리 문서 조회</li>
+              <li>JSON 형태로 데이터 변환</li>
+              <li>OpenAI Embedding API 호출</li>
+              <li>Vector Store에 업로드 및 저장</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">기술적 특징</div>
+            <ul class="clean">
+              <li>Chunking 전략 적용</li>
+              <li>배치 처리로 효율성 향상</li>
+              <li>에러 핸들링 및 재시도 로직</li>
+              <li>처리 상태 추적 및 관리</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑤ 파인튜닝 & 모델 최적화 / Fine-tuning & Model Optimization</h2>
+        <div class="card">
+          <div class="label">GPT 모델 파인튜닝</div>
+          <ul class="clean">
+            <li><strong>데이터셋 구축:</strong> 고객 문의-답변 쌍을 활용한 학습 데이터 준비</li>
+            <li><strong>모델 학습:</strong> Cafe24 도메인 특화 GPT 모델 파인튜닝</li>
+            <li><strong>성능 검증:</strong> 테스트 데이터를 통한 모델 성능 평가 및 개선</li>
+            <li><strong>실시간 테스트:</strong> Slack Bot을 통한 모델 성능 실시간 검증</li>
+          </ul>
+        </div>
+        <div class="card grid-2">
+          <div>
+            <div class="label">파인튜닝 과정</div>
+            <ul class="clean">
+              <li>Excel 데이터에서 학습 쌍 추출</li>
+              <li>GPT-3.5-turbo 모델 파인튜닝</li>
+              <li>답변 번호 분류 및 매핑</li>
+              <li>컨텍스트 기반 답변 생성</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">테스트 환경</div>
+            <ul class="clean">
+              <li>Slack Bot 인터페이스</li>
+              <li>실시간 문의 처리</li>
+              <li>다중 문의 분리 처리</li>
+              <li>답변 품질 모니터링</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑥ 주요 기능 / Key Features</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>기능</th><th>설명</th><th>기술스택</th><th>효과</th></tr></thead>
+            <tbody>
+              <tr><td>지능형 대화</td><td>자연어 이해 기반 맞춤 응답</td><td>GPT, NLU</td><td>고객 만족도 88% 달성</td></tr>
+              <tr><td>지식베이스 검색</td><td>RAG 기반 정확한 정보 제공</td><td>RAG, Vector Store</td><td>정답률 90% 이상</td></tr>
+              <tr><td>상담원 연계</td><td>복잡한 문의 자동 에스컬레이션</td><td>Zendesk API</td><td>매끄러운 서비스 연결</td></tr>
+              <tr><td>학습 시스템</td><td>대화 데이터 기반 모델 개선</td><td>Fine-tuning</td><td>지속적 성능 향상</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑦ 임베딩 vs 파인튜닝 효율성 비교 / Embedding vs Fine-tuning Efficiency Comparison</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>구분</th><th>임베딩 (RAG)</th><th>파인튜닝</th><th>권장 사용</th></tr></thead>
+            <tbody>
+              <tr><td>처리 속도</td><td>빠름 (실시간 검색)</td><td>보통 (모델 로딩)</td><td>임베딩</td></tr>
+              <tr><td>정확도</td><td>높음 (최신 정보 반영)</td><td>높음 (도메인 특화)</td><td>상황에 따라</td></tr>
+              <tr><td>유지보수</td><td>쉬움 (문서 업데이트)</td><td>어려움 (재학습 필요)</td><td>임베딩</td></tr>
+              <tr><td>비용</td><td>낮음 (API 호출)</td><td>높음 (학습 비용)</td><td>임베딩</td></tr>
+              <tr><td>확장성</td><td>우수 (문서 추가 용이)</td><td>제한적 (데이터셋 필요)</td><td>임베딩</td></tr>
+              <tr><td>커스터마이징</td><td>보통 (프롬프트 조정)</td><td>우수 (모델 자체 학습)</td><td>파인튜닝</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card grid-2">
+          <div>
+            <div class="label">임베딩 (RAG) 방식</div>
+            <ul class="impact">
+              <li><strong>장점:</strong> 실시간 정보 반영, 낮은 비용, 쉬운 유지보수</li>
+              <li><strong>단점:</strong> 컨텍스트 길이 제한, 검색 품질 의존</li>
+              <li><strong>적합한 경우:</strong> 자주 업데이트되는 FAQ, 다양한 문서 유형</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">파인튜닝 방식</div>
+            <ul class="impact">
+              <li><strong>장점:</strong> 도메인 특화, 일관된 답변 품질, 복잡한 추론</li>
+              <li><strong>단점:</strong> 높은 비용, 재학습 필요, 데이터셋 의존</li>
+              <li><strong>적합한 경우:</strong> 특정 도메인 전문성, 복잡한 질문-답변</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="label">하이브리드 접근법</div>
+          <ul class="impact">
+            <li><strong>1단계:</strong> 임베딩으로 관련 문서 검색 및 컨텍스트 수집</li>
+            <li><strong>2단계:</strong> 파인튜닝 모델로 컨텍스트 기반 답변 생성</li>
+            <li><strong>3단계:</strong> 답변 품질 검증 및 상담원 에스컬레이션 판단</li>
+            <li><strong>결과:</strong> 두 방식의 장점을 결합한 최적의 성능 달성</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑧ 결과 & 임팩트 / Results & Impact</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>지표</th><th>Before</th><th>After</th><th>증감</th><th>비고</th></tr></thead>
+            <tbody>
+              <tr><td>CS 유입량</td><td>100%</td><td>60%</td><td>-40%</td><td>챗봇 CS 대응</td></tr>
+              <tr><td>CS 대응</td><td>10분</td><td>5분 이하</td><td>50% 단축</td><td>상담사 업무고도화</td></tr>
+            </tbody>
+          </table>
+          <ul class="impact">
+            <li>CS 메뉴얼 데이터 확보: Zendesk 내 등록 자사 DB화</li>
+            <li>메뉴얼 운영 고도화 전략체계 구성</li>
+          </ul>
+        </div>
+
+        <!-- 확장 성과 -->
+        <div class="card">
+          <div class="label">🚀 프로젝트 확장 및 사내 영향력 / Project Expansion & Internal Impact</div>
+          <div class="grid-2">
+            <div>
+              <h4>사내 최초 LLM 서비스 배포</h4>
+              <ul class="clean">
+                <li><strong>선도적 역할:</strong> 본부 내 CS 데이터를 활용한 사내 최초 LLM 서비스 배포</li>
+                <li><strong>기술적 선구자:</strong> 다른 부서에 배포 가능한 데이터가 없는 상황에서 가장 먼저 서비스 실현</li>
+                <li><strong>성공 사례 구축:</strong> 사내 LLM 도입의 성공적인 첫 사례로 인정</li>
+              </ul>
+            </div>
+            <div>
+              <h4>CRM 연동 자동화 시스템</h4>
+              <ul class="clean">
+                <li><strong>STT 연동:</strong> 유선 상담 후 자동 고객 안내 메일 발송</li>
+                <li><strong>영업 지원:</strong> 영업 담당자에게 적합한 메뉴얼 자동 추천</li>
+                <li><strong>CRM 통합:</strong> 세일즈포스 등록까지 포함한 완전 자동화 프로세스 구축</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div>
+              <h4>사내 RAG 교육 및 인력 확보</h4>
+              <ul class="clean">
+                <li><strong>교육 주도:</strong> 사내 LLM 활용 RAG 사례 및 프로세스 교육 진행</li>
+                <li><strong>전담 인력 양성:</strong> OpenAI LLM 패키지 활용 전담 인력 확보</li>
+                <li><strong>부서별 지원:</strong> RAG 기능이 요구되는 부서에 개발 CS 지원</li>
+              </ul>
+            </div>
+            <div>
+              <h4>확장 적용 사례</h4>
+              <ul class="clean">
+                <li><strong>세일즈포스 계정 관리:</strong> 자동화된 계정 관리 시스템</li>
+                <li><strong>사내 제안 사업 운영:</strong> 운영 관리 자동화</li>
+                <li><strong>기타 부서:</strong> 다양한 부서의 LLM 도입 지원</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 사내 영향력 지표 -->
+        <div class="card">
+          <div class="label">📈 사내 영향력 지표 / Internal Impact Metrics</div>
+          <table>
+            <thead><tr><th>영역</th><th>Before</th><th>After</th><th>증감</th><th>비고</th></tr></thead>
+            <tbody>
+              <tr><td>사내 LLM 서비스</td><td>0개</td><td>1개 (본부 최초)</td><td>+100%</td><td>선도적 도입</td></tr>
+              <tr><td>CRM 자동화</td><td>수동 처리</td><td>완전 자동화</td><td>100% 자동화</td><td>STT→메일→CRM</td></tr>
+              <tr><td>RAG 전담 인력</td><td>0명</td><td>5명+</td><td>+500%</td><td>교육 및 양성</td></tr>
+              <tr><td>지원 부서 수</td><td>1개</td><td>5개+</td><td>+400%</td><td>다양한 부서 확장</td></tr>
+              <tr><td>사내 LLM 활용도</td><td>0%</td><td>80%+</td><td>+80%p</td><td>전사적 도입</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑩ 기술적 도전과 해결 / Technical Challenges</h2>
+        
+        <div class="card">
+          <table>
+            <thead><tr><th>도전과제</th><th>문제</th><th>해결방안</th><th>결과</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>데이터 수집 시스템 부재</strong></td>
+                <td>Zendesk 개발 부서 부재, 학습용 데이터 수집 방법 부재</td>
+                <td>API Key 획득 후 자동 수집 시스템 직접 개발</td>
+                <td>24시간 무중단 데이터 수집 파이프라인 구축</td>
+              </tr>
+              <tr>
+                <td><strong>데이터 전처리 리소스 부족</strong></td>
+                <td>문의 템플릿 일관성 부족, 대량 전처리 리소스 소요</td>
+                <td>카테고리별 템플릿 표준화, 자동 전처리 시스템 구축</td>
+                <td>50개 카테고리 분류, 전처리 시간 70% 단축</td>
+              </tr>
+              <tr>
+                <td><strong>LLM 모델 선택 어려움</strong></td>
+                <td>임베딩 vs 파인튜닝 방식 선택, 모델 제약사항</td>
+                <td>Playground 테스트, 하이브리드 접근법 적용</td>
+                <td>임베딩(90%) + 파인튜닝(85%) 결합으로 최적 성능</td>
+              </tr>
+              <tr>
+                <td><strong>POC 프로토타입 필요</strong></td>
+                <td>전체 인원 대상 테스트 도구 부재, A/B 테스트 환경 필요</td>
+                <td>Slack Bot 기반 프로토타입, 동시 모델 연동</td>
+                <td>50명 대상 POC 성공, 88% 만족도 달성</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑪ 챗봇 시나리오 설계 / Scenario Design</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>시나리오</th><th>처리 방식</th><th>기술</th><th>성공률</th></tr></thead>
+            <tbody>
+              <tr><td>일반 문의</td><td>지식베이스 검색 후 응답</td><td>RAG</td><td>90%</td></tr>
+              <tr><td>기술 지원</td><td>단계별 가이드 제공</td><td>GPT</td><td>85%</td></tr>
+              <tr><td>계정 문제</td><td>상담원 즉시 연결</td><td>Zendesk API</td><td>100%</td></tr>
+              <tr><td>결제 문의</td><td>보안 인증 후 처리</td><td>인증 시스템</td><td>95%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑫ 사내 확장 및 영향력 / Internal Expansion & Impact</h2>
+        <div class="card">
+          <div class="label">🚀 핵심 성과</div>
+          <div class="grid-2">
+            <div>
+              <h4>기술적 선구자 역할</h4>
+              <ul class="clean">
+                <li>사내 최초 LLM 서비스 배포로 기술적 선도성 입증</li>
+                <li>다른 부서에 배포 가능한 데이터가 없는 상황에서 가장 먼저 서비스 실현</li>
+                <li>성공적인 첫 사례로 사내 LLM 도입의 기준점 제시</li>
+              </ul>
+            </div>
+            <div>
+              <h4>교육 및 인력 양성</h4>
+              <ul class="clean">
+                <li>사내 RAG 사례 및 프로세스 교육을 통한 지식 전파</li>
+                <li>OpenAI LLM 패키지 활용 전담 인력 5명+ 양성</li>
+                <li>다양한 부서의 LLM 도입을 위한 개발 CS 지원</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="label">🔗 시스템 통합 및 자동화</div>
+          <div class="grid-2">
+            <div>
+              <h4>CRM 연동 자동화</h4>
+              <ul class="clean">
+                <li>유선 STT 상담 후 자동 고객 안내 메일 발송</li>
+                <li>영업 담당자에게 적합한 메뉴얼 자동 추천</li>
+                <li>세일즈포스 등록까지 포함한 완전 자동화 프로세스</li>
+              </ul>
+            </div>
+            <div>
+              <h4>확장 적용 사례</h4>
+              <ul class="clean">
+                <li>세일즈포스 계정 관리 자동화</li>
+                <li>사내 제안 사업 운영 관리 자동화</li>
+                <li>기타 부서별 맞춤형 LLM 솔루션 제공</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑬ 상세 코드 구현 / Detailed Code Implementation</h2>
+        <div class="card">
+          <div class="label">전체 업무 시퀀스 / Complete Workflow Sequence</div>
+          <div class="workflow-sequence">
+            <div class="workflow-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3>데이터 수집 (Zendesk)</h3>
+                <p>기존 고객센터 FAQ 데이터를 Zendesk API를 통해 수집하고 MySQL에 저장</p>
+                <div class="step-details">
+                  <span class="detail-tag">ZendeskDataCollector</span>
+                  <span class="detail-tag">MySQL 연동</span>
+                  <span class="detail-tag">API 크롤링</span>
+                </div>
+                
+                <!-- 1단계 코드 구현 -->
+                <div class="workflow-code-section">
+                  <div class="code-item">
+                    <div class="code-item-title" onclick="toggleCode(this)">1-1. Zendesk API 연결 및 FAQ 데이터 수집</div>
+                    <div class="code-description">Zendesk Help Center API를 통해 FAQ 데이터를 수집하는 핵심 메서드</div>
+                    <div class="code-section">
+                      <div class="code-content">import requests
+import pymysql
+import time
+
+# Zendesk API 설정
+user = '{ZENDESK_EMAIL}'
+pwd = '{ZENDESK_API_TOKEN}'
+url = 'https://{ZENDESK_DOMAIN}.zendesk.com/api/v2/help_center/articles'
+
+# 데이터 수집
+output = []
+while url:
+    response = requests.get(url, auth=(user, pwd))
+    data = response.json()
+    
+    for article in data['articles']:
+        data_set = [article['html_url'], article['title'], article['body']]
+        output.append(data_set)
+    
+    url = data['next_page']
+    time.sleep(1)  # API 호출 제한 방지
+
+# MySQL 저장
+conn = pymysql.connect(host=DB_HOST, user=DB_USER, password=DB_PASSWORD, db=DB_NAME)
+cursor = conn.cursor()
+cursor.executemany("INSERT INTO sa_faq_chk2 VALUES (%s,%s,%s,'','','')", output)
+conn.commit()
+conn.close()
+
+print(f"총 {len(output)}개 게시글 수집 완료")</div>
+                    </div>
+                  </div>
+
+                  <div class="code-item">
+                    <div class="code-item-title" onclick="toggleCode(this)">1-2. CSV 파일 저장 유틸리티</div>
+                    <div class="code-description">Zendesk Help Center의 모든 게시글을 CSV 형태로 저장하는 유틸리티</div>
+                    <div class="code-section">
+                      <div class="code-content">import requests
+import csv
+import time
+
+# Zendesk API 데이터 수집
+all_keys = set()
+output = []
+
+while url:
+    response = requests.get(url, auth=(user, pwd))
+    data = response.json()
+    
+    for item in data["articles"]:
+        all_keys.update(item.keys())
+    
+    for article in data['articles']:
+        row = [article.get(key, "") for key in all_keys]
+        output.append(row)
+    
+    url = data['next_page']
+    time.sleep(1)
+
+# CSV 저장
+with open(csvfile, 'w', newline='', encoding='utf-8-sig') as fp:
+    writer = csv.writer(fp)
+    writer.writerows([all_keys])
+    writer.writerows(output)
+
+print(f"Number of articles: {len(output)}")</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="workflow-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3>데이터 전처리</h3>
+                <p>수집된 데이터를 정제하고 GPT를 활용한 키워드 추출</p>
+                <div class="step-details">
+                  <span class="detail-tag">TextPreprocessor</span>
+                  <span class="detail-tag">개인정보 제거</span>
+                  <span class="detail-tag">키워드 추출</span>
+                </div>
+                
+                <!-- 2단계 코드 구현 -->
+                <div class="workflow-code-section">
+                  <div class="code-item">
+                    <div class="code-item-title" onclick="toggleCode(this)">2-1. 텍스트 전처리 및 정제</div>
+                    <div class="code-description">수집된 데이터를 정제하고 개인정보를 제거하는 핵심 메서드</div>
+                    <div class="code-section">
+                      <div class="code-content">import re
+import openai
+
+def preprocess_text(text):
+    # HTML 태그 제거
+    text = re.sub(r'<[^>]+>', '', text)
+    
+    # 개인정보 제거 (이메일, 전화번호, 계정정보)
+    text = re.sub(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', '[EMAIL]', text)
+    text = re.sub(r'\b\d{3}-\d{4}-\d{4}\b', '[PHONE]', text)
+    text = re.sub(r'\b[A-Za-z0-9._%+-]+\b', '[ACCOUNT]', text)
+    
+    # 특수문자 정리
+    text = re.sub(r'[^\w\s가-힣]', ' ', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    
+    return text
+
+def extract_keywords_with_gpt(text):
+    prompt = f"다음 텍스트에서 핵심 키워드 5개를 추출해주세요: {text}"
+    
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=100,
+        temperature=0.3
+    )
+    
+    keywords = response.choices[0].message.content.strip().split(',')
+    return [kw.strip() for kw in keywords]</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="workflow-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3>임베딩 처리</h3>
+                <p>텍스트를 벡터로 변환하고 OpenAI Vector Store에 저장</p>
+                <div class="step-details">
+                  <span class="detail-tag">VectorStoreManager</span>
+                  <span class="detail-tag">RAGSearchEngine</span>
+                  <span class="detail-tag">벡터 검색</span>
+                </div>
+                
+                <!-- 3단계 코드 구현 -->
+                <div class="workflow-code-section">
+                  <div class="code-item">
+                    <div class="code-item-title" onclick="toggleCode(this)">3-1. Vector Store 관리 및 임베딩 처리</div>
+                    <div class="code-description">OpenAI Vector Store를 활용한 문서 임베딩 및 벡터화 처리의 핵심 메서드</div>
+                    <div class="code-section">
+                      <div class="code-content">import openai
+import json
+
+# 데이터베이스에서 문서 조회
+select_query = """SELECT Full_path, slide_id, Page_intro 
+                  FROM MIS_Slide_TEMP WHERE Vector_Insert = 'F'"""
+cur.execute(select_query)
+results = cur.fetchall()
+
+json_items = []
+for row in results:
+    json_item = {"Full_path": row[0], "slide_id": row[1], "Page_intro": row[2]}
+    json_items.append(json_item)
+
+# Vector Store 업로드
+json_output = json.dumps(json_items, ensure_ascii=False, indent=4)
+with open("merged_data.json", 'w', encoding='utf-8') as f:
+    f.write(json_output)
+
+# 기존 파일 삭제 후 새 파일 업로드
+vector_store_files = client.beta.vector_stores.files.list(vector_store_id=vector_store_id)
+for file in vector_store_files.data:
+    client.beta.vector_stores.files.delete(vector_store_id=vector_store_id, file_id=file.id)
+
+with open("merged_data.json", "rb") as f:
+    file_batch = client.beta.vector_stores.file_batches.upload_and_poll(
+        vector_store_id=vector_store_id, files=[f])</div>
+                    </div>
+                  </div>
+
+                  <div class="code-item">
+                    <div class="code-item-title" onclick="toggleCode(this)">3-2. 유사도 검색 및 RAG 구현</div>
+                    <div class="code-description">Vector Store를 활용한 유사도 검색 및 RAG(Retrieval-Augmented Generation) 구현</div>
+                    <div class="code-section">
+                      <div class="code-content">import openai
+from typing import List, Dict
+
+class RAGSearchEngine:
+    def __init__(self):
+        self.openai_config = {
+            'api_key': '{OPENAI_API_KEY}',
+            'vector_store_id': '{VECTOR_STORE_ID}',
+            'model': 'gpt-3.5-turbo'
+        }
+    
+    def search_similar_documents(self, query: str, top_k: int = 5):
+        search_results = openai.beta.vector_stores.files.search(
+            vector_store_id=self.openai_config['vector_store_id'],
+            query=query,
+            top_k=top_k
+        )
+        return search_results
+    
+    def rag_query(self, query: str):
+        similar_docs = self.search_similar_documents(query)
+        
+        context = "\n".join([doc.content for doc in similar_docs])
+        prompt = f"다음 문서를 참고하여 질문에 답변해주세요:\n\n문서:\n{context}\n\n질문: {query}"
+        
+        response = openai.ChatCompletion.create(
+            model=self.openai_config['model'],
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=500,
+            temperature=0.3
+        )
+        
+        return {
+            'answer': response.choices[0].message.content,
+            'confidence': 0.85,
+            'sources': similar_docs
+        }</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="workflow-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h3>파인튜닝</h3>
+                <p>GPT 모델을 고객센터 데이터로 파인튜닝하여 특화된 답변 생성</p>
+                <div class="step-details">
+                  <span class="detail-tag">FineTuningManager</span>
+                  <span class="detail-tag">AnswerClassifier</span>
+                  <span class="detail-tag">모델 최적화</span>
+                </div>
+                
+                <!-- 4단계 코드 구현 -->
+                <div class="workflow-code-section">
+                  <div class="code-item">
+                    <div class="code-item-title" onclick="toggleCode(this)">4-1. 파인튜닝 모델 테스트</div>
+                    <div class="code-description">Excel 데이터를 활용한 FAQ 분류 모델의 파인튜닝 테스트 핵심 메서드</div>
+                    <div class="code-section">
+                      <div class="code-content">from openpyxl import load_workbook
+import openai
+
+# Excel에서 학습 데이터 로드
+wb = load_workbook('학습데이터_답변추가본1111.xlsx')
+ws = wb['테스트데이터']
+
+contents_arr = []
+for row in ws.iter_rows(min_row=2, min_col=5, max_col=6):
+    e_cell = row[0]  # 질문
+    f_cell = row[1]  # 답변
+    e_value = str(e_cell.value)
+    f_value = str(f_cell.value)
+    contents_arr.append((e_value, f_value))
+
+# 파인튜닝된 모델로 테스트
+for i, (question, answer) in enumerate(contents_arr):
+    prompt = f"subject: {question}\ncontent: {answer}\n"
+    
+    completion = openai.Completion.create(
+        model="davinci:ft-cafe24-corp-2023-03-30-11-57-47", 
+        prompt=prompt, max_tokens=1000, temperature=0.5
+    )
+    
+    result = completion['choices'][0]['text']
+    ws.cell(row=i+2, column=13).value = str(result)
+
+# 결과 파일 저장
+workbook.save('결과데이터_질문답변.xlsx')</div>
+                    </div>
+                  </div>
+
+                  <div class="code-item">
+                    <div class="code-item-title" onclick="toggleCode(this)">4-2. 답변 분류 및 컨텍스트 매핑</div>
+                    <div class="code-description">파인튜닝된 모델의 답변 번호에 따른 컨텍스트 매핑 및 최종 답변 생성</div>
+                    <div class="code-section">
+                      <div class="code-content">import openai
+import re
+from typing import Dict
+
+class AnswerClassifier:
+    def __init__(self):
+        self.openai_config = {
+            'api_key': '{OPENAI_API_KEY}',
+            'fine_tuned_model': 'davinci:ft-cafe24-corp-2023-03-30-09-50-15',
+            'chat_model': 'gpt-3.5-turbo'
+        }
+        
+        self.context_mapping = {
+            "1": "상품 등록 관련 문의입니다.",
+            "2": "결제 및 환불 관련 문의입니다.",
+            "3": "계정 관리 관련 문의입니다.",
+            "4": "기술 지원 관련 문의입니다.",
+            "5": "일반 문의입니다."
+        }
+    
+    def classify_question(self, question: str) -> str:
+        completion = openai.Completion.create(
+            model=self.openai_config['fine_tuned_model'],
+            prompt=f"subject: {question}\ncontent: {question}\n",
+            max_tokens=70,
+            temperature=0.5
+        )
+        
+        data = completion['choices'][0]['text']
+        answer_number = self.extract_answer_number(data)
+        
+        return self.context_mapping.get(answer_number, "일반 문의입니다.")
+    
+    def extract_answer_number(self, data: str) -> str:
+        if "###" in data:
+            data = data.split("###")[1]
+        
+        match = re.search(r'\d+', data)
+        return match.group(0) if match else "0"</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="workflow-step">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <h3>실시간 서비스</h3>
+                <p>Slack Bot을 통한 실시간 상호작용 및 답변 제공</p>
+                <div class="step-details">
+                  <span class="detail-tag">SlackBotService</span>
+                  <span class="detail-tag">AdvancedSlackBot</span>
+                  <span class="detail-tag">다중 질문 처리</span>
+                </div>
+                
+                <!-- 5단계 코드 구현 -->
+                <div class="workflow-code-section">
+                  <div class="code-item">
+                    <div class="code-item-title" onclick="toggleCode(this)">5-1. Slack Bot 핵심 서비스</div>
+                    <div class="code-description">Slack Bot을 통한 실시간 파인튜닝 모델 테스트 및 상호작용 핵심 메서드</div>
+                    <div class="code-section">
+                      <div class="code-content">from slack_bolt import App
+from slack_bolt.adapter.socket_mode import SocketModeHandler
+import openai
+
+app = App(token='{SLACK_BOT_TOKEN}')
+
+@app.view("view_1")
+def handle_submission(ack, body, client, view, logger):
+    ack()
+    
+    title = view['state']['values']['check_b']['plain_text_input-action']['value']
+    content = view['state']['values']['check_c']['plain_text_input-action']['value']
+    channel_id = view['private_metadata']
+    
+    # 파인튜닝된 모델로 답변 생성
+    prompt = f"subject: {title}\ncontent: {content}\n"
+    completion = openai.Completion.create(
+        model="davinci:ft-cafe24-corp-2023-03-30-09-50-15", 
+        prompt=prompt, max_tokens=70, temperature=0.5
+    )
+    
+    # 답변 번호 추출 및 컨텍스트 매핑
+    data = completion['choices'][0]['text']
+    answer_number = extract_answer_number(data)
+    context = get_context_by_number(answer_number)
+    
+    # 최종 답변 생성 및 Slack 전송
+    final_answer = generate_final_answer(title, content, context)
+    reply = f"문의내용:\n{title}\n{content}\n\n답변내용:\n{final_answer}"
+    client.chat_postMessage(channel=channel_id, text=reply)
+
+def extract_answer_number(data):
+    data = data.split("###")[1] if "###" in data else data
+    match = re.search(r'\d+\.\s*|\d+\)\s*|\d+/\s*|\d+###\s*|\d+\s*', data)
+    return re.sub(r"[^0-9]", "", match.group(0).strip()) if match else "0"
+
+if __name__ == "__main__":
+    handler = SocketModeHandler(app, '{SLACK_APP_TOKEN}')
+    handler.start()</div>
+                    </div>
+                  </div>
+
+                  <div class="code-item">
+                    <div class="code-item-title" onclick="toggleCode(this)">5-2. 다중 문의 처리 및 고급 기능</div>
+                    <div class="code-description">하나의 문의에 여러 질문이 포함된 경우를 처리하는 고급 Slack Bot 모듈</div>
+                    <div class="code-section">
+                      <div class="code-content">import openai
+import re
+from typing import List
+
+class MultiQuestionProcessor:
+    def __init__(self):
+        self.openai_config = {
+            'api_key': '{OPENAI_API_KEY}',
+            'chat_model': 'gpt-3.5-turbo'
+        }
+    
+    def process_multi_questions(self, content: str) -> str:
+        # GPT를 활용한 질문 분리
+        prompt = f"""다음 텍스트에서 개별 질문들을 분리해주세요:
+{content}
+
+각 질문을 한 줄씩 구분해주세요."""
+        
+        response = openai.ChatCompletion.create(
+            model=self.openai_config['chat_model'],
+            messages=[{"role": "user", "content": prompt}]
+        )
+        
+        questions = [q.strip() for q in response.choices[0].message.content.strip().split('\n') if q.strip()]
+        
+        # 각 질문별로 답변 생성
+        answers = []
+        for i, question in enumerate(questions, 1):
+            answer = self.generate_ai_answer(question)
+            answers.append(f"[{i}]번 질문: {question}\n답변: {answer}")
+        
+        return "\n\n".join(answers)
+    
+    def generate_ai_answer(self, question: str) -> str:
+        completion = openai.Completion.create(
+            model="davinci:ft-cafe24-corp-2023-03-30-09-50-15",
+            prompt=f"subject: {question}\ncontent: {question}\n",
+            max_tokens=70,
+            temperature=0.5
+        )
+        
+        data = completion['choices'][0]['text']
+        answer_number = re.sub(r"[^0-9]", "", data.split("###")[1] if "###" in data else data)
+        
+        context_mapping = {
+            "1": "상품 등록 관련 문의입니다.",
+            "2": "결제 및 환불 관련 문의입니다.",
+            "3": "계정 관리 관련 문의입니다.",
+            "4": "기술 지원 관련 문의입니다.",
+            "5": "일반 문의입니다."
+        }
+        
+        context = context_mapping.get(answer_number, "일반 문의입니다.")
+        return f"{context}\n\n상세한 답변을 위해 고객센터로 연락주시기 바랍니다."</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </article>
+  </div>
+</body>
+</html> 

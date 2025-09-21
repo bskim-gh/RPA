@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>외자구매 & 포워딩 & 재고 운영 - 김보선 포트폴리오</title>
+  <style>
+    :root{
+      --primary:#6366f1;
+      --primary-ink:#eef2ff;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --line:#e5e7eb;
+      --accent:#10b981;
+      --warn:#eab308;
+      --danger:#ef4444;
+    }
+
+    @page { size: A4; margin: 16mm; }
+
+    * { box-sizing: border-box; }
+    html, body { 
+      margin:0; padding:0; background: var(--bg); color: var(--ink);
+      font-family: 'Noto Sans KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      print-color-adjust: exact; -webkit-print-color-adjust: exact;
+    }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 20px; }
+
+    .screen-only { display: block; }
+    @media print { .screen-only { display: none !important; } }
+
+    .print-btn { 
+      position: sticky; top: 12px; float: right; 
+      background: var(--primary); color: var(--primary-ink); border: none; 
+      padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 600; 
+      box-shadow: 0 6px 14px rgba(99,102,241,.25);
+    }
+
+    .header {
+      background: linear-gradient(135deg, rgba(99,102,241,.18), rgba(16,185,129,.15));
+      border: 1px solid var(--line);
+      border-radius: 18px; padding: 20px; margin-bottom: 14px;
+      box-shadow: 0 10px 30px rgba(15,23,42,.04);
+    }
+
+    h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.02em; }
+    .sub { color: var(--muted); font-size: 14px; }
+
+    .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+    .meta { background: var(--card); border:1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+    .label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .value { font-size: 14px; font-weight: 600; margin-top: 4px; }
+
+    .kpi-chips { display:flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .chip { 
+      display:inline-flex; align-items:center; gap:6px; 
+      background: rgba(16,185,129,.1); color:#065f46; border:1px solid rgba(16,185,129,.25);
+      padding:6px 10px; border-radius: 999px; font-size: 13px; font-weight: 700;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .chip .delta-up { font-weight:900; }
+
+    .section { margin: 16px 0 0; }
+    .section > h2 { font-size: 18px; margin: 0 0 10px; letter-spacing: -0.01em; }
+
+    .card { 
+      background: var(--card); border:1px solid var(--line); border-radius: 14px; padding: 14px 16px; 
+      margin: 8px 0 14px; box-shadow: 0 10px 24px rgba(15,23,42,.04);
+      break-inside: avoid; page-break-inside: avoid;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+    @media (max-width: 900px){ .meta-grid{grid-template-columns:1fr 1fr}; .grid-3{grid-template-columns:1fr 1fr}; .grid-4{grid-template-columns:1fr 1fr}; }
+
+    .badges { display:flex; flex-wrap:wrap; gap:6px; }
+    .badge { background: #f1f5f9; border:1px solid var(--line); color:#0f172a; border-radius: 999px; padding:4px 8px; font-size:12px; }
+
+    ul.clean { margin: 8px 0 0 18px; }
+    ul.impact { list-style: none; padding-left: 0; margin: 8px 0 0; }
+    ul.impact li { position: relative; padding-left: 22px; margin: 6px 0; }
+    ul.impact li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 900; }
+
+    table { width: 100%; border-collapse: collapse; border:1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px; font-size: 13px; vertical-align: top; }
+    th { background:#f8fafc; text-align: left; color: #0f172a; }
+    tr:last-child td { border-bottom: none; }
+
+    .media-placeholder {
+      width: 100%; aspect-ratio: 16/9; border: 2px dashed #cbd5e1; border-radius: 12px; 
+      display:grid; place-items:center; color:#64748b; font-size: 14px; background: #f8fafc;
+    }
+
+    .qr-and-links { display:flex; gap: 12px; align-items:flex-start; }
+    .qr-box { width: 96px; height: 96px; border: 1px dashed #94a3b8; border-radius: 10px; display:grid; place-items:center; color:#64748b; font-size:12px; }
+    .links { flex: 1; }
+    .links a { color: var(--primary); text-decoration: underline; }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      color: var(--ink);
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(15,23,42,.08);
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(15,23,42,.12);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-btn.primary {
+      background: var(--primary);
+      color: var(--primary-ink);
+      border-color: var(--primary);
+    }
+
+    .nav-btn.primary:hover {
+      color: var(--primary-ink);
+      background: var(--primary);
+      opacity: 0.9;
+    }
+
+    @media print {
+      body{ background: white; }
+      .card{ box-shadow: none; }
+      a{ color: inherit; text-decoration: none; }
+      .nav-buttons { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-buttons screen-only">
+      <a href="index.html" class="nav-btn">
+        ← 포트폴리오 목록
+      </a>
+    </div>
+    
+    <button class="print-btn screen-only" onclick="window.print()">PDF로 내보내기</button>
+
+    <article class="project">
+      <header class="header">
+        <h1>외자구매 & 포워딩 & 재고 운영</h1>
+        <div class="sub">해외 특수상품 수입 및 재고 회전을 최적화해 물류비 절감 및 수익률 개선</div>
+        <div class="meta-grid">
+          <div class="meta"><div class="label">기간 / Period</div><div class="value">2019.03 ~ 2021.02</div></div>
+          <div class="meta"><div class="label">역할 / Role</div><div class="value">구매 전략 · 물류 최적화</div></div>
+          <div class="meta"><div class="label">소속 / Company</div><div class="value">AD International · 무역팀</div></div>
+        </div>
+        <div class="kpi-chips">
+          <div class="chip"><span class="delta-up">▲</span> LCL 콘솔 물류비 50% 절감</div>
+          <div class="chip"><span class="delta-up">▲</span> FCL 물류비 30% 절감</div>
+          <div class="chip"><span class="delta-up">▲</span> BOM Code 체계 구축</div>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2>① 개요 / Overview</h2>
+        <div class="card grid-2">
+          <div>
+            <div class="label">문맥 / Context</div>
+            <ul class="clean">
+              <li>공급사 소통미스로 OEM 부자재 입고 지연</li>
+              <li>수입 프로세스 문제 (시간,비용)</li>
+              <li>미처리 재고 (스틱, 용기 등) 소진 전략 필요</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">문제정의 / Problem</div>
+            <ul class="clean">
+              <li>소통불가 구간 재정의 및 리드타임 조율</li>
+              <li>비효율적인 물류 전체 프로세스 검수 및 이슈 구간 해결</li>
+              <li>재고 소진 전략 구축</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>② 목표 & KPI / Goals & KPIs</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>목표 지표</th><th>Baseline</th><th>Target</th><th>Result</th><th>측정방법</th></tr></thead>
+            <tbody>
+              <tr><td>LCL 물류비</td><td>100%</td><td>70%</td><td>50%</td><td>콘테이너당 비용</td></tr>
+              <tr><td>FCL 물류비</td><td>100%</td><td>80%</td><td>70%</td><td>컨테이너당 비용</td></tr>
+              <tr><td>재고 소진</td><td>0%</td><td>50%</td><td>70%</td><td>용기 및 스틱 재고 소진율</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>③ 실무 운영 프로세스 / Operational Process</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>업무 영역</th><th>주요 활동</th><th>관리 도구</th><th>성과</th></tr></thead>
+            <tbody>
+              <tr><td>서류 관리</td><td>발주서 및 기본 서류 작성</td><td>Ecount ERP 솔루션</td><td>처리 시간 단축</td></tr>
+              <tr><td>BOM 관리</td><td>부자재 코드화 작업 (200개 이상 품목)</td><td>Ecount ERP 시스템</td><td>재고 관리 효율성 향상</td></tr>
+              <tr><td>특수물품 관리</td><td>KC인증, 생화 등 특수물품 수입 처리</td><td>인증 관리 시스템</td><td>컴플라이언스 100% 준수</td></tr>
+              <tr><td>물류 최적화</td><td>기존 한국 에이전시 → 현지 agent 변경</td><td>현지 포워딩 네트워크</td><td>물류 비용 절감</td></tr>
+              <tr><td>LCL 프로세스</td><td>육상배송 → 페리 구간 agent와 선사 협의</td><td>고정구간 프로세스</td><td>4day 수입일정 안정화</td></tr>
+              <tr><td>통관 업무</td><td>포워딩 스케줄 체크 및 통관서류 준비</td><td>관세청 시스템</td><td>통관 지연 최소화</td></tr>
+              <tr><td>품질 관리</td><td>수입품 품질관리 및 설비 하자 보완</td><td>품질 체크리스트</td><td>불량률 감소</td></tr>
+              <tr><td>커뮤니케이션</td><td>회사 소개서/브로셔 통·번역 지원</td><td>다국어 문서</td><td>해외 업체 소통 원활</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>④ 주요 개선 포인트 / Key Improvements</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>개선 영역</th><th>기존 방식 (Before)</th><th>개선 방식 (After)</th><th>효과</th></tr></thead>
+            <tbody>
+              <tr><td>물류 에이전시</td><td>한국 에이전시 사용</td><td>현지 agent로 변경</td><td>물류비 30% 절감</td></tr>
+              <tr><td>LCL 운송</td><td>육상배송 (일정 불규칙)</td><td>페리 구간 고정 프로세스</td><td>4일 고정 일정, 시간 70% 단축</td></tr>
+              <tr><td>재고 관리</td><td>수기 관리</td><td>BOM 코드화 + Ecount ERP</td><td>재고 관리 효율성 80% 향상</td></tr>
+              <tr><td>LCL 콘솔</td><td>개별 운송</td><td>통합 콘솔 서비스</td><td>물류비 50% 절감</td></tr>
+              <tr><td>포워딩 업체</td><td>기존 1개사 의존</td><td>신규 3개사 발굴</td><td>FCL 물류비 30% 절감</td></tr>
+              <tr><td>재고 소진</td><td>국내 공급만 진행</td><td>해외 바이어 발굴 + ODM 제품 출시</td><td>용기·스틱 재고 70% 소진 (목표 50% 초과달성)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑤ 물류비 절감 전략 / Cost Reduction Strategy</h2>
+        <div class="card grid-2">
+          <div>
+            <div class="label">LCL 콘솔 최적화</div>
+            <ul class="clean">
+              <li>다품목 혼재 적재 최적화</li>
+              <li>정기 스케줄 운영</li>
+              <li>공동 운송 파트너 발굴</li>
+              <li>적재 효율성 극대화</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">FCL 직송 전략</div>
+            <ul class="clean">
+              <li>대량 구매를 통한 단가 절감</li>
+              <li>신규 포워딩 업체 발굴</li>
+              <li>운송 루트 다변화</li>
+              <li>계약 조건 재협상</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <table>
+            <thead><tr><th>개선 항목</th><th>기존 방식</th><th>개선 방식</th><th>절감 효과</th></tr></thead>
+            <tbody>
+              <tr><td>LCL 콘솔</td><td>개별 운송</td><td>통합 콘솔</td><td>50% 절감</td></tr>
+              <tr><td>포워딩 업체</td><td>기존 1개사</td><td>신규 3개사 발굴</td><td>30% 절감</td></tr>
+              <tr><td>통관 절차</td><td>수동 처리</td><td>자동화 시스템</td><td>시간 70% 단축</td></tr>
+              <tr><td>창고 보관</td><td>장기 보관</td><td>빠른 회전</td><td>보관료 40% 절감</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑥ 결과 & 임팩트 / Results & Impact</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>지표</th><th>Before</th><th>After</th><th>증감</th><th>비고</th></tr></thead>
+            <tbody>
+              <tr><td>LCL 물류비</td><td>100%</td><td>50%</td><td>-50%</td><td>콘솔 서비스 도입</td></tr>
+              <tr><td>FCL 물류비</td><td>100%</td><td>70%</td><td>-30%</td><td>신규 업체 발굴</td></tr>
+              <tr><td>재고 소진율</td><td>0%</td><td>70%</td><td>목표 50% 초과달성</td><td>용기·스틱 재고 소진</td></tr>
+            </tbody>
+          </table>
+          <ul class="impact">
+            <li>BOM(부자재) Code 체계 구축으로 재고 관리 효율성 대폭 향상</li>
+            <li>LCL 콘솔 물류 프로세스 구축 및 물류비 50% 절감</li>
+            <li>신규 로컬 포워딩 에이전트 섭외, FCL 물류비 30% 절감</li>
+            <li>특수상품 수입 표준 구축 (KC 인증, 생화, 화학물 등)</li>
+          </ul>
+        </div>
+      </section>
+
+
+    </article>
+  </div>
+</body>
+</html> 

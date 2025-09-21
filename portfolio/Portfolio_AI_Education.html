@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Agent(AI) 교육 - 김보선 포트폴리오</title>
+  <style>
+    :root{
+      --primary:#6366f1;
+      --primary-ink:#eef2ff;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --line:#e5e7eb;
+      --accent:#10b981;
+      --warn:#eab308;
+      --danger:#ef4444;
+    }
+
+    @page { size: A4; margin: 16mm; }
+
+    * { box-sizing: border-box; }
+    html, body { 
+      margin:0; padding:0; background: var(--bg); color: var(--ink);
+      font-family: 'Noto Sans KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      print-color-adjust: exact; -webkit-print-color-adjust: exact;
+    }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 20px; }
+
+    .screen-only { display: block; }
+    @media print { .screen-only { display: none !important; } }
+
+    .print-btn { 
+      position: sticky; top: 12px; float: right; 
+      background: var(--primary); color: var(--primary-ink); border: none; 
+      padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 600; 
+      box-shadow: 0 6px 14px rgba(99,102,241,.25);
+    }
+
+    .header {
+      background: linear-gradient(135deg, rgba(99,102,241,.18), rgba(16,185,129,.15));
+      border: 1px solid var(--line);
+      border-radius: 18px; padding: 20px; margin-bottom: 14px;
+      box-shadow: 0 10px 30px rgba(15,23,42,.04);
+    }
+
+    h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.02em; }
+    .sub { color: var(--muted); font-size: 14px; }
+
+    .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+    .meta { background: var(--card); border:1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+    .label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .value { font-size: 14px; font-weight: 600; margin-top: 4px; }
+
+    .kpi-chips { display:flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .chip { 
+      display:inline-flex; align-items:center; gap:6px; 
+      background: rgba(16,185,129,.1); color:#065f46; border:1px solid rgba(16,185,129,.25);
+      padding:6px 10px; border-radius: 999px; font-size: 13px; font-weight: 700;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .chip .delta-up { font-weight:900; }
+
+    .section { margin: 16px 0 0; }
+    .section > h2 { font-size: 18px; margin: 0 0 10px; letter-spacing: -0.01em; }
+
+    .card { 
+      background: var(--card); border:1px solid var(--line); border-radius: 14px; padding: 14px 16px; 
+      margin: 8px 0 14px; box-shadow: 0 10px 24px rgba(15,23,42,.04);
+      break-inside: avoid; page-break-inside: avoid;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+    @media (max-width: 900px){ .meta-grid{grid-template-columns:1fr 1fr}; .grid-3{grid-template-columns:1fr 1fr}; .grid-4{grid-template-columns:1fr 1fr}; }
+
+    .badges { display:flex; flex-wrap:wrap; gap:6px; }
+    .badge { background: #f1f5f9; border:1px solid var(--line); color:#0f172a; border-radius: 999px; padding:4px 8px; font-size:12px; }
+
+    ul.clean { margin: 8px 0 0 18px; }
+    ul.impact { list-style: none; padding-left: 0; margin: 8px 0 0; }
+    ul.impact li { position: relative; padding-left: 22px; margin: 6px 0; }
+    ul.impact li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 900; }
+
+    table { width: 100%; border-collapse: collapse; border:1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px; font-size: 13px; vertical-align: top; }
+    th { background:#f8fafc; text-align: left; color: #0f172a; }
+    tr:last-child td { border-bottom: none; }
+
+    .media-placeholder {
+      width: 100%; aspect-ratio: 16/9; border: 2px dashed #cbd5e1; border-radius: 12px; 
+      display:grid; place-items:center; color:#64748b; font-size: 14px; background: #f8fafc;
+    }
+
+    .qr-and-links { display:flex; gap: 12px; align-items:flex-start; }
+    .qr-box { width: 96px; height: 96px; border: 1px dashed #94a3b8; border-radius: 10px; display:grid; place-items:center; color:#64748b; font-size:12px; }
+    .links { flex: 1; }
+    .links a { color: var(--primary); text-decoration: underline; }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      color: var(--ink);
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(15,23,42,.08);
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(15,23,42,.12);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-btn.primary {
+      background: var(--primary);
+      color: var(--primary-ink);
+      border-color: var(--primary);
+    }
+
+    .nav-btn.primary:hover {
+      color: var(--primary-ink);
+      background: var(--primary);
+      opacity: 0.9;
+    }
+
+    @media print {
+      body{ background: white; }
+      .card{ box-shadow: none; }
+      a{ color: inherit; text-decoration: none; }
+      .nav-buttons { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-buttons screen-only">
+      <a href="index.html" class="nav-btn">
+        ← 포트폴리오 목록
+      </a>
+    </div>
+    
+    <button class="print-btn screen-only" onclick="window.print()">PDF로 내보내기</button>
+
+    <article class="project">
+      <header class="header">
+        <h1>Agent(AI) 교육</h1>
+        <div class="sub">본부 임직원의 AI Agent 활용 역량 강화를 위한 교육 진행</div>
+        <div class="meta-grid">
+          <div class="meta"><div class="label">기간 / Period</div><div class="value">상시</div></div>
+          <div class="meta"><div class="label">역할 / Role</div><div class="value">교육 기획 · 강사</div></div>
+          <div class="meta"><div class="label">소속 / Company</div><div class="value">Cafe24 · AI 인프라팀</div></div>
+        </div>
+        <div class="kpi-chips">
+          <div class="chip"><span class="delta-up">▲</span> 교육 만족도 95% 달성</div>
+          <div class="chip"><span class="delta-up">▲</span> 각 팀별 RPA 전담 인력 2명 확보</div>
+          <div class="chip"><span class="delta-up">▲</span> AI 활용 역량 전사 확산</div>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2>① 개요 / Overview</h2>
+        <div class="card grid-2">
+          <div>
+            <div class="label">문맥 / Context</div>
+            <ul class="clean">
+              <li>AI 기술의 급속한 발전과 업무 적용 필요성</li>
+              <li>임직원들의 AI 도구 활용 역량 편차</li>
+              <li>업무 자동화 및 효율성 향상 요구</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">문제정의 / Problem</div>
+            <ul class="clean">
+              <li>AI 도구 활용법에 대한 체계적 교육 부재</li>
+              <li>실무 적용 가능한 사례 중심 교육 필요</li>
+              <li>팀별 AI 전문 인력 양성 필요</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>② 목표 & KPI / Goals & KPIs</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>목표 지표</th><th>Baseline</th><th>Target</th><th>Result</th><th>측정방법</th></tr></thead>
+            <tbody>
+              <tr><td>교육 만족도</td><td>70%</td><td>90%</td><td>95%</td><td>교육 후 설문조사</td></tr>
+              <tr><td>팀별 전담 인력</td><td>0명</td><td>1명/팀</td><td>2명/팀</td><td>역량 평가 후 인증</td></tr>
+              <tr><td>실무 적용률</td><td>20%</td><td>80%</td><td>85%</td><td>교육 후 3개월 추적</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+
+      <section class="section">
+        <h2>④ 교육 방법론 / Teaching Methodology</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>방법</th><th>설명</th><th>도구</th><th>효과</th></tr></thead>
+            <tbody>
+              <tr><td>실습 중심 교육</td><td>이론보다 실무 적용 중심</td><td>Claude, GPT</td><td>즉시 활용 가능</td></tr>
+              <tr><td>사례 기반 학습</td><td>실제 업무 시나리오 활용</td><td>n8n, Custom GPT</td><td>실무 적용률 향상</td></tr>
+              <tr><td>멘토링 시스템</td><td>교육 후 지속적 지원</td><td>Slack, 1:1 상담</td><td>지속적 성장</td></tr>
+              <tr><td>프로젝트 기반</td><td>팀별 실제 프로젝트 진행</td><td>MCP, Claude Code</td><td>실무 역량 강화</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑤ 결과 & 임팩트 / Results & Impact</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>지표</th><th>Before</th><th>After</th><th>증감</th><th>비고</th></tr></thead>
+            <tbody>
+              <tr><td>교육 만족도</td><td>70%</td><td>95%</td><td>+25%p</td><td>실습 중심 교육</td></tr>
+              <tr><td>팀별 전담 인력</td><td>0명</td><td>2명/팀</td><td>목표 200% 달성</td><td>역량 인증 완료</td></tr>
+              <tr><td>업무 자동화율</td><td>10%</td><td>60%</td><td>+50%p</td><td>RPA 도구 활용</td></tr>
+            </tbody>
+          </table>
+          <ul class="impact">
+            <li>교육 만족도 95% 달성으로 높은 학습 효과 확인</li>
+            <li>각 팀별 RPA 전담 인력 2명씩 확보로 자체 역량 구축</li>
+            <li>실무 적용률 85% 달성으로 교육 효과의 실질적 검증</li>
+            <li>AI 활용 문화 전사 확산으로 디지털 트랜스포메이션 가속화</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑥ 교육 성과 사례 / Success Cases</h2>
+        <div class="card grid-2">
+          <div>
+            <div class="label">마케팅팀 사례</div>
+            <ul class="clean">
+              <li>광고 소재 자동 생성 시스템 구축</li>
+              <li>고객 세그먼트 분석 자동화</li>
+              <li>캠페인 성과 리포팅 자동화</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">운영팀 사례</div>
+            <ul class="clean">
+              <li>고객 문의 자동 분류 시스템</li>
+              <li>재고 관리 알림 자동화</li>
+              <li>일일 운영 리포트 자동 생성</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑦ 교육 피드백 / Feedback</h2>
+        <div class="card">
+          <ul class="impact">
+            <li><strong>마케팅팀:</strong> "실무에 바로 적용할 수 있는 내용들로 구성되어 매우 유용했습니다"</li>
+            <li><strong>운영팀:</strong> "AI 도구를 활용한 업무 자동화로 반복 업무가 크게 줄었습니다"</li>
+            <li><strong>개발팀:</strong> "MCP 프로토콜 교육으로 Agent 개발 역량이 크게 향상되었습니다"</li>
+            <li><strong>경영진:</strong> "전사 AI 역량 강화로 디지털 경쟁력이 크게 향상되었습니다"</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑧ 향후 계획 / Future Plans</h2>
+        <div class="card">
+          <ul class="impact">
+            <li>고급 AI 모델 활용 교육 과정 신설</li>
+            <li>부서별 맞춤형 AI 솔루션 개발 교육</li>
+            <li>AI 윤리 및 보안 교육 강화</li>
+            <li>외부 파트너사 대상 교육 프로그램 확장</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑨ 링크 & 산출물 / Links & Deliverables</h2>
+        <div class="card qr-and-links">
+          <div class="qr-box">QR</div>
+          <div class="links">
+            <p><strong>교육 자료:</strong> AI Agent 활용 가이드북
+            <br/><strong>실습 예제:</strong> 업무별 AI 활용 사례집
+            <br/><strong>Documentation:</strong> 교육 커리큘럼 및 평가 기준
+            <br/><strong>Certificate:</strong> AI Agent 활용 역량 인증서</p>
+          </div>
+        </div>
+      </section>
+    </article>
+  </div>
+</body>
+</html> 

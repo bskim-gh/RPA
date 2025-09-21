@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>차세대 마케팅 Agent - 김보선 포트폴리오</title>
+  <style>
+    :root{
+      --primary:#6366f1;
+      --primary-ink:#eef2ff;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --line:#e5e7eb;
+      --accent:#10b981;
+      --warn:#eab308;
+      --danger:#ef4444;
+    }
+
+    @page { size: A4; margin: 16mm; }
+
+    * { box-sizing: border-box; }
+    html, body { 
+      margin:0; padding:0; background: var(--bg); color: var(--ink);
+      font-family: 'Noto Sans KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      print-color-adjust: exact; -webkit-print-color-adjust: exact;
+    }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 20px; }
+
+    .screen-only { display: block; }
+    @media print { .screen-only { display: none !important; } }
+
+    .print-btn { 
+      position: sticky; top: 12px; float: right; 
+      background: var(--primary); color: var(--primary-ink); border: none; 
+      padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 600; 
+      box-shadow: 0 6px 14px rgba(99,102,241,.25);
+    }
+
+    .header {
+      background: linear-gradient(135deg, rgba(99,102,241,.18), rgba(16,185,129,.15));
+      border: 1px solid var(--line);
+      border-radius: 18px; padding: 20px; margin-bottom: 14px;
+      box-shadow: 0 10px 30px rgba(15,23,42,.04);
+    }
+
+    h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.02em; }
+    .sub { color: var(--muted); font-size: 14px; }
+
+    .meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+    .meta { background: var(--card); border:1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+    .label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .value { font-size: 14px; font-weight: 600; margin-top: 4px; }
+
+    .kpi-chips { display:flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .chip { 
+      display:inline-flex; align-items:center; gap:6px; 
+      background: rgba(16,185,129,.1); color:#065f46; border:1px solid rgba(16,185,129,.25);
+      padding:6px 10px; border-radius: 999px; font-size: 13px; font-weight: 700;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .chip .delta-up { font-weight:900; }
+
+    .section { margin: 16px 0 0; }
+    .section > h2 { font-size: 18px; margin: 0 0 10px; letter-spacing: -0.01em; }
+
+    .card { 
+      background: var(--card); border:1px solid var(--line); border-radius: 14px; padding: 14px 16px; 
+      margin: 8px 0 14px; box-shadow: 0 10px 24px rgba(15,23,42,.04);
+      break-inside: avoid; page-break-inside: avoid;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+    @media (max-width: 900px){ .meta-grid{grid-template-columns:1fr 1fr}; .grid-3{grid-template-columns:1fr 1fr}; .grid-4{grid-template-columns:1fr 1fr}; }
+
+    .badges { display:flex; flex-wrap:wrap; gap:6px; }
+    .badge { background: #f1f5f9; border:1px solid var(--line); color:#0f172a; border-radius: 999px; padding:4px 8px; font-size:12px; }
+
+    ul.clean { margin: 8px 0 0 18px; }
+    ul.impact { list-style: none; padding-left: 0; margin: 8px 0 0; }
+    ul.impact li { position: relative; padding-left: 22px; margin: 6px 0; }
+    ul.impact li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 900; }
+
+    table { width: 100%; border-collapse: collapse; border:1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px; font-size: 13px; vertical-align: top; }
+    th { background:#f8fafc; text-align: left; color: #0f172a; }
+    tr:last-child td { border-bottom: none; }
+
+    .media-placeholder {
+      width: 100%; aspect-ratio: 16/9; border: 2px dashed #cbd5e1; border-radius: 12px; 
+      display:grid; place-items:center; color:#64748b; font-size: 14px; background: #f8fafc;
+    }
+
+    .qr-and-links { display:flex; gap: 12px; align-items:flex-start; }
+    .qr-box { width: 96px; height: 96px; border: 1px dashed #94a3b8; border-radius: 10px; display:grid; place-items:center; color:#64748b; font-size:12px; }
+    .links { flex: 1; }
+    .links a { color: var(--primary); text-decoration: underline; }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      color: var(--ink);
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(15,23,42,.08);
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(15,23,42,.12);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-btn.primary {
+      background: var(--primary);
+      color: var(--primary-ink);
+      border-color: var(--primary);
+    }
+
+    .nav-btn.primary:hover {
+      color: var(--primary-ink);
+      background: var(--primary);
+      opacity: 0.9;
+    }
+
+    @media print {
+      body{ background: white; }
+      .card{ box-shadow: none; }
+      a{ color: inherit; text-decoration: none; }
+      .nav-buttons { display: none !important; }
+      .image-popup { display: none !important; }
+    }
+
+    /* Image popup styles */
+    .image-popup {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      cursor: pointer;
+    }
+
+    .image-popup img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .close-popup {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10000;
+    }
+
+    .close-popup:hover {
+      opacity: 0.7;
+    }
+
+    .clickable-image {
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .clickable-image:hover {
+      opacity: 0.8;
+    }
+
+    /* Enhanced section headers */
+    .section-header-primary {
+      background: linear-gradient(135deg, rgba(99,102,241,.02), rgba(255,255,255,1));
+      border-left: 4px solid var(--primary);
+      margin: 16px 0;
+    }
+
+    .section-header-accent {
+      background: linear-gradient(135deg, rgba(16,185,129,.02), rgba(255,255,255,1));
+      border-left: 4px solid var(--accent);
+      margin: 16px 0;
+    }
+
+    .section-header-warn {
+      background: linear-gradient(135deg, rgba(234,179,8,.02), rgba(255,255,255,1));
+      border-left: 4px solid var(--warn);
+      margin: 16px 0;
+    }
+
+    .section-title {
+      margin: 0 0 16px 0;
+      font-size: 18px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .section-title.primary {
+      color: var(--primary);
+      background: rgba(99,102,241,.08);
+    }
+
+    .section-title.accent {
+      color: var(--accent);
+      background: rgba(16,185,129,.08);
+    }
+
+    .section-title.warn {
+      color: var(--warn);
+      background: rgba(234,179,8,.08);
+    }
+
+    /* Visual dividers */
+    .section-divider {
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+      margin: 24px 0;
+      border-radius: 1px;
+    }
+
+    .section-divider.accent {
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .section-divider.warn {
+      background: linear-gradient(90deg, var(--warn), transparent);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-buttons screen-only">
+      <a href="index.html" class="nav-btn">
+        ← 포트폴리오 목록
+      </a>
+    </div>
+    
+    <button class="print-btn screen-only" onclick="window.print()">PDF로 내보내기</button>
+
+    <article class="project">
+      <header class="header">
+        <h1>차세대 마케팅 Agent</h1>
+        <div class="sub">Meta/TikTok 광고 운영 효율 극대화를 위한 실무형 Agent 개발</div>
+        <div class="meta-grid">
+          <div class="meta"><div class="label">기간 / Period</div><div class="value">2024.11 ~ 2025.04</div></div>
+          <div class="meta"><div class="label">역할 / Role</div><div class="value">PM · 데이터 아키텍트</div></div>
+          <div class="meta"><div class="label">소속 / Company</div><div class="value">Cafe24 · AI 인프라팀</div></div>
+
+        </div>
+        <div class="kpi-chips">
+          <div class="chip"><span class="delta-up">▲</span> 근무시간 외 긴급 장애/CS 24시간 감지·대응</div>
+          <div class="chip"><span class="delta-up">▲</span> 50+ 운영대행사 실시간 감지 대응 프로세스 구축</div>
+          <div class="chip"><span class="delta-up">▲</span> 매체사 별 계정운영 정책 표준 수립</div>
+        </div>
+      </header>
+      <section class="section">
+        <h2>① 개요 / Overview</h2>
+        <div class="card grid-2">
+          <div>
+            <div class="label">문맥 / Context</div>
+            <ul class="clean">
+              <li>모든 고객사 마케팅 admin 작업을 수동으로하고 있음 → 불필요한 수동업무는 자동화로 대체</li>
+              <li>매번 달라지는 매출에 따라 유동적으로 대응 필요 → agent 기반의 대응프로세스 구축</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">문제정의 / Problem</div>
+            <ul class="clean">
+              <li>Domain 단위의 Task Action을 중앙관리 → 무조건 이행해야 하는 작업들은 트리거 형태로 반응</li>
+              <li>다수의 고객사 대비 실무담당자의 지속 퇴사 이슈 → agent 일부 대체로 해결 모색</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>② 목표 & KPI / Goals & KPIs</h2>
+        <div class="card">
+          <table>
+            <thead><tr><th>목표 지표</th><th>Baseline</th><th>Target</th><th>Result</th><th>측정방법</th></tr></thead>
+            <tbody>
+              <tr><td>장애 감지 시간</td><td>업무시간 내만</td><td>24시간</td><td>24시간</td><td>모니터링 로그</td></tr>
+              <tr><td>대행사 대응률</td><td>30%</td><td>90%</td><td>95%</td><td>실시간 알람</td></tr>
+              <tr><td>운영 정책 표준화</td><td>개별 관리</td><td>통합 표준</td><td>완료</td><td>정책 문서</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="section">
+        <div class="card section-header-primary">
+          <h2 class="section-title primary">📊 ③ WBS 구축 및 Domain별 TASK 분석</h2>
+        </div>
+        <div class="card grid-2">
+          <div>
+            <div class="label">WBS 기획</div>
+            <img src="image/WBS구축.JPG" alt="WBS 구축" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+            <ul class="clean">
+              <li>프로젝트 전체 구조 및 단계별 계획 수립</li>
+              <li>각 Domain별 작업 범위 정의</li>
+              <li>개발 우선순위 및 의존성 분석</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">TASK 할당</div>
+            <img src="image/TASK 제작.JPG" alt="TASK 제작" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+            <ul class="clean">
+              <li>Domain별 1차 핵심 TASK 분석</li>
+              <li>세부 작업 단위별 분해</li>
+              <li>담당자별 역할 및 책임 할당</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="label">핵심 성과</div>
+          <ul class="impact">
+            <li><strong>1차 TASK 총 108건</strong> 정의 및 분석 완료</li>
+            <li>체계적인 프로젝트 관리 체계 구축</li>
+            <li>Domain별 명확한 작업 범위 정의</li>
+            <li>개발 효율성 및 품질 향상</li>
+            <li>팀 간 협업 프로세스 표준화</li>
+          </ul>
+          
+          <div class="badges" style="margin-top: 12px;">
+            <span class="badge">Project Management</span>
+            <span class="badge">WBS</span>
+            <span class="badge">Task Analysis</span>
+            <span class="badge">Domain Planning</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="section">
+        <div class="card section-header-accent">
+          <h2 class="section-title accent">🔧 ⑥ N8N 기반 TASK → Scenario 연결 템플릿 제작</h2>
+        </div>
+        <div class="card">
+          <div class="label">TASK 검수 후 핵심 시나리오 구조화</div>
+          <div class="grid-2" style="margin-top: 12px;">
+            <div>
+              <div class="label">시나리오 구조 정리</div>
+              <img src="image/TASK-scenrio 구조화.JPG" alt="TASK-Scenario 구조화" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>검증된 TASK들을 시나리오별로 그룹화</li>
+                <li>비즈니스 로직에 따른 연결 구조 설계</li>
+                <li>의존성 관계 및 실행 순서 정의</li>
+                <li>예외 처리 및 롤백 시나리오 구성</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">시나리오 워크플로우 기획</div>
+              <img src="image/시나리오 WF 기획.JPG" alt="시나리오 WF 기획" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>N8N Request Node 기반 시나리오 연결</li>
+                <li>워크플로우 템플릿 표준화</li>
+                <li>파라미터 전달 및 상태 관리</li>
+                <li>실행 결과 추적 및 로깅</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="label">시나리오 템플릿 핵심 기능</div>
+          <div class="grid-3" style="margin-top: 12px;">
+            <div>
+              <div class="label">Request Node 활용</div>
+              <ul class="clean">
+                <li>HTTP 기반 TASK 간 통신</li>
+                <li>비동기 처리 지원</li>
+                <li>에러 핸들링 표준화</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">템플릿 표준화</div>
+              <ul class="clean">
+                <li>재사용 가능한 시나리오 구조</li>
+                <li>설정 파라미터 외부화</li>
+                <li>버전 관리 체계 구축</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">팀 내 공유</div>
+              <ul class="clean">
+                <li>시나리오 라이브러리 구축</li>
+                <li>사용 가이드 문서화</li>
+                <li>베스트 프랙티스 공유</li>
+              </ul>
+            </div>
+          </div>
+          
+          <ul class="impact" style="margin-top: 16px;">
+            <li>검증된 단일 TASK들을 복합 시나리오로 연결하여 업무 자동화 범위 확장</li>
+            <li>N8N Request Node 기반 구조화로 확장성 및 유지보수성 확보</li>
+            <li>표준화된 템플릿 제공으로 팀 내 개발 효율성 극대화</li>
+            <li>시나리오별 모니터링 및 성능 최적화 체계 구축</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <div class="badges">
+            <span class="badge">N8N</span>
+            <span class="badge">Request Node</span>
+            <span class="badge">Scenario Design</span>
+            <span class="badge">Workflow Templates</span>
+            <span class="badge">Task Integration</span>
+            <span class="badge">HTTP Communication</span>
+            <span class="badge">Documentation</span>
+            <span class="badge">Team Collaboration</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider accent"></div>
+
+      <section class="section">
+        <div class="card section-header-warn">
+          <h2 class="section-title warn">⚙️ ⑦ 시나리오 및 TASK 검수 - Slack 연동 PoC</h2>
+        </div>
+        <div class="card">
+          <div class="label">실행결과 Slack 채널 연동 및 Thread 로깅</div>
+          <div class="grid-2" style="margin-top: 12px;">
+            <div>
+              <div class="label">시나리오 검수 프로세스</div>
+              <img src="image/시나리오 검수.JPG" alt="Slack 채널 검수 결과" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>실제 Slack 채널에 전송된 검수 결과</li>
+                <li>시나리오 실행 상태 실시간 확인</li>
+                <li>성공/실패 메시지 자동 전송</li>
+                <li>팀원들과 실시간 결과 공유</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">Slack 연동 기능</div>
+              <ul class="clean" style="margin-top: 40px;">
+                <li><strong>메인 채널 알림:</strong> 시나리오 실행 결과 요약</li>
+                <li><strong>Thread 로깅:</strong> 상세 실행 로그 스레드 적재</li>
+                <li><strong>실시간 상태:</strong> 진행 상황 업데이트</li>
+                <li><strong>에러 추적:</strong> 실패 원인 및 해결 방안 제시</li>
+                <li><strong>성과 리포팅:</strong> 일/주/월별 검수 결과 요약</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="label">PoC 핵심 구현 사항</div>
+          <div class="grid-3" style="margin-top: 12px;">
+            <div>
+              <div class="label">Slack API 연동</div>
+              <ul class="clean">
+                <li>Webhook 기반 메시지 전송</li>
+                <li>Thread 생성 및 관리</li>
+                <li>채널별 권한 관리</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">로그 구조화</div>
+              <ul class="clean">
+                <li>실행 시간 및 성능 지표</li>
+                <li>에러 스택 트레이스</li>
+                <li>데이터 플로우 추적</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">알림 최적화</div>
+              <ul class="clean">
+                <li>중요도별 알림 레벨 설정</li>
+                <li>반복 알림 방지 로직</li>
+                <li>담당자별 맞춤 알림</li>
+              </ul>
+            </div>
+          </div>
+          
+          <ul class="impact" style="margin-top: 16px;">
+            <li>시나리오 실행 결과를 Slack 채널로 실시간 공유하여 팀 투명성 확보</li>
+            <li>Thread 기반 로그 적재로 상세 정보 추적 및 문제 해결 시간 단축</li>
+            <li>PoC를 통한 검증으로 운영 환경 적용 가능성 입증</li>
+            <li>자동화된 검수 프로세스로 품질 관리 효율성 극대화</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <div class="badges">
+            <span class="badge">Slack API</span>
+            <span class="badge">Webhook</span>
+            <span class="badge">Thread Logging</span>
+            <span class="badge">Real-time Monitoring</span>
+            <span class="badge">PoC</span>
+            <span class="badge">Quality Assurance</span>
+            <span class="badge">N8N Integration</span>
+            <span class="badge">Notification System</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider accent"></div>
+
+      <section class="section">
+        <div class="card section-header-primary">
+          <h2 class="section-title primary">💻 ⑧ Admin Test용 Front-end 개발</h2>
+        </div>
+        <div class="card">
+          <div class="label">TASK 및 시나리오 QA Admin 제작</div>
+          <div class="grid-3" style="margin-top: 12px;">
+            <div>
+              <div class="label">Admin 메인 인터페이스</div>
+              <img src="image/nextgen front Admin 제작 (Fast api).JPG" alt="NextGen Admin 메인" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>FastAPI 기반 백엔드 연동</li>
+                <li>실시간 상태 모니터링</li>
+                <li>직관적인 관리자 인터페이스</li>
+                <li>TASK 및 시나리오 통합 관리</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">TASK 목록 조회</div>
+              <img src="image/Task 관리 페이지.JPG" alt="Task 관리 페이지" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>전체 TASK 목록 조회</li>
+                <li>상태별 필터링 기능</li>
+                <li>실행 이력 추적</li>
+                <li>성능 지표 모니터링</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">TASK 상세 편집</div>
+              <img src="image/nextgen_편집.JPG" alt="NextGen TASK 편집" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>TASK 설정 상세 편집</li>
+                <li>파라미터 동적 수정</li>
+                <li>실시간 검증 기능</li>
+                <li>변경 이력 관리</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="label">핵심 구현 기능</div>
+          <div class="grid-3" style="margin-top: 12px;">
+            <div>
+              <div class="label">QA 관리 시스템</div>
+              <ul class="clean">
+                <li>TASK 실행 전 사전 검증</li>
+                <li>시나리오 품질 관리</li>
+                <li>자동화된 테스트 케이스</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">실시간 모니터링</div>
+              <ul class="clean">
+                <li>TASK 실행 상태 추적</li>
+                <li>에러 발생 즉시 알림</li>
+                <li>성능 지표 실시간 표시</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">사용자 경험</div>
+              <ul class="clean">
+                <li>직관적인 UI/UX 설계</li>
+                <li>반응형 웹 인터페이스</li>
+                <li>접근성 고려 설계</li>
+              </ul>
+            </div>
+          </div>
+          
+          <ul class="impact" style="margin-top: 16px;">
+            <li>FastAPI 기반 고성능 백엔드와 연동된 관리자 전용 인터페이스 구축</li>
+            <li>TASK 및 시나리오 QA를 위한 통합 관리 시스템 개발</li>
+            <li>실시간 모니터링 및 편집 기능으로 운영 효율성 극대화</li>
+            <li>직관적인 UI/UX로 비개발자도 쉽게 사용 가능한 관리 도구 제공</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <div class="badges">
+            <span class="badge">FastAPI</span>
+            <span class="badge">React</span>
+            <span class="badge">QA System</span>
+            <span class="badge">Real-time Monitoring</span>
+            <span class="badge">Admin Interface</span>
+            <span class="badge">Task Management</span>
+            <span class="badge">UI/UX Design</span>
+            <span class="badge">Testing</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider accent"></div>
+
+      <section class="section">
+        <div class="card section-header-accent">
+          <h2 class="section-title accent">🤖 ⑨ Custom GPT 기반 1차 Agent 설계</h2>
+        </div>
+        <div class="card">
+          <div class="label">N8N에서 Custom GPT로 전환한 배경</div>
+          <div style="margin-top: 12px; padding: 12px; background: rgba(16,185,129,.05); border-radius: 8px; border-left: 3px solid var(--accent);">
+            <p style="margin: 0; font-size: 13px; line-height: 1.5;">
+              시나리오까지 성공적으로 구축했으나, N8N의 한계점 발견:<br/>
+              • 모든 경우의 수마다 분기처리해야 하는 번거로움<br/>
+              • Input data의 변동성을 모두 대응하기 어려운 구조적 문제<br/>
+              → <strong>Custom GPT 기반 Agent PoC로 방향 전환 결정</strong>
+            </p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="label">Custom GPT Agent 구현 과정</div>
+          <div class="grid-3" style="margin-top: 12px;">
+            <div>
+              <div class="label">Deploy Schema 정의</div>
+              <img src="image/Custom_gpt_schema.JPG" alt="Custom GPT Schema" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>GPT 배포를 위한 스키마 구조 설계</li>
+                <li>API 연동 인터페이스 정의</li>
+                <li>데이터 입출력 형식 표준화</li>
+                <li>확장 가능한 아키텍처 구성</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">Instruction 설계</div>
+              <img src="image/Custom_gpt_instruction.JPG" alt="Custom GPT Instruction" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>1차 Webhook 기반 유동성 확보</li>
+                <li>동적 응답 처리 로직 구현</li>
+                <li>컨텍스트 기반 명령 해석</li>
+                <li>에러 처리 및 예외 상황 대응</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">Agent PoC 검증</div>
+              <img src="image/agent 1차 POC.JPG" alt="Agent 1차 PoC" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>User prompt에 맞는 N8N Task 호출 검증</li>
+                <li>Instruction Tuning을 통한 정확도 향상</li>
+                <li>실제 업무 시나리오 테스트</li>
+                <li>성능 및 안정성 평가</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="label">Marketing TASK 연계 기능 확장</div>
+          <div class="grid-2" style="margin-top: 12px;">
+            <div>
+              <div class="label">데이터 조회 및 알람 기능</div>
+              <img src="image/refactoring.JPG" alt="N8N Refactoring" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>Marketing TASK와 Custom GPT 연계</li>
+                <li>실시간 데이터 조회 기능 구현</li>
+                <li>Webhook 기반 알람 시스템</li>
+                <li>N8N 팩토링 작업으로 모듈화</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">통합 워크플로우</div>
+              <ul class="clean" style="margin-top: 40px;">
+                <li><strong>데이터 연계:</strong> Marketing 데이터 실시간 조회</li>
+                <li><strong>지능형 분석:</strong> GPT 기반 데이터 해석</li>
+                <li><strong>자동 알람:</strong> 임계값 기반 즉시 알림</li>
+                <li><strong>워크플로우 최적화:</strong> 팩토링을 통한 효율성 향상</li>
+                <li><strong>Webhook 통합:</strong> 외부 시스템과의 원활한 연동</li>
+              </ul>
+            </div>
+          </div>
+          
+          <ul class="impact" style="margin-top: 16px;">
+            <li>Custom GPT와 Marketing TASK의 완전한 통합으로 업무 효율성 극대화</li>
+            <li>Webhook 기반 실시간 데이터 조회 및 알람 시스템 구축</li>
+            <li>N8N 팩토링 작업을 통한 모듈 재사용성 및 유지보수성 향상</li>
+            <li>지능형 Agent와 기존 워크플로우의 완벽한 연계 시스템 완성</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <div class="label">OpenAI 접근 통제 이슈 해결</div>
+          <div style="margin-top: 12px; padding: 12px; background: rgba(234,179,8,.05); border-radius: 8px; border-left: 3px solid var(--warn);">
+            <p style="margin: 0; font-size: 13px; line-height: 1.5;">
+              <strong>문제상황:</strong> OpenAI 당사 망 접근 통제 이슈로 사용 불가<br/>
+              <strong>해결방안:</strong> IS팀과 협의하여 기존 Slack Bearer 인증 프로세스 차용<br/>
+              → OpenAI 접근 프로세스 협의 및 활용안 Wiki 정리
+            </p>
+          </div>
+          
+          <div class="grid-2" style="margin-top: 16px;">
+            <div>
+              <div class="label">N8N Bearer 인증 설정</div>
+              <img src="image/gpt 인증.JPG" alt="GPT 인증 설정" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>N8N에서 OpenAI API Bearer Token 설정</li>
+                <li>보안 정책 준수한 인증 구성</li>
+                <li>기존 Slack 인증 방식 차용</li>
+                <li>안전한 API 키 관리 체계 구축</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">IS팀 인증 프로세스 협의</div>
+              <img src="image/인증 프로세스 협의.JPG" alt="인증 프로세스 협의" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>IS팀과 보안 정책 협의</li>
+                <li>OpenAI 접근 승인 프로세스 수립</li>
+                <li>네트워크 보안 요구사항 충족</li>
+                <li>활용안 Wiki 문서화 완료</li>
+              </ul>
+            </div>
+          </div>
+          
+          <ul class="impact" style="margin-top: 16px;">
+            <li>당사 보안 정책을 준수하면서 OpenAI API 활용 가능한 인증 체계 구축</li>
+            <li>기존 Slack Bearer 인증 프로세스 차용으로 검증된 보안 방식 적용</li>
+            <li>IS팀과의 협업을 통한 안전하고 지속가능한 AI 활용 환경 조성</li>
+            <li>Wiki 문서화로 팀 내 OpenAI 활용 가이드라인 표준화 완료</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <div class="label">핵심 구현 기능</div>
+          <div class="grid-3" style="margin-top: 12px;">
+            <div>
+              <div class="label">지능형 분기 처리</div>
+              <ul class="clean">
+                <li>자연어 기반 의도 파악</li>
+                <li>동적 워크플로우 선택</li>
+                <li>컨텍스트 기반 추론</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">유연한 데이터 처리</div>
+              <ul class="clean">
+                <li>다양한 입력 형식 자동 인식</li>
+                <li>데이터 변동성 적응형 처리</li>
+                <li>스마트 데이터 변환</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">Instruction Tuning</div>
+              <ul class="clean">
+                <li>도메인 특화 명령어 최적화</li>
+                <li>성능 기반 지속적 개선</li>
+                <li>사용자 피드백 반영</li>
+              </ul>
+            </div>
+          </div>
+          
+          <ul class="impact" style="margin-top: 16px;">
+            <li>N8N의 복잡한 분기 처리 문제를 GPT의 자연어 이해 능력으로 해결</li>
+            <li>Input data 변동성에 유연하게 대응하는 지능형 Agent 구현</li>
+            <li>Webhook 기반 유동적 응답으로 다양한 업무 시나리오 대응</li>
+            <li>User prompt 기반 직관적 인터페이스로 사용성 극대화</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <div class="badges">
+            <span class="badge">OpenAI GPT</span>
+            <span class="badge">Deploy Schema</span>
+            <span class="badge">Custom Instructions</span>
+            <span class="badge">Webhook Integration</span>
+            <span class="badge">Agent Design</span>
+            <span class="badge">Instruction Tuning</span>
+            <span class="badge">PoC Validation</span>
+            <span class="badge">N8N Integration</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider warn"></div>
+
+      <section class="section">
+        <div class="card" style="border-left: 4px solid var(--warn); background: rgba(234,179,8,.02);">
+          <div class="label" style="color: var(--warn); font-weight: 700;">🔄 Custom GPT에서 Claude Agent로 전환 배경</div>
+          <div style="margin-top: 12px; padding: 12px; background: rgba(234,179,8,.05); border-radius: 8px;">
+            <p style="margin: 0; font-size: 13px; line-height: 1.5;">
+              <strong>PoC 성공 후 제약사항 발생:</strong><br/>
+              • 실제 TASK batch만 Custom GPT(Agent)로 진행<br/>
+              • 작업은 N8N으로 수행하여 개인정보보호 이슈 동시 해결<br/>
+              • <strong>PoC 완료되었으나 IS 요청으로 Custom GPT 사용불가 안내</strong><br/>
+              • 설치형 Agent를 고민하다가 <strong>Claude App으로 방향 전환하여 재정의</strong>
+            </p>
+          </div>
+          
+          <div class="grid-3" style="margin-top: 16px;">
+            <div style="padding: 10px; background: #fef2f2; border-radius: 6px; border-left: 3px solid #ef4444;">
+              <div class="label" style="color: #dc2626; font-size: 12px;">문제 상황</div>
+              <ul style="margin: 8px 0 0; padding-left: 16px; font-size: 11px; line-height: 1.4;">
+                <li>Custom GPT PoC 성공</li>
+                <li>IS팀 보안 정책 제약</li>
+                <li>개인정보보호 이슈</li>
+              </ul>
+            </div>
+            <div style="padding: 10px; background: #fef3c7; border-radius: 6px; border-left: 3px solid #f59e0b;">
+              <div class="label" style="color: #d97706; font-size: 12px;">해결 방안 모색</div>
+              <ul style="margin: 8px 0 0; padding-left: 16px; font-size: 11px; line-height: 1.4;">
+                <li>설치형 Agent 검토</li>
+                <li>대안 솔루션 탐색</li>
+                <li>보안 요구사항 충족</li>
+              </ul>
+            </div>
+            <div style="padding: 10px; background: #ecfdf5; border-radius: 6px; border-left: 3px solid #10b981;">
+              <div class="label" style="color: #059669; font-size: 12px;">최종 결정</div>
+              <ul style="margin: 8px 0 0; padding-left: 16px; font-size: 11px; line-height: 1.4;">
+                <li>Claude App 방향 전환</li>
+                <li>Agent 재정의</li>
+                <li>새로운 아키텍처 설계</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider warn"></div>
+
+      <section class="section">
+        <div class="card section-header-warn">
+          <h2 class="section-title warn">🧠 ⑩ Claude Agent 구성</h2>
+        </div>
+        <div class="card">
+          <div class="label">업무 내용</div>
+          <p>Claude AI를 활용한 마케팅 업무 지원을 위한 앱 인스트럭션 설계 및 최적화</p>
+          <div class="badges">
+            <span class="badge">Claude AI</span>
+            <span class="badge">Prompt Engineering</span>
+            <span class="badge">Instructions</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider warn"></div>
+
+      <section class="section">
+        <div class="card section-header-warn">
+          <h2 class="section-title warn">🤝 ⑪ 실무 담당자들에게 이관</h2>
+        </div>
+        <div class="card">
+          <div class="label">업무 내용</div>
+          <p>개발된 시스템 및 프로세스를 실무 담당자들에게 교육 및 이관</p>
+          <div class="badges">
+            <span class="badge">Knowledge Transfer</span>
+            <span class="badge">Training</span>
+            <span class="badge">Documentation</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="section">
+        <div class="card section-header-primary">
+          <h2 class="section-title primary">⭐ 주요 기능 / Key Features</h2>
+        </div>
+        <div class="card">
+          <table>
+            <thead><tr><th>기능</th><th>설명</th><th>기술스택</th><th>효과</th></tr></thead>
+            <tbody>
+              <tr><td>실시간 감지</td><td>광고 계정 이상 상황 24시간 모니터링</td><td>Python, Schedule</td><td>장애 대응 시간 단축</td></tr>
+              <tr><td>예산 자동 조정</td><td>성과 기반 예산 재분배</td><td>Pandas, Scikit-learn</td><td>ROAS 최적화</td></tr>
+              <tr><td>대행사 관리</td><td>50+ 대행사 통합 관리 시스템</td><td>React, MySQL</td><td>관리 효율성 향상</td></tr>
+              <tr><td>정책 표준화</td><td>매체별 운영 정책 통합</td><td>Confluence</td><td>일관된 운영 품질</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="section">
+        <div class="card section-header-accent">
+          <h2 class="section-title accent">�� 결과 & 임팩트 / Results & Impact</h2>
+        </div>
+        <div class="card">
+          <table>
+            <thead><tr><th>지표</th><th>Before</th><th>After</th><th>증감</th><th>비고</th></tr></thead>
+            <tbody>
+              <tr><td>장애 감지 시간</td><td>업무시간만</td><td>24시간</td><td>+300%</td><td>무중단 모니터링</td></tr>
+              <tr><td>대행사 대응률</td><td>30%</td><td>95%</td><td>+217%</td><td>실시간 알림 시스템</td></tr>
+              <tr><td>반복업무 시간</td><td>100%</td><td>30%</td><td>-70%</td><td>자동화 적용</td></tr>
+            </tbody>
+          </table>
+          <ul class="impact">
+            <li>근무시간 외 긴급 장애/CS 24시간 감지·대응 체계 구축</li>
+            <li>50+ 운영대행사 실시간 감지 대응 프로세스 완성</li>
+            <li>일부 판단이 필요한 단순 반복 작업 70% 절감</li>
+            <li>매체사별 계정운영 정책 표준화로 일관된 품질 확보</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="section-divider accent"></div>
+
+      <section class="section">
+        <div class="card section-header-warn">
+          <h2 class="section-title warn">🔧 기술적 도전과 해결 / Technical Challenges</h2>
+        </div>
+        <div class="card grid-2">
+          <div>
+            <div class="label">도전 과제</div>
+            <ul class="clean">
+              <li>다양한 광고 플랫폼 API 통합</li>
+              <li>실시간 대용량 데이터 처리</li>
+              <li>복잡한 비즈니스 룰 자동화</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">해결 방안</div>
+            <ul class="clean">
+              <li>통합 API Gateway 및 표준화</li>
+              <li>스트리밍 데이터 파이프라인 구축</li>
+              <li>규칙 기반 의사결정 엔진 개발</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider warn"></div>
+
+      <section class="section">
+        <div class="card section-header-primary">
+          <h2 class="section-title primary">💼 비즈니스 임팩트 / Business Impact</h2>
+        </div>
+        <div class="card">
+          <ul class="impact">
+            <li><strong>운영 효율성:</strong> 24시간 무중단 모니터링으로 기회 손실 최소화</li>
+            <li><strong>품질 향상:</strong> 표준화된 정책으로 일관된 운영 품질 확보</li>
+            <li><strong>비용 절감:</strong> 자동화를 통한 인력 운영비 절감</li>
+            <li><strong>확장성:</strong> 50+ 대행사 관리 프로세스 확립</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="section">
+        <div class="card section-header-accent">
+          <h2 class="section-title accent">�� 링크 & 산출물 / Links & Deliverables</h2>
+        </div>
+        <div class="card qr-and-links">
+          <div class="qr-box">QR</div>
+          <div class="links">
+            <p><strong>Repository:</strong> Cafe24 Internal GitLab
+            <br/><strong>Dashboard:</strong> Marketing Agent Monitor
+            <br/><strong>Documentation:</strong> 운영 정책 가이드 (Confluence)
+            <br/><strong>API Docs:</strong> Meta/TikTok 연동 가이드</p>
+          </div>
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <!-- Image Popup Modal -->
+  <div id="imagePopup" class="image-popup" onclick="closeImagePopup()">
+    <span class="close-popup" onclick="closeImagePopup()">&times;</span>
+    <img id="popupImage" src="" alt="" />
+  </div>
+
+  <script>
+    function openImagePopup(imgElement) {
+      const popup = document.getElementById('imagePopup');
+      const popupImg = document.getElementById('popupImage');
+      
+      popupImg.src = imgElement.src;
+      popupImg.alt = imgElement.alt;
+      popup.style.display = 'block';
+      
+      // Prevent body scrolling when popup is open
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImagePopup() {
+      const popup = document.getElementById('imagePopup');
+      popup.style.display = 'none';
+      
+      // Restore body scrolling
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close popup when pressing Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeImagePopup();
+      }
+    });
+
+    // Prevent popup from closing when clicking on the image itself
+    document.getElementById('popupImage').addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+  </script>
+</body>
+</html> 

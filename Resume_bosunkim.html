@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>김보선 · AI Engineer 경력기술서</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --primary-light: #818cf8;
+      --secondary: #f59e0b;
+      --success: #10b981;
+      --text-primary: #1f2937;
+      --text-secondary: #6b7280;
+      --text-light: #9ca3af;
+      --bg-main: #f9fafb;
+      --bg-card: #ffffff;
+      --border: #e5e7eb;
+      --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px 0;
+    }
+
+    .background-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(129, 140, 248, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header Section */
+    .header {
+      background: var(--bg-card);
+      border-radius: 24px;
+      padding: 48px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+    }
+
+    .name-title {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s;
+    }
+
+    /* Core Competencies */
+    .core-competencies {
+      background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .comp-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 0 0 24px 0;
+      text-align: center;
+    }
+
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .comp-item {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .comp-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+
+    .comp-icon {
+      font-size: 32px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .comp-metric {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .comp-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .commerce-points {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(16, 185, 129, 0.1));
+      padding: 6px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      display: inline-block;
+      margin-top: 2px;
+    }
+
+    .highlight-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .highlight-tag {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Contact Info */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      background: var(--bg-card);
+      padding: 24px;
+      border-radius: 16px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+    }
+
+    .contact-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-label {
+      font-size: 12px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* About Section */
+    .about-section {
+      background: var(--bg-card);
+      padding: 32px;
+      border-radius: 16px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      padding-left: 16px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .about-text {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    /* Education Section */
+    .education-section {
+      background: var(--bg-card);
+      padding: 32px;
+      border-radius: 16px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .education-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(129, 140, 248, 0.05) 100%);
+      border-radius: 50%;
+      transform: translate(50%, -50%);
+    }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .edu-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .edu-school {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .edu-major {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .edu-period {
+      background: #f3f4f6;
+      color: var(--text-secondary);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .edu-degree {
+      background: var(--primary);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .graduation-project {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #c7d2fe;
+    }
+
+    .grad-project-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #4c1d95;
+      margin: 0 0 20px 0;
+    }
+
+    .detail-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .detail-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #6b21a8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .detail-value {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .edu-tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .edu-tech {
+      background: white;
+      color: #4c1d95;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid #ddd6fe;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Certifications & Languages Container */
+    .cert-lang-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    /* Certifications Section */
+    .certifications-section {
+      background: var(--bg-card);
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .cert-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border-radius: 12px;
+      border: 1px solid #fbbf24;
+      transition: transform 0.2s;
+    }
+
+    .cert-item:hover {
+      transform: translateX(4px);
+    }
+
+    .cert-icon {
+      width: 48px;
+      height: 48px;
+      background: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cert-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .cert-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Languages Section */
+    .languages-section {
+      background: var(--bg-card);
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .lang-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .lang-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .lang-flag {
+      font-size: 32px;
+      width: 48px;
+      height: 48px;
+      background: #f3f4f6;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lang-info {
+      flex: 1;
+    }
+
+    .lang-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .lang-level {
+      font-size: 13px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .lang-bar {
+      width: 100%;
+      height: 8px;
+      background: #f3f4f6;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+
+    .lang-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+      border-radius: 4px;
+      transition: width 0.6s ease;
+    }
+
+    .lang-desc {
+      font-size: 12px;
+      color: var(--text-light);
+      font-style: italic;
+    }
+
+    /* Experience Section with Collapsible */
+    .experience-section {
+      margin-bottom: 32px;
+      background: var(--bg-card);
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .company-header {
+      padding: 24px 32px;
+      background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .company-header:hover {
+      background: linear-gradient(135deg, #f3f4f6 0%, #fafafa 100%);
+    }
+
+    .company-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .company-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .period {
+      background: var(--primary);
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .position {
+      background: #f3f4f6;
+      color: var(--text-secondary);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .company-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .projects-count {
+      background: var(--secondary);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .toggle-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: transform 0.3s;
+    }
+
+    .toggle-icon.open {
+      transform: rotate(180deg);
+    }
+
+    .projects-container {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+    }
+
+    .projects-container.active {
+      max-height: 5000px;
+      transition: max-height 0.5s ease-in;
+    }
+
+    /* Project Card */
+    .project-card {
+      background: var(--bg-card);
+      border-left: 4px solid var(--primary);
+      padding: 24px 32px;
+      margin: 0;
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .project-card:hover {
+      background: #fafafa;
+      transform: translateX(4px);
+    }
+
+    .project-card:last-child {
+      border-bottom: none;
+    }
+
+    .project-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .portfolio-link {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+    }
+
+    .portfolio-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+      color: white;
+      text-decoration: none;
+    }
+
+    .project-meta {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 16px 24px;
+      margin-bottom: 16px;
+    }
+
+    .meta-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-value {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .tech-badge {
+      background: #eff6ff;
+      color: #1e40af;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid #dbeafe;
+    }
+
+    .achievements {
+      margin-top: 16px;
+      padding: 16px;
+      background: #f0fdf4;
+      border-radius: 12px;
+      border: 1px solid #bbf7d0;
+    }
+
+    .achievement-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #14532d;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .achievement-list {
+      list-style: none;
+    }
+
+    .achievement-item {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 6px;
+      color: #166534;
+      font-size: 14px;
+    }
+
+    .achievement-item::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      color: var(--success);
+    }
+
+    .highlight {
+      font-weight: 700;
+      color: #059669;
+    }
+
+    /* Skills Summary */
+    .skills-summary {
+      background: var(--bg-card);
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      margin-top: 32px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-category {
+      padding: 16px;
+      background: #fafafa;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .skill-category-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-item {
+      background: white;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header {
+        padding: 32px 24px;
+      }
+      .name-title {
+        font-size: 32px;
+      }
+      .project-meta {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .cert-lang-container {
+        grid-template-columns: 1fr;
+      }
+      .comp-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .highlight-points {
+        flex-direction: column;
+      }
+      .company-header {
+        flex-direction: column;
+        align-items: start;
+        gap: 12px;
+      }
+      .company-meta {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+      }
+      .background-pattern {
+        display: none;
+      }
+      .projects-container {
+        max-height: none !important;
+      }
+      .toggle-icon {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-pattern"></div>
+  
+  <div class="container">
+    <!-- Header & About -->
+    <header class="header">
+      <div class="header-content">
+        <div>
+          <h1 class="name-title">김보선</h1>
+          <div class="subtitle">AI Engineer / Agent·Automation Architect</div>
+          <p class="description">
+            실무 경험과 AI 기술력을 결합해 RPA부터 Agent까지 진화하며, 업무 시나리오 단위로 커머스 혁신을 이끄는 전문가입니다.
+          </p>
+          
+          <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border);">
+            <p class="about-text">
+              풀필먼트에서 고객센터를 거쳐 마케팅까지 실무를 직접 경험하며 프로세스를 몸으로 익혔고, 그리고 필요할 때마다 RPA를 직접 제작해 즉시 효율을 끌어올렸으며, 더 나아가 OCR·STT·RAG 등 Narrow AI를 각 비즈니스에 적용해 일을 한 단계씩 고도화했고, 이어서는 축적한 기능을 MCP 프로토콜 기반 Agent로 묶어 방법론을 표준화했으며, 그 결과 단일 태스크를 넘어 '업무 시나리오' 단위로 문제를 풀 수 있는 체계를 확장했고, 무엇보다 현업의 경험을 데이터와 SOP로 지식화해 속도·품질·비용을 함께 개선을 지속하며, <strong>커머스 생태계의 AI 혁신을 주도하는 Agent·Automation Architect이자 AI 전문가</strong>입니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Core Competencies -->
+    <div class="core-competencies">
+      <h2 class="comp-title">💪 핵심 역량</h2>
+      <div class="comp-grid">
+        <div class="comp-item">
+          <div class="comp-icon">🤖</div>
+          <div class="comp-content">
+            <div class="comp-metric">AI 혁신</div>
+            <div class="comp-label">MCP, Agent Modeling</div>
+          </div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-icon">🏢</div>
+          <div class="comp-content">
+            <div class="comp-metric">커머스 운영</div>
+            <div class="comp-label commerce-points">마케팅, 물류, VOC</div>
+          </div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-icon">🌏</div>
+          <div class="comp-content">
+            <div class="comp-metric">4개국</div>
+            <div class="comp-label">글로벌 프로세스 구축</div>
+          </div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-icon">📊</div>
+          <div class="comp-content">
+            <div class="comp-metric">50+ 대행사</div>
+            <div class="comp-label">광고 백오피스 운영 지원</div>
+          </div>
+        </div>
+      </div>
+      <div class="highlight-points">
+        <span class="highlight-tag">💡 실무 & 개발 하이브리드형 AI 팀장</span>
+        <span class="highlight-tag">🌏 글로벌 비즈니스 경험</span>
+        <span class="highlight-tag">📊 디지털 마케팅 전문가</span>
+      </div>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-icon">📱</div>
+        <div class="contact-text">
+          <span class="contact-label">연락처</span>
+          <span class="contact-value">010-4348-3828</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-text">
+          <span class="contact-label">이메일</span>
+          <span class="contact-value">skynom1324@naver.com</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div class="contact-text">
+          <span class="contact-label">거주지</span>
+          <span class="contact-value">서울</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">💼</div>
+        <div class="contact-text">
+          <span class="contact-label">현 직책</span>
+          <span class="contact-value">Cafe24 · AI 인프라팀 팀장</span>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Education Section -->
+    <div class="education-section">
+      <h2 class="section-title">학력사항</h2>
+      <div class="education-card">
+        <div class="edu-header">
+          <div class="edu-info">
+            <h3 class="edu-school">홍익대학교</h3>
+            <span class="edu-major">컴퓨터공학과</span>
+            <span class="edu-period">2009.03 ~ 2018.02</span>
+          </div>
+          <span class="edu-degree">학사</span>
+        </div>
+        
+        <div class="graduation-project">
+          <h4 class="grad-project-title" onclick="toggleProjectDetails(this)" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+            🎓 졸업 프로젝트: 웹툰 현지화 서비스 (2015년)
+            <span class="toggle-icon" style="font-size: 14px;">▼</span>
+          </h4>
+          <div class="project-details" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <div class="detail-item">
+              <span class="detail-label">프로젝트명</span>
+              <span class="detail-value">한국 웹툰 중국 현지화 플랫폼 구축 (ICP 발급 후 중국 로컬 서비스)</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">주요 내용</span>
+              <span class="detail-value">
+                • 국내 인기 웹툰 자동 크롤링 시스템 구축<br>
+                • OCR 기반 텍스트 추출 및 자동 번역 파이프라인<br>
+                • Apache Tomcat WAS 기반 웹 서비스 운영<br>
+                • 중국 ICP 라이선스 획득
+              </span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">기술 스택</span>
+              <div class="edu-tech-stack">
+                <span class="edu-tech">Java (Eclipse)</span>
+                <span class="edu-tech">Bootstrap</span>
+                <span class="edu-tech">JavaScript</span>
+                <span class="edu-tech">OCR</span>
+                <span class="edu-tech">Apache Tomcat</span>
+                <span class="edu-tech">JExcelAPI (jxl)</span>
+              </div>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">아키텍처</span>
+              <span class="detail-value">
+                • <strong>크롤링 엔진:</strong> 다중 스레드 기반 웹툰 사이트 자동 수집<br>
+                • <strong>OCR 파이프라인:</strong> 이미지 텍스트 추출 → 언어 감지 → 자동 번역<br>
+                • <strong>웹 서비스:</strong> Apache Tomcat WAS + Bootstrap 반응형 UI<br>
+                • <strong>데이터 처리:</strong> JExcelAPI 기반 메타데이터 관리<br>
+                • <strong>국제화:</strong> 중국 ICP 라이선스 기반 현지 서비스 구축
+              </span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">성과</span>
+              <span class="detail-value">
+                • <strong>국내 최초</strong> 글로벌 시장을 목표로한 웹툰 서비스 (본인피셜)<br>
+                • 글로벌 이용자 200명 달성<br>
+                • 중국 현지 서비스화 실현<br>
+                • <strong>자동화 시스템</strong>으로 수동 작업 대비 90% 시간 단축
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="graduation-project" style="margin-top: 32px;">
+          <h4 class="grad-project-title" onclick="toggleProjectDetails(this)" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+            <span>💻 SW 프로젝트: 레스토랑 주문 관리 시스템 (2015년)
+              <a href="https://naver.me/FqZEN2g0" target="_blank" class="portfolio-link" onclick="event.stopPropagation();">📄 상세문서</a>
+            </span>
+            <span class="toggle-icon" style="font-size: 14px;">▼</span>
+          </h4>
+          <div class="project-details" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <div class="detail-item">
+              <span class="detail-label">프로젝트명</span>
+              <span class="detail-value">레스토랑 주문 관리 시스템 (Restaurant Order Management System)</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">프로젝트 규모</span>
+              <span class="detail-value">
+                • <strong>총 코드량:</strong> 2,400+ 라인 (37페이지 분량)<br>
+                • <strong>구현 클래스:</strong> 15개 주요 클래스 + MVC 구조<br>
+                • <strong>개발 기간:</strong> 2015년 (졸업 프로젝트)<br>
+                • <strong>기술 수준:</strong> C++ STL, 객체지향 설계, 디자인 패턴 적용
+              </span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">시스템 구조</span>
+              <span class="detail-value">
+                <strong>📋 MVC 아키텍처 완전 구현</strong><br>
+                • <strong>Controller:</strong> AddMenu_Ctrl, DeleteMenu_Ctrl, LogIn_Ctrl, SignUp_Ctrl, Search_Menu_Ctrl<br>
+                • <strong>Model:</strong> Member, Restaurant_Member, Nomal_Member, Menu, Order, OrderCollection<br>
+                • <strong>View:</strong> AddMenu_UI, DeleteMenu_UI, LogIn_UI, SignUp_UI, Search_Menu_UI<br><br>
+                
+                <strong>🗄️ 데이터 관리 시스템</strong><br>
+                • STL list 컨테이너 기반 동적 메모리 관리<br>
+                • Iterator 패턴을 활용한 안전한 데이터 순회<br>
+                • 정적 멤버를 통한 전역 데이터 관리
+              </span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">핵심 비즈니스 로직</span>
+              <span class="detail-value">
+                <strong>👥 회원 시스템</strong> - 일반회원/레스토랑 회원 구분, 가입/탈퇴/인증<br>
+                <strong>🍽️ 메뉴 관리</strong> - CRUD 연산, 레스토랑별 메뉴 관리<br>
+                <strong>📦 주문 처리</strong> - 실시간 주문, 상태 추적, 평점 시스템<br>
+                <strong>⏰ 시간 관리</strong> - 주문 시간 추적, 배송 완료 시뮬레이션 (6480초=108분)<br>
+                <strong>🔍 통합 검색</strong> - 레스토랑명/메뉴명 기반 다중 검색 알고리즘
+              </span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">기술적 특징</span>
+              <span class="detail-value">
+                <strong>🔧 C++ 고급 기능 활용</strong><br>
+                • STL Container (list) + Iterator 패턴<br>
+                • 템플릿 프로그래밍 (list&lt;Class*&gt;)<br>
+                • 포인터 및 동적 메모리 관리<br>
+                • Header/Source 파일 분리 구조<br><br>
+                
+                <strong>📐 설계 패턴 적용</strong><br>
+                • MVC 패턴 완전 구현<br>
+                • Singleton 패턴 (정적 멤버 관리)<br>
+                • Factory 패턴 (객체 생성 관리)
+              </span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">핵심 구현 코드</span>
+              <span class="detail-value" style="font-family: 'Consolas', monospace; background: #f8f9fa; padding: 12px; border-radius: 8px; font-size: 10px; line-height: 1.3; max-width: 100%; overflow-x: auto;">
+                <strong>💾 STL 기반 회원 인증</strong><br>
+                <code style="display: block; margin: 6px 0; white-space: nowrap;">
+bool Restaurant_Member::checkmember(string id, string pw) {<br>
+&nbsp;&nbsp;for (auto iter = all_Restaurant_Member_list.begin();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iter != all_Restaurant_Member_list.end(); iter++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if ((*iter)-&gt;getRestaurant_MemberID() == id &&<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*iter)-&gt;getRestaurant_MemberPW() == pw)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;return false;<br>
+}
+                </code><br>
+                
+                <strong>⏰ 주문 상태 관리</strong><br>
+                <code style="display: block; margin: 6px 0; white-space: nowrap;">
+int OrderCollection::deleteOrder(string name, string menu, int time) {<br>
+&nbsp;&nbsp;for (auto iter = order_list-&gt;begin(); iter != order_list-&gt;end(); iter++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if ((*iter)-&gt;getRestaurantName() == name &&<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*iter)-&gt;getMenuName() == menu) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ((time - (*iter)-&gt;getTime()) &gt;= 6480) { // 108분<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;order_list-&gt;erase(iter);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1; // 배송완료<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 2; // 배송중<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;return 0;<br>
+}
+                </code><br>
+                
+                <strong>🔍 메뉴 검색 알고리즘</strong><br>
+                <code style="display: block; margin: 6px 0; white-space: nowrap;">
+string Search_Menu_UI::print_restaurant_menu(Restaurant_Member* session, string menu) {<br>
+&nbsp;&nbsp;list&lt;Menu*&gt;* temp = session-&gt;listMenu();<br>
+&nbsp;&nbsp;for (auto iter = temp-&gt;begin(); iter != temp-&gt;end(); iter++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if ((*iter)-&gt;getMenuName() == menu) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*iter)-&gt;getMenuInfo();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return session-&gt;getRestaurant_MemberID();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;return "";<br>
+}
+                </code><br>
+                
+                <strong>👥 회원가입 처리</strong><br>
+                <code style="display: block; margin: 6px 0; white-space: nowrap;">
+void SignUp_Ctrl::send_nomalMember_Info(string id, string pw, string type,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string name, string birth, string addr) {<br>
+&nbsp;&nbsp;// 중복 ID 체크<br>
+&nbsp;&nbsp;for (auto iter = Nomal_Member::all_Nomal_Member_list.begin();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iter != Nomal_Member::all_Nomal_Member_list.end(); iter++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if ((*iter)-&gt;getNomal_MemberID() == id) return; // 중복<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;// 새 회원 추가<br>
+&nbsp;&nbsp;all_Nomal_Member_list.push_back(new Nomal_Member(id, pw, type, name, birth, addr));<br>
+}
+                </code>
+              </span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">성과</span>
+              <span class="detail-value">
+                • <strong>완전한 객체지향 설계</strong> 구현 (10+ 클래스, MVC 패턴 적용)<br>
+                • <strong>실용적 비즈니스 로직</strong> 구현 (주문-배송-평점 전체 프로세스)<br>
+                • <strong>확장 가능한 구조</strong> 설계 (모듈별 독립성, 다형성 활용)<br>
+                • <strong>실시간 데이터 처리</strong> 시스템 (동적 메모리 관리, STL 활용)
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Experience: AI 인프라팀 -->
+    <div class="experience-section">
+      <div class="company-header" onclick="toggleProjects(this)">
+        <div class="company-info">
+          <h2 class="company-name">AI 인프라 <span style="color: #6366f1; font-weight: 600;">[Cafe24]</span></h2>
+          <span class="period">2024.03 ~ 현재</span>
+          <span class="position">팀장</span>
+        </div>
+        <div class="company-meta">
+          <span class="projects-count">4 Projects</span>
+          <div class="toggle-icon">▼</div>
+        </div>
+      </div>
+
+      <div class="projects-container">
+        <div class="project-card">
+          <h3 class="project-title">
+            Cafe24 Agent Framework
+            <a href="portfolio/Portfolio_MCP_Framework.html" target="_blank" class="portfolio-link">📄 포트폴리오</a>
+          </h3>
+          <div class="project-meta">
+            <span class="meta-label">기간</span>
+            <span class="meta-value">2025.05 ~ 현재</span>
+            <span class="meta-label">개요</span>
+            <span class="meta-value">사내 Agent 통합 관리 및 GUI 기반 개발 환경을 제공하는 MCP 플랫폼 구축</span>
+            <span class="meta-label">역할</span>
+            <span class="meta-value">MCP 아키텍처 설계, Framework 구현, Core 엔진 통합 모듈, GUI 기반 Agent 개발 환경 표준화</span>
+            <span class="meta-label">기술스택</span>
+            <div class="tech-stack">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">LangChain</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">GitLab</span>
+              <span class="tech-badge">Odin</span>
+              <span class="tech-badge">Claude Code</span>
+              <span class="tech-badge">OpenAI Platform</span>
+              <span class="tech-badge">n8n</span>
+              <span class="tech-badge">MCP</span>
+              <span class="tech-badge">Slack API</span>
+              <span class="tech-badge">Jira</span>
+              <span class="tech-badge">Confluence</span>
+              <span class="tech-badge">Salesforce</span>
+              <span class="tech-badge">DBMS</span>
+            </div>
+          </div>
+          <div class="achievements">
+            <div class="achievement-title">핵심 성과</div>
+            <ul class="achievement-list">
+              <li class="achievement-item"><span class="highlight">비 개발자를 위한 GUI 형태의 Multi Agent 제작 프로세스 구축</span></li>
+              <li class="achievement-item"><span class="highlight">Custom MCP Dev Template 배포</span></li>
+              <li class="achievement-item"><span class="highlight">사내 주요 협업 툴 4개 중앙화 (jira,confluence,slack,salesforce)</span></li>
+              <li class="achievement-item"><span class="highlight">Agent 적용 가능 infra 확장 (Claude code, Custom gpt)</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3 class="project-title">
+            차세대 마케팅 Agent
+            <a href="portfolio/Portfolio_Marketing_Agent.html" target="_blank" class="portfolio-link">📄 포트폴리오</a>
+          </h3>
+          <div class="project-meta">
+            <span class="meta-label">기간</span>
+            <span class="meta-value">2024.11 ~ 2025.04</span>
+            <span class="meta-label">개요</span>
+            <span class="meta-value">Meta/TikTok 광고 운영 효율 극대화를 위한 실무형 Agent 개발</span>
+            <span class="meta-label">역할</span>
+            <span class="meta-value">Ads API 연동, 콘텐츠 생성·성과 분석 자동화, 운영 정책 표준 수립</span>
+            <span class="meta-label">기술스택</span>
+            <div class="tech-stack">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Tailwind CSS</span>
+              <span class="tech-badge">Pandas</span>
+              <span class="tech-badge">NumPy</span>
+              <span class="tech-badge">Scikit-learn</span>
+              <span class="tech-badge">SQLAlchemy</span>
+              <span class="tech-badge">Axios</span>
+              <span class="tech-badge">Recharts</span>
+              <span class="tech-badge">ReactFlow</span>
+              <span class="tech-badge">Schedule</span>
+              <span class="tech-badge">Meta Ads API</span>
+              <span class="tech-badge">TikTok Ads API</span>
+              <span class="tech-badge">Docker</span>
+              <span class="tech-badge">GitLab CI</span>
+            </div>
+          </div>
+          <div class="achievements">
+            <div class="achievement-title">핵심 성과</div>
+            <ul class="achievement-list">
+              <li class="achievement-item"><span class="highlight">근무시간 외 긴급 장애/CS 24시간 감지·대응</span></li>
+              <li class="achievement-item"><span class="highlight">50+ 운영대행사 실시간 감지 대응 프로세스 구축</span></li>
+              <li class="achievement-item">일부 판단이 필요한 단순 반복 작업 절감</li>
+              <li class="achievement-item">매체사 별 계정운영 정책 표준 수립</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3 class="project-title">
+            Salesforce org Quick View (Lightning Experience)
+            <a href="portfolio/Portfolio_Salesforce_QuickView.html" target="_blank" class="portfolio-link">📄 포트폴리오</a>
+          </h3>
+          <div class="project-meta">
+            <span class="meta-label">기간</span>
+            <span class="meta-value">2024.03 ~ 2024.06</span>
+            <span class="meta-label">개요</span>
+            <span class="meta-value">Salesforce 데이터의 실시간 Quick View 제공</span>
+            <span class="meta-label">역할</span>
+            <span class="meta-value">Lightning 컴포넌트 개발, SOQL 최적화, 데이터 구조 설계, 서드파티 파이프라이닝, 전체 시각화 대시보드 제작</span>
+            <span class="meta-label">기술스택</span>
+            <div class="tech-stack">
+              <span class="tech-badge">Salesforce Lightning</span>
+              <span class="tech-badge">SOQL</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">채널톡 API</span>
+              <span class="tech-badge">Looker Studio</span>
+              <span class="tech-badge">DataEye (Grafana)</span>
+              <span class="tech-badge">Google Meet</span>
+            </div>
+          </div>
+          <div class="achievements">
+            <div class="achievement-title">핵심 성과</div>
+            <ul class="achievement-list">
+              <li class="achievement-item"><span class="highlight">조회 속도 50% 단축</span></li>
+              <li class="achievement-item"><span class="highlight">고객 해지방어 및 이탈률 15% 감소</span></li>
+              <li class="achievement-item">고객 세그먼트 단위 대시보드 제작 제공</li>
+              <li class="achievement-item">고객 VOC 수집 프로세스 안정화 (채널톡, 챗봇, STT)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3 class="project-title">
+            Agent(AI) 교육
+            <a href="portfolio/Portfolio_AI_Education.html" target="_blank" class="portfolio-link">📄 포트폴리오</a>
+          </h3>
+          <div class="project-meta">
+            <span class="meta-label">기간</span>
+            <span class="meta-value">상시</span>
+            <span class="meta-label">개요</span>
+            <span class="meta-value">본부 임직원의 AI Agent 활용 역량 강화를 위한 교육 진행</span>
+            <span class="meta-label">역할</span>
+            <span class="meta-value">교육 커리큘럼 제작, 실습 예제 설계, Claude 및 GPT 기반 사례 시연</span>
+            <span class="meta-label">기술스택</span>
+            <div class="tech-stack">
+              <span class="tech-badge">Claude</span>
+              <span class="tech-badge">GPT</span>
+              <span class="tech-badge">n8n</span>
+              <span class="tech-badge">Custom GPT</span>
+              <span class="tech-badge">SERP API</span>
+              <span class="tech-badge">Claude Code</span>
+              <span class="tech-badge">MCP</span>
+            </div>
+          </div>
+          <div class="achievements">
+            <div class="achievement-title">핵심 성과</div>
+            <ul class="achievement-list">
+              <li class="achievement-item"><span class="highlight">교육 만족도 95% 달성</span></li>
+              <li class="achievement-item"><span class="highlight">각 팀별 RPA 전담 인력 2명 확보</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience: 서비스운영분석팀 -->
+    <div class="experience-section">
+      <div class="company-header" onclick="toggleProjects(this)">
+        <div class="company-info">
+          <h2 class="company-name">서비스운영분석 <span style="color: #6366f1; font-weight: 600;">[Cafe24]</span></h2>
+          <span class="period">2022.08 ~ 2023.12</span>
+          <span class="position">DA</span>
+        </div>
+        <div class="company-meta">
+          <span class="projects-count">3 Projects</span>
+          <div class="toggle-icon">▼</div>
+        </div>
+      </div>
+
+      <div class="projects-container">
+        <div class="project-card">
+          <h3 class="project-title">
+            [AICC] STT 기반 유선 상담 CS대응
+            <a href="portfolio/Portfolio_STT_CS_Automation.html" target="_blank" class="portfolio-link">📄 포트폴리오</a>
+          </h3>
+          <div class="project-meta">
+            <span class="meta-label">기간</span>
+            <span class="meta-value">2023.07 ~ 2023.11</span>
+            <span class="meta-label">개요</span>
+            <span class="meta-value">STT 기반 녹취 자동 분석 및 RAG를 활용한 1차 응대 매뉴얼 제공 · 콜 평가 자동화</span>
+            <span class="meta-label">역할</span>
+            <span class="meta-value">녹취파일 수집 및 STT, 웹 크롤링, CRM 응대결과 자동 입력</span>
+            <span class="meta-label">기술스택</span>
+            <div class="tech-stack">
+              <span class="tech-badge">CLOVA STT</span>
+              <span class="tech-badge">Selenium</span>
+              <span class="tech-badge">GPT</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">RAG</span>
+              <span class="tech-badge">FFMPEG</span>
+            </div>
+          </div>
+          <div class="achievements">
+            <div class="achievement-title">핵심 성과</div>
+            <ul class="achievement-list">
+              <li class="achievement-item"><span class="highlight">고객센터 인당 처리 건수 15% 증가</span></li>
+              <li class="achievement-item"><span class="highlight">유선 CS 데이터 자산화 > "상담 친절도 평가" 업무 간소화</span></li>
+              <li class="achievement-item">고객 상담 프로세스 표준 매뉴얼 구축 (스크립트 및 평가서)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3 class="project-title">
+            [AICC] Cafe24 AI 챗봇
+            <a href="portfolio/Portfolio_AI_Chatbot_AICC.html" target="_blank" class="portfolio-link">📄 포트폴리오</a>
+          </h3>
+          <div class="project-meta">
+            <span class="meta-label">기간</span>
+            <span class="meta-value">2023.03 ~ 2023.06</span>
+            <span class="meta-label">개요</span>
+            <span class="meta-value">고객센터 CS 자동화를 위한 AI 챗봇 및 STT 기반 상담 시스템 구축</span>
+            <span class="meta-label">역할</span>
+            <span class="meta-value">AI 챗봇 시나리오 설계, 데이터 라벨링 및 1차 파인튜닝을 통한 PoC</span>
+            <span class="meta-label">기술스택</span>
+            <div class="tech-stack">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">GPT</span>
+              <span class="tech-badge">RAG</span>
+              <span class="tech-badge">FastAPI</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">Zendesk API</span>
+              <span class="tech-badge">Fine-tuning</span>
+            </div>
+          </div>
+          <div class="achievements">
+            <div class="achievement-title">핵심 성과</div>
+            <ul class="achievement-list">
+              <li class="achievement-item"><span class="highlight">고객센터 CS 유입 30% 절감</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3 class="project-title">
+            사내 BI 및 RPA 제작
+            <a href="portfolio/Portfolio_BI_RPA.html" target="_blank" class="portfolio-link">📄 포트폴리오</a>
+          </h3>
+          <div class="project-meta">
+            <span class="meta-label">기간</span>
+            <span class="meta-value">2022.08 ~ 2023.12</span>
+            <span class="meta-label">개요</span>
+            <span class="meta-value">실무부서 RPA 제작 지원 및 BI 대시보드 제공을 통한 업무 효율화</span>
+            <span class="meta-label">역할</span>
+            <span class="meta-value">BI 대시보드 설계, RPA 프로세스 기획 및 운영</span>
+            <span class="meta-label">기술스택</span>
+            <div class="tech-stack">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Grafana</span>
+              <span class="tech-badge">DataEye</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">MariaDB</span>
+              <span class="tech-badge">Clickhouse</span>
+              <span class="tech-badge">Looker Studio</span>
+              <span class="tech-badge">Selenium</span>
+            </div>
+          </div>
+          <div class="achievements">
+            <div class="achievement-title">핵심 성과</div>
+            <ul class="achievement-list">
+              <li class="achievement-item">마케팅, 매출, 사업지표 등 다양한 BI 패널 및 객관화 지표 제작</li>
+              <li class="achievement-item">물류, 마케팅, 온라인 이벤트 대응 관련 RPA 다수 제작</li>
+            </ul>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <!-- Experience: SCM팀 -->
+    <div class="experience-section">
+      <div class="company-header" onclick="toggleProjects(this)">
+        <div class="company-info">
+          <h2 class="company-name">SCM <span style="color: #6366f1; font-weight: 600;">[Cafe24]</span></h2>
+          <span class="period">2021.03 ~ 2022.07</span>
+          <span class="position">파트리더</span>
+        </div>
+        <div class="company-meta">
+          <span class="projects-count">3 Projects</span>
+          <div class="toggle-icon">▼</div>
+        </div>
+      </div>
+
+      <div class="projects-container">
+        <div class="project-card">
+          <h3 class="project-title">
+            글로벌 물류 분석
+            <a href="portfolio/Portfolio_Global_Logistics.html" target="_blank" class="portfolio-link">📄 포트폴리오</a>
+          </h3>
+          <div class="project-meta">
+            <span class="meta-label">기간</span>
+            <span class="meta-value">2022.04 ~ 2022.06</span>
+            <span class="meta-label">개요</span>
+            <span class="meta-value">글로벌 물류 최적화를 위한 종합 분석 및 솔루션 도입</span>
+            <span class="meta-label">역할</span>
+            <span class="meta-value">물류 흐름도 설계, 솔루션 분석, 프로세스 최적화</span>
+          </div>
+          <div class="achievements">
+            <div class="achievement-title">핵심 성과</div>
+            <ul class="achievement-list">
+              <li class="achievement-item"><span class="highlight">K2J ACP 제도 도입을 통한 일본 수입 규제 완화</span></li>
+              <li class="achievement-item"><span class="highlight">글로벌 물류 솔루션 분석(Shippo) 및 최적화</span></li>
+              <li class="achievement-item"><span class="highlight">Korea to Japan 상품 공급망 구축</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3 class="project-title">
+            해외 사입 플랫폼 프로젝트
+            <a href="portfolio/Portfolio_Overseas_Platform.html" target="_blank" class="portfolio-link">📄 포트폴리오</a>
+          </h3>
+          <div class="project-meta">
+            <span class="meta-label">기간</span>
+            <span class="meta-value">2021.11 ~ 2022.05</span>
+            <span class="meta-label">개요</span>
+            <span class="meta-value">해외 공급업체 상품 소싱·발주·수입 통관까지 전체 프로세스 자동화</span>
+            <span class="meta-label">역할</span>
+            <span class="meta-value">해외 공급처 관리, 부자재 카테고리 MD, 매뉴얼 제작(노션 링크), 상표권 대응, 서비스 운영, Utrade Hub(+Unipass) 수출신고 자동화</span>
+            <span class="meta-label">기술스택</span>
+            <div class="tech-stack">
+              <span class="tech-badge">Jira</span>
+              <span class="tech-badge">Confluence</span>
+              <span class="tech-badge">Slack</span>
+              <span class="tech-badge">GSheet</span>
+              <span class="tech-badge">Looker Studio</span>
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">Selenium</span>
+              <span class="tech-badge">Utrade Hub(+Unipass)</span>
+            </div>
+          </div>
+          <div class="achievements">
+            <div class="achievement-title">핵심 성과</div>
+            <ul class="achievement-list">
+              <li class="achievement-item"><span class="highlight">플랫폼 월 누적 거래량 8,000만원 달성</span></li>
+              <li class="achievement-item"><span class="highlight">포장 부자재 초기 라인업 300개 SKU 확보</span></li>
+              <li class="achievement-item"><span class="highlight">현장 지원 리소스 50% 증가 (일 단위)</span></li>
+              <li class="achievement-item">물류 신고 내역 및 재고 자산화</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3 class="project-title">
+            동대문 풀필먼트 운영대행
+            <a href="portfolio/Portfolio_Dongdaemun_Fulfillment.html" target="_blank" class="portfolio-link">📄 포트폴리오</a>
+          </h3>
+          <div class="project-meta">
+            <span class="meta-label">기간</span>
+            <span class="meta-value">2021.03 ~ 2021.12</span>
+            <span class="meta-label">개요</span>
+            <span class="meta-value">동대문 사입 풀필먼트 운영을 위한 OMS/WMS 자동화 지원 및 현장 최적화</span>
+            <span class="meta-label">역할</span>
+            <span class="meta-value">OMS/WMS 미들웨어 제작, 단순 RPA 제작, 물류 처리 효율화</span>
+            <span class="meta-label">기술스택</span>
+            <div class="tech-stack">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Selenium</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">WMS API</span>
+            </div>
+          </div>
+          <div class="achievements">
+            <div class="achievement-title">핵심 성과</div>
+            <ul class="achievement-list">
+              <li class="achievement-item"><span class="highlight">B2C 운영 사업 누적 거래매출 200억 달성</span></li>
+              <li class="achievement-item"><span class="highlight">멀티 로케이션 프로세스 구축</span></li>
+              <li class="achievement-item"><span class="highlight">WMS 운영메뉴얼 제작</span></li>
+              <li class="achievement-item">SCM 내부 모니터링 시스템 구축</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience: AD International -->
+    <div class="experience-section">
+      <div class="company-header" onclick="toggleProjects(this)">
+        <div class="company-info">
+          <h2 class="company-name">무역&구매 <span style="color: #6366f1; font-weight: 600;">[AD International]</span></h2>
+          <span class="period">2019.03 ~ 2021.03</span>
+          <span class="position">대리</span>
+        </div>
+        <div class="company-meta">
+          <span class="projects-count">3 Projects</span>
+          <div class="toggle-icon">▼</div>
+        </div>
+      </div>
+
+      <div class="projects-container">
+        <div class="project-card">
+          <h3 class="project-title">
+            해외 무역 & 커머스 사업 운영
+            <a href="portfolio/Portfolio_Global_Trade_Commerce.html" target="_blank" class="portfolio-link">📄 포트폴리오</a>
+          </h3>
+          <div class="project-meta">
+            <span class="meta-label">기간</span>
+            <span class="meta-value">2020.04 ~ 2021.02</span>
+            <span class="meta-label">개요</span>
+            <span class="meta-value">자사 해외 수출 프로세스 전략 수립 & 바이어 확보 & 수출 물류망 구축</span>
+            <span class="meta-label">역할</span>
+            <span class="meta-value">해외 물류망 구축, 바이어 확보, 글로벌 마케팅 수행, 해외 커머스 진입</span>
+            <span class="meta-label">기술스택</span>
+            <div class="tech-stack">
+              <span class="tech-badge">커머스 Admin (Amazon, Shopee, Q10)</span>
+              <span class="tech-badge">Ecount</span>
+            </div>
+          </div>
+          <div class="achievements">
+            <div class="achievement-title">핵심 성과</div>
+            <ul class="achievement-list">
+              <li class="achievement-item"><span class="highlight">신규 4개국 수출 프로세스 구축 및 바이어(고정 밴더) 확보</span></li>
+              <li class="achievement-item"><span class="highlight">해외 매출 약 $400,000 달성</span></li>
+              <li class="achievement-item">해외 주요 커머스 브랜드 스토어 오픈</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3 class="project-title">
+            외자구매 & 포워딩 & 재고 운영
+            <a href="portfolio/Portfolio_Import_Forwarding.html" target="_blank" class="portfolio-link">📄 포트폴리오</a>
+          </h3>
+          <div class="project-meta">
+            <span class="meta-label">기간</span>
+            <span class="meta-value">2019.03 ~ 2021.02</span>
+            <span class="meta-label">개요</span>
+            <span class="meta-value">해외 특수상품 수입 및 재고 회전을 최적화해 물류비 절감 및 수익률 개선</span>
+            <span class="meta-label">역할</span>
+            <span class="meta-value">수입 물류 프로세스 설계, 특수상품 인증 관리(KC), 장기 재고 소진 전략</span>
+          </div>
+          <div class="achievements">
+            <div class="achievement-title">핵심 성과</div>
+            <ul class="achievement-list">
+              <li class="achievement-item"><span class="highlight">BOM(부자재 ) Code 체계 구축</span></li>
+              <li class="achievement-item"><span class="highlight">LCL 콘솔 물류 프로세스 구축 및 물류비 50% 절감</span></li>
+              <li class="achievement-item"><span class="highlight">신규 로컬 포워딩 에이전트 섭외, FCL 물류비 30% 절감</span></li>
+              <li class="achievement-item">특수상품 수입 표준 구축 (KC 인증, 생화, 화학물 등)</li>
+              <li class="achievement-item">현지 DOC 대행 Agency 섭외</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3 class="project-title">
+            정부사업 운영관리
+            <a href="portfolio/Portfolio_Government_Project.html" target="_blank" class="portfolio-link">📄 포트폴리오</a>
+          </h3>
+          <div class="project-meta">
+            <span class="meta-label">기간</span>
+            <span class="meta-value">2020.06 ~ 2020.12</span>
+            <span class="meta-label">개요</span>
+            <span class="meta-value">정부 지원 수출 바우처 사업 운영 및 상표권·특허 등록 관리</span>
+            <span class="meta-label">역할</span>
+            <span class="meta-value">정부 지원 바우처 신청·집행, 상표권 관리 및 지재권 보호 프로세스 설계</span>
+            <span class="meta-label">기술스택</span>
+            <div class="tech-stack">
+              <span class="tech-badge">PPT</span>
+            </div>
+          </div>
+          <div class="achievements">
+            <div class="achievement-title">핵심 성과</div>
+            <ul class="achievement-list">
+              <li class="achievement-item"><span class="highlight">정부 수출 바우처 2회 선정 (지원 총액 : 1억 상당)</span></li>
+              <li class="achievement-item"><span class="highlight">글로벌 상표권 5개국 등록 완료</span></li>
+              <li class="achievement-item">[무료 사업] 글로벌 시장 타겟 독립몰 오픈 (Alibaba)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio Link -->
+    <div style="text-align: center; margin-bottom: 32px;">
+      <a href="portfolio/index.html" style="
+        display: inline-flex; 
+        align-items: center; 
+        gap: 12px;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        padding: 16px 32px;
+        border-radius: 32px;
+        font-size: 18px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+        transition: all 0.3s ease;
+      " onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(16, 185, 129, 0.4)'" 
+         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(16, 185, 129, 0.3)'">
+        📁 전체 포트폴리오 모음 보기
+      </a>
+    </div>
+
+    <!-- Skills Summary -->
+    <div class="skills-summary" style="margin-bottom: 64px;">
+      <h2 class="section-title">보유 기술스택 (통합)</h2>
+      <div class="skills-grid">
+        <!-- 맨 위: 핵심 기술 -->
+        <div class="skill-category">
+          <div class="skill-category-title">AI/LLM</div>
+          <div class="skill-items">
+            <span class="skill-item">GPT</span>
+            <span class="skill-item">Claude</span>
+            <span class="skill-item">Custom GPT</span>
+            <span class="skill-item">Claude Code</span>
+            <span class="skill-item">TimeGPT</span>
+            <span class="skill-item">LangChain</span>
+            <span class="skill-item">RAG</span>
+            <span class="skill-item">Prompt Eng.</span>
+            <span class="skill-item">Fine-tuning(PoC)</span>
+            <span class="skill-item">CLOVA STT</span>
+            <span class="skill-item">FFMPEG</span>
+            <span class="skill-item">OCR</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title">DevOps/Automation</div>
+          <div class="skill-items">
+            <span class="skill-item">GitLab</span>
+            <span class="skill-item">Docker</span>
+            <span class="skill-item">GitLab CI</span>
+            <span class="skill-item">Apache Tomcat</span>
+            <span class="skill-item">MCP</span>
+            <span class="skill-item">n8n</span>
+            <span class="skill-item">Odin(Serverless)</span>
+            <span class="skill-item">Odin CI/CD Pipeline</span>
+            <span class="skill-item">Cluster Domain Management</span>
+            <span class="skill-item">ACL (Access Control)</span>
+            <span class="skill-item">Schedule</span>
+            <span class="skill-item">Cron</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-category-title">데이터/분석</div>
+          <div class="skill-items">
+            <span class="skill-item">MySQL</span>
+            <span class="skill-item">MariaDB</span>
+            <span class="skill-item">ClickHouse</span>
+            <span class="skill-item">DBMS</span>
+            <span class="skill-item">Pandas</span>
+            <span class="skill-item">NumPy</span>
+            <span class="skill-item">Scikit-learn</span>
+            <span class="skill-item">SciPy</span>
+            <span class="skill-item">SQLAlchemy</span>
+          </div>
+        </div>
+
+        <!-- 중간: 개발 기술 -->
+        <div class="skill-category">
+          <div class="skill-category-title">Web/Frontend</div>
+          <div class="skill-items">
+            <span class="skill-item">React</span>
+            <span class="skill-item">Tailwind CSS</span>
+            <span class="skill-item">Axios</span>
+            <span class="skill-item">Recharts</span>
+            <span class="skill-item">ReactFlow</span>
+            <span class="skill-item">FastAPI</span>
+            <span class="skill-item">Selenium</span>
+            <span class="skill-item">BeautifulSoup</span>
+            <span class="skill-item">Bootstrap</span>
+            <span class="skill-item">JavaScript</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title">협업/API</div>
+          <div class="skill-items">
+            <span class="skill-item">Slack API</span>
+            <span class="skill-item">채널톡 API</span>
+            <span class="skill-item">Google Meet</span>
+            <span class="skill-item">Jira</span>
+            <span class="skill-item">Confluence</span>
+            <span class="skill-item">Salesforce</span>
+            <span class="skill-item">Salesforce Lightning</span>
+            <span class="skill-item">SOQL</span>
+            <span class="skill-item">Slack Block Kit</span>
+            <span class="skill-item">GSheet</span>
+            <span class="skill-item">Slack</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title">언어/런타임</div>
+          <div class="skill-items">
+            <span class="skill-item">Python</span>
+            <span class="skill-item">JavaScript</span>
+            <span class="skill-item">Node.js</span>
+            <span class="skill-item">Java</span>
+            <span class="skill-item">PHP</span>
+            <span class="skill-item">C</span>
+            <span class="skill-item">React</span>
+          </div>
+        </div>
+
+        <!-- 하단: 기타 기술 -->
+        <div class="skill-category">
+          <div class="skill-category-title">물류솔루션</div>
+          <div class="skill-items">
+            <span class="skill-item">WMS (EZWMS)</span>
+            <span class="skill-item">OMS (EC V2X)</span>
+            <span class="skill-item">TMS (Fedex, DHL)</span>
+            <span class="skill-item">Ecount</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title">마케팅(Ads)/API</div>
+          <div class="skill-items">
+            <span class="skill-item">Meta Ads API</span>
+            <span class="skill-item">TikTok Ads API</span>
+            <span class="skill-item">Zendesk API</span>
+            <span class="skill-item">SERP API</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title">모니터링/시각화</div>
+          <div class="skill-items">
+            <span class="skill-item">Grafana</span>
+            <span class="skill-item">DataEye</span>
+            <span class="skill-item">Looker Studio</span>
+            <span class="skill-item">Streamlit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications & Languages -->
+    <div class="cert-lang-container">
+      <!-- Certifications -->
+      <div class="certifications-section">
+        <h2 class="section-title">자격증</h2>
+        <div class="cert-grid">
+          <div class="cert-item">
+            <div class="cert-icon">🏆</div>
+            <div class="cert-info">
+              <div class="cert-name">국제무역사 1급</div>
+              <div class="cert-desc">한국무역협회</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">🌐</div>
+            <div class="cert-info">
+              <div class="cert-name">무역영어 1급</div>
+              <div class="cert-desc">대한상공회의소</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="languages-section">
+        <h2 class="section-title">언어 능력</h2>
+        <div class="lang-grid">
+          <div class="lang-item">
+            <div class="lang-flag">🇰🇷</div>
+            <div class="lang-info">
+              <div class="lang-name">한국어</div>
+              <div class="lang-level">Native</div>
+              <div class="lang-bar">
+                <div class="lang-progress" style="width: 100%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="lang-item">
+            <div class="lang-flag">🇺🇸</div>
+            <div class="lang-info">
+              <div class="lang-name">영어</div>
+              <div class="lang-level">Business Level</div>
+              <div class="lang-bar">
+                <div class="lang-progress" style="width: 75%"></div>
+              </div>
+              <div class="lang-desc">해외 바이어 협상 가능</div>
+            </div>
+          </div>
+          <div class="lang-item">
+            <div class="lang-flag">🇨🇳</div>
+            <div class="lang-info">
+              <div class="lang-name">중국어</div>
+              <div class="lang-level">Native</div>
+              <div class="lang-bar">
+                <div class="lang-progress" style="width: 100%"></div>
+              </div>
+              <div class="lang-desc">모국어 수준</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle projects visibility
+    function toggleProjects(header) {
+      const container = header.nextElementSibling;
+      const icon = header.querySelector('.toggle-icon');
+      
+      if (container.classList.contains('active')) {
+        container.classList.remove('active');
+        icon.classList.remove('open');
+      } else {
+        container.classList.add('active');
+        icon.classList.add('open');
+      }
+    }
+
+    // Toggle project details visibility
+    function toggleProjectDetails(header) {
+      const container = header.nextElementSibling;
+      const icon = header.querySelector('.toggle-icon');
+      
+      if (container.style.maxHeight === '0px' || !container.style.maxHeight) {
+        container.style.maxHeight = '1000px';
+        icon.textContent = '▲';
+      } else {
+        container.style.maxHeight = '0px';
+        icon.textContent = '▼';
+      }
+    }
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Apply animation to elements
+    document.querySelectorAll('.experience-section, .contact-grid, .core-competencies, .about-section, .education-section, .certifications-section, .languages-section, .skills-summary').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
