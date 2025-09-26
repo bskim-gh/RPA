@@ -57,7 +57,7 @@
     /* 페이지별 헤더 고정 */
     .page-header {
       width: 170mm;
-      height: 35mm;
+      height: 31mm;
       text-align: center;
       margin-bottom: 8mm;
       padding: 0;
@@ -91,7 +91,7 @@
     /* 포트폴리오 그리드 - 고정 크기 */
     .portfolio-grid {
       width: 170mm;
-      height: 219mm;
+      height: 223mm;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: repeat(4, 1fr);
@@ -100,11 +100,11 @@
 
     .portfolio-card {
       width: 82.5mm;
-      height: 52.25mm;
+      height: 54mm;
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 6px;
-      padding: 6mm;
+      padding: 5.5mm;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -170,20 +170,22 @@
       flex-wrap: wrap;
       gap: 2px;
       margin-bottom: 6px;
-      height: 22px;
+      min-height: 22px;
+      max-height: 44px;
       overflow: hidden;
     }
 
     .tag {
       background: rgba(99, 102, 241, 0.1);
       color: #4c1d95;
-      padding: 1px 3px;
+      padding: 1px 2px;
       border-radius: 3px;
-      font-size: 7px;
+      font-size: 6.5px;
       font-weight: 600;
       border: 1px solid rgba(99, 102, 241, 0.2);
       white-space: nowrap;
       height: fit-content;
+      line-height: 1.2;
     }
 
     .card-link {
@@ -254,11 +256,16 @@
             사내 Agent 통합 관리 및 GUI 기반 개발 환경을 제공하는 MCP 플랫폼 구축. 비개발자도 GUI를 통해 Multi Agent를 제작할 수 있는 혁신적인 프레임워크.
           </p>
           <div class="card-tags">
-            <span class="tag">MCP</span>
-            <span class="tag">Python</span>
-            <span class="tag">LangChain</span>
-            <span class="tag">n8n</span>
-            <span class="tag">GUI Builder</span>
+            <span class="tag">MCP Protocol</span>
+            <span class="tag">FastMCP</span>
+            <span class="tag">Python 3.10</span>
+            <span class="tag">SSE</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">Git/Lab</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">웹소켓</span>
+            <span class="tag">Proxy</span>
           </div>
         </div>
         <a href="https://sun-kim-90.github.io/portfolio/portfolio2/Portfolio_MCP_Framework.html" class="card-link">
@@ -275,11 +282,13 @@
             Meta/TikTok 광고 운영 효율 극대화를 위한 실무형 Agent 개발. 50+ 운영대행사 실시간 감지 대응 프로세스 구축으로 24시간 무중단 모니터링 실현.
           </p>
           <div class="card-tags">
-            <span class="tag">Meta Ads API</span>
-            <span class="tag">TikTok Ads API</span>
+            <span class="tag">Claude AI</span>
+            <span class="tag">MCP</span>
+            <span class="tag">N8N</span>
+            <span class="tag">FastAPI</span>
             <span class="tag">React</span>
-            <span class="tag">Python</span>
-            <span class="tag">자동화</span>
+            <span class="tag">GitLab CI/CD</span>
+            <span class="tag">Okta 인증</span>
           </div>
         </div>
         <a href="https://sun-kim-90.github.io/portfolio/portfolio2/Portfolio_Marketing_Agent.html" class="card-link">
@@ -316,11 +325,12 @@
             본부 임직원의 AI Agent 활용 역량 강화를 위한 교육 진행. 교육 만족도 95% 달성과 각 팀별 RPA 전담 인력 2명 확보.
           </p>
           <div class="card-tags">
-            <span class="tag">Claude</span>
-            <span class="tag">GPT</span>
-            <span class="tag">n8n</span>
             <span class="tag">Custom GPT</span>
-            <span class="tag">MCP</span>
+            <span class="tag">Claude API</span>
+            <span class="tag">MCP Protocol</span>
+            <span class="tag">n8n</span>
+            <span class="tag">GitLab CI/CD</span>
+            <span class="tag">Agent Framework</span>
           </div>
         </div>
         <a href="https://sun-kim-90.github.io/portfolio/portfolio2/Portfolio_AI_Education.html" class="card-link">
@@ -337,11 +347,12 @@
             STT 기반 녹취 자동 분석 및 RAG를 활용한 1차 응대 매뉴얼 제공. 고객센터 인당 처리 건수 15% 증가와 상담 품질 표준화 달성.
           </p>
           <div class="card-tags">
-            <span class="tag">CLOVA STT</span>
-            <span class="tag">GPT</span>
-            <span class="tag">RAG</span>
+            <span class="tag">Naver Speech STT</span>
+            <span class="tag">GPT-3.5/4.0</span>
+            <span class="tag">Python</span>
             <span class="tag">FFMPEG</span>
-            <span class="tag">CS 자동화</span>
+            <span class="tag">Selenium</span>
+            <span class="tag">MySQL</span>
           </div>
         </div>
         <a href="https://sun-kim-90.github.io/portfolio/portfolio2/Portfolio_STT_CS_Automation.html" class="card-link">
@@ -359,10 +370,11 @@
           </p>
           <div class="card-tags">
             <span class="tag">Python</span>
-            <span class="tag">GPT</span>
+            <span class="tag">GPT-3.5-turbo</span>
             <span class="tag">RAG</span>
-            <span class="tag">FastAPI</span>
+            <span class="tag">Vector Store</span>
             <span class="tag">Zendesk API</span>
+            <span class="tag">MySQL</span>
           </div>
         </div>
         <a href="https://sun-kim-90.github.io/portfolio/portfolio2/Portfolio_AI_Chatbot_AICC.html" class="card-link">
@@ -380,10 +392,10 @@
           </p>
           <div class="card-tags">
             <span class="tag">Python</span>
-            <span class="tag">Grafana</span>
-            <span class="tag">DataEye</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Selenium</span>
+            <span class="tag">Selenium IDE</span>
+            <span class="tag">Selenium WebDriver</span>
+            <span class="tag">MySQL/MariaDB</span>
+            <span class="tag">DataEye (Grafana)</span>
           </div>
         </div>
         <a href="https://sun-kim-90.github.io/portfolio/portfolio2/Portfolio_BI_RPA.html" class="card-link">
@@ -400,9 +412,11 @@
             글로벌 물류 최적화를 위한 종합 분석 및 솔루션 도입. K2J ACP 제도 도입과 Shippo 솔루션 분석을 통한 물류 혁신.
           </p>
           <div class="card-tags">
-            <span class="tag">ACP 제도</span>
+            <span class="tag">K2J ACP 제도</span>
             <span class="tag">Shippo</span>
-            <span class="tag">물류 솔루션</span>
+            <span class="tag">ShipStation</span>
+            <span class="tag">FTA 활용</span>
+            <span class="tag">공급망 구축</span>
             <span class="tag">국제무역</span>
           </div>
         </div>
@@ -434,9 +448,11 @@
           </p>
           <div class="card-tags">
             <span class="tag">서비스 기획</span>
-            <span class="tag">정책 수립</span>
+            <span class="tag">UX/UI 정책</span>
+            <span class="tag">플랫폼 운영</span>
+            <span class="tag">Privacy by Design</span>
+            <span class="tag">컴플라이언스</span>
             <span class="tag">협력사 관리</span>
-            <span class="tag">개인정보보호</span>
           </div>
         </div>
         <a href="https://sun-kim-90.github.io/portfolio/portfolio2/Portfolio_Overseas_Platform.html" class="card-link">
@@ -454,9 +470,11 @@
           </p>
           <div class="card-tags">
             <span class="tag">Python</span>
-            <span class="tag">OMS/WMS</span>
-            <span class="tag">MySQL</span>
             <span class="tag">Selenium</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">EC-EZWMS</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Chrome Driver</span>
           </div>
         </div>
         <a href="https://sun-kim-90.github.io/portfolio/portfolio2/Portfolio_Dongdaemun_Fulfillment.html" class="card-link">
@@ -473,10 +491,14 @@
             자사 해외 수출 프로세스 전략 수립 & 바이어 확보 & 수출 물류망 구축. 신규 4개국 진출과 해외 매출 $400,000 달성.
           </p>
           <div class="card-tags">
-            <span class="tag">Amazon</span>
+            <span class="tag">Amazon FBA</span>
             <span class="tag">Shopee</span>
+            <span class="tag">Alibaba</span>
             <span class="tag">Q10</span>
-            <span class="tag">글로벌 마케팅</span>
+            <span class="tag">FTA</span>
+            <span class="tag">Fulfillment</span>
+            <span class="tag">해외영업</span>
+            <span class="tag">브랜드 스토어</span>
           </div>
         </div>
         <a href="https://sun-kim-90.github.io/portfolio/portfolio2/Portfolio_Global_Trade_Commerce.html" class="card-link">
@@ -493,10 +515,11 @@
             정부 지원 수출 바우처 사업 운영 및 상표권·특허 등록 관리. 정부 수출 바우처 2회 선정과 글로벌 상표권 5개국 등록.
           </p>
           <div class="card-tags">
-            <span class="tag">정부 지원사업</span>
-            <span class="tag">상표권</span>
-            <span class="tag">지재권</span>
-            <span class="tag">Alibaba</span>
+            <span class="tag">정부 수출 바우처</span>
+            <span class="tag">상표권 등록</span>
+            <span class="tag">지재권 관리</span>
+            <span class="tag">한국지식재산보호원</span>
+            <span class="tag">사업 기획</span>
           </div>
         </div>
         <a href="https://sun-kim-90.github.io/portfolio/portfolio2/Portfolio_Government_Project.html" class="card-link">
@@ -513,10 +536,12 @@
             해외 특수상품 수입 및 재고 회전을 최적화해 물류비 절감 및 수익률 개선. LCL 콘솔 물류비 50% 절감, FCL 물류비 30% 절감.
           </p>
           <div class="card-tags">
-            <span class="tag">BOM 체계</span>
-            <span class="tag">LCL/FCL</span>
+            <span class="tag">BOM Code 체계</span>
+            <span class="tag">LCL 콘솔</span>
+            <span class="tag">FCL</span>
+            <span class="tag">Ecount ERP</span>
             <span class="tag">KC 인증</span>
-            <span class="tag">포워딩</span>
+            <span class="tag">특수상품 관리</span>
           </div>
         </div>
         <a href="https://sun-kim-90.github.io/portfolio/portfolio2/Portfolio_Import_Forwarding.html" class="card-link">
