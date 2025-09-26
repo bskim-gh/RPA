@@ -260,7 +260,7 @@
 <body>
   <div class="container">
     <div class="nav-buttons screen-only">
-            <a href="index.html" class="nav-btn primary">
+      <a href="index.html" class="nav-btn primary">
         ← 포트폴리오 목록
       </a>
     </div>
@@ -675,25 +675,27 @@
         
         <div class="card">
           <div class="label">Marketing TASK 연계 기능 확장</div>
-          <div class="grid-2" style="margin-top: 12px;">
+          
+          <!-- 두 이미지를 나란히 배치 -->
+          <div class="grid-2" style="margin-top: 12px; gap: 16px;">
             <div>
-              <div class="label">데이터 조회 및 알람 기능</div>
+              <div class="label">🔧 에러 처리 시스템</div>
+                              <img src="../image/에러 처리.JPG" alt="에러 처리 시스템" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>API 연동 실패 및 타임아웃 처리</li>
+                <li>데이터 검증 오류 자동 복구</li>
+                <li>실시간 에러 모니터링 및 알림</li>
+                <li>안정적인 마케팅 자동화 시스템 구축</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">🔄 데이터 조회 및 알람 기능</div>
                               <img src="../image/refactoring.JPG" alt="N8N Refactoring" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
               <ul class="clean">
                 <li>Marketing TASK와 Custom GPT 연계</li>
                 <li>실시간 데이터 조회 기능 구현</li>
                 <li>Webhook 기반 알람 시스템</li>
                 <li>N8N 팩토링 작업으로 모듈화</li>
-              </ul>
-            </div>
-            <div>
-              <div class="label">통합 워크플로우</div>
-              <ul class="clean" style="margin-top: 40px;">
-                <li><strong>데이터 연계:</strong> Marketing 데이터 실시간 조회</li>
-                <li><strong>지능형 분석:</strong> GPT 기반 데이터 해석</li>
-                <li><strong>자동 알람:</strong> 임계값 기반 즉시 알림</li>
-                <li><strong>워크플로우 최적화:</strong> 팩토링을 통한 효율성 향상</li>
-                <li><strong>Webhook 통합:</strong> 외부 시스템과의 원활한 연동</li>
               </ul>
             </div>
           </div>
@@ -849,34 +851,263 @@
           <h2 class="section-title warn">🧠 ⑩ Claude Agent 구성</h2>
         </div>
         <div class="card">
-          <div class="label">업무 내용</div>
-          <p>Claude AI를 활용한 마케팅 업무 지원을 위한 앱 인스트럭션 설계 및 최적화</p>
-          <div class="badges">
+          <div class="label">Custom GPT 제약으로 인한 Claude Agent 전환</div>
+          <div style="margin-top: 12px; padding: 12px; background: rgba(234,179,8,.05); border-radius: 8px; border-left: 3px solid var(--warn);">
+            <p style="margin: 0; font-size: 13px; line-height: 1.5;">
+              <strong>전환 배경:</strong> Custom GPT PoC 성공 후 IS 보안 정책으로 사용 불가 안내<br/>
+              • 설치형 Agent 검토 후 Claude App으로 방향 전환<br/>
+              • 기존 N8N 워크플로우와의 연동 방안 재설계<br/>
+              → <strong>Claude AI 기반 마케팅 업무 지원 Agent 구축</strong>
+            </p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="label">Claude Agent 핵심 구성 요소</div>
+          <div class="grid-3" style="margin-top: 12px;">
+            <div>
+              <div class="label">App Instructions 설계</div>
+              <ul class="clean">
+                <li>마케팅 업무 특화 명령어 체계</li>
+                <li>도메인 지식 기반 응답 최적화</li>
+                <li>컨텍스트 유지 및 대화 흐름 관리</li>
+                <li>에러 처리 및 예외 상황 대응</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">N8N 워크플로우 연동</div>
+              <ul class="clean">
+                <li>기존 TASK 시나리오 활용</li>
+                <li>Webhook 기반 데이터 연동</li>
+                <li>실시간 상태 모니터링</li>
+                <li>자동화 프로세스 트리거</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">MCP 적용</div>
+              <ul class="clean">
+                <li>Model Context Protocol 구현</li>
+                <li>외부 시스템 연결 표준화</li>
+                <li>데이터 소스 통합 관리</li>
+                <li>확장 가능한 아키텍처 구성</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="label">MCP (Model Context Protocol) 인프라 구축</div>
+          <div class="grid-2" style="margin-top: 12px;">
+            <div>
+              <div class="label">🔧 MCP 기본 구성요소</div>
+                              <img src="../image/단일 mcp 및 agent 기본 구성.JPG" alt="MCP 기본 구성요소" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>Claude App과 N8N 서버 연동을 위한 Odin Application 설치</li>
+                <li>MCP 프로토콜 기반 통신 환경 구성</li>
+                <li>안정적인 연결 및 데이터 전송 보장</li>
+                <li>시스템 모니터링 및 로그 관리 체계 구축</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">🔗 실제 Claude App 적용 사례</div>
+                              <img src="../image/claude_mcp.JPG" alt="Claude MCP 적용 사례" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>Cafe24 Internal GitLab과 Odin Application 연동</li>
+                <li>자동화된 배포 파이프라인 구성</li>
+                <li>코드 변경 시 자동 빌드 및 배포</li>
+                <li>버전 관리 및 롤백 체계 구축</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="label">보안 및 접근 제어 시스템</div>
+          <div class="grid-3" style="margin-top: 12px;">
+            <div>
+              <div class="label">🛡️ ACL (Access Control List) 구성</div>
+              <ul class="clean">
+                <li>Meta/TikTok N8N 서버에 대한 제한적 접근</li>
+                <li>화이트리스트 기반 IP 접근 제어</li>
+                <li>포트별 세분화된 접근 권한 설정</li>
+                <li>실시간 접근 로그 모니터링</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">🔐 보안 정책 준수</div>
+              <ul class="clean">
+                <li>Cafe24 보안 정책 완전 준수</li>
+                <li>데이터 암호화 전송 (TLS/SSL)</li>
+                <li>인증 토큰 기반 API 접근</li>
+                <li>감사 로그 및 추적 가능성 확보</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">⚡ 연결 최적화</div>
+              <ul class="clean">
+                <li>지정된 N8N 서버만 접근 허용</li>
+                <li>불필요한 네트워크 트래픽 차단</li>
+                <li>연결 풀링 및 재사용 최적화</li>
+                <li>장애 시 자동 복구 메커니즘</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="label">Claude App 세부 설정 및 구성</div>
+          <div class="grid-2" style="margin-top: 12px;">
+            <div>
+              <div class="label">📝 Instructions & Description 최적화</div>
+              <ul class="clean">
+                <li><strong>Instructions:</strong> 마케팅 Agent 역할 정의 및 행동 지침</li>
+                <li><strong>Description:</strong> Agent 기능 및 사용 목적 명시</li>
+                <li><strong>Context Setting:</strong> 업무 도메인 특화 컨텍스트 설정</li>
+                <li><strong>Response Format:</strong> 일관된 응답 형식 및 톤앤매너</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">⚙️ Arguments 개별 작업 설정</div>
+              <ul class="clean">
+                <li>TASK별 필수/선택 파라미터 정의</li>
+                <li>데이터 타입 및 유효성 검증 규칙</li>
+                <li>에러 핸들링 및 예외 처리 로직</li>
+                <li>동적 파라미터 전달 및 변환</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div style="margin-top: 16px; padding: 12px; background: rgba(16,185,129,.05); border-radius: 8px; border-left: 3px solid var(--accent);">
+            <p style="margin: 0; font-size: 13px; line-height: 1.5;">
+              <strong>핵심 구현 사항:</strong><br/>
+              • Claude App에서 자연어 명령을 받아 적절한 N8N TASK 호출<br/>
+              • 실시간 결과 피드백 및 상태 업데이트<br/>
+              • 복잡한 마케팅 워크플로우를 직관적인 대화로 실행
+            </p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="label">📚 MCP 매뉴얼 제작 및 가이드 배포</div>
+          <div class="grid-3" style="margin-top: 12px;">
+            <div>
+              <div class="label">📖 사용자 가이드 작성</div>
+              <ul class="clean">
+                <li>Claude App 접근 및 초기 설정 가이드</li>
+                <li>주요 명령어 및 사용법 정리</li>
+                <li>실무 시나리오별 활용 예시</li>
+                <li>문제 해결 및 FAQ 섹션</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">🔧 기술 문서화</div>
+              <ul class="clean">
+                <li>MCP 아키텍처 및 구성 요소 설명</li>
+                <li>API 연동 방법 및 인증 절차</li>
+                <li>에러 코드 및 디버깅 가이드</li>
+                <li>성능 최적화 및 모니터링 방법</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">📋 운영 가이드</div>
+              <ul class="clean">
+                <li>일상 운영 체크리스트</li>
+                <li>장애 대응 매뉴얼</li>
+                <li>백업 및 복구 절차</li>
+                <li>업데이트 및 유지보수 가이드</li>
+              </ul>
+            </div>
+          </div>
+          
+          <ul class="impact" style="margin-top: 16px;">
+            <li>실무진이 쉽게 따라할 수 있는 단계별 가이드 제작</li>
+            <li>기술적 배경 없이도 Claude Agent 활용 가능한 사용자 친화적 매뉴얼</li>
+            <li>팀 내 지식 공유 및 온보딩 프로세스 표준화</li>
+            <li>지속적인 업데이트 및 개선을 위한 피드백 수집 체계 구축</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <div class="label">🔧 MCP 상세 사양 관리 및 시각화 시스템</div>
+          <div class="grid-3" style="margin-top: 12px;">
+            <div>
+              <div class="label">📚 MCP Wiki 문서 작성</div>
+                              <img src="../image/mcp_wiki.JPG" alt="MCP Wiki 문서" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>제작된 MCP 상세 사양을 Wiki에 문서화</li>
+                <li>사용법 및 예제 코드 상세 기록</li>
+                <li>개발자 및 사용자를 위한 가이드 작성</li>
+                <li>팀 내 지식 공유 및 참조 자료 제공</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">📊 Front-end 시각화 대시보드</div>
+                              <img src="../image/mcp 목록.JPG" alt="MCP 목록 시각화" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>별도 Front-end 구성으로 직관적 시각화</li>
+                <li>MCP 도구 목록 및 상태 실시간 표시</li>
+                <li>사용 빈도 및 성능 지표 모니터링</li>
+                <li>사용자 친화적 인터페이스 제공</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">🔍 상세 Args & Docstring 확인</div>
+                              <img src="../image/mcp 구성.JPG" alt="MCP 구성 상세" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px;" class="clickable-image" onclick="openImagePopup(this)">
+              <ul class="clean">
+                <li>각 Tool의 상세 Arguments 명세</li>
+                <li>Docstring 기반 사용법 가이드</li>
+                <li>예제 코드 및 활용 시나리오</li>
+                <li>원하는 Tool 선택 지원 시스템</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div style="margin-top: 16px; padding: 12px; background: rgba(99,102,241,.05); border-radius: 8px; border-left: 3px solid var(--primary);">
+            <p style="margin: 0; font-size: 13px; line-height: 1.5;">
+              <strong>핵심 구현 사항:</strong><br/>
+              • Wiki 기반 체계적 문서 관리로 MCP 도구 활용도 극대화<br/>
+              • Front-end 시각화를 통한 직관적 도구 선택 및 모니터링<br/>
+              • 상세 사양 제공으로 개발자 및 사용자 모두 효율적 활용 가능
+            </p>
+          </div>
+          
+          <ul class="impact" style="margin-top: 16px;">
+            <li>MCP Wiki 문서 작성으로 팀 내 지식 공유 및 활용도 극대화</li>
+            <li>Front-end 시각화 대시보드로 실시간 모니터링 및 선택 편의성 제공</li>
+            <li>상세 Args & Docstring 제공으로 정확한 도구 활용 가이드 완성</li>
+            <li>통합 문서화 및 시각화로 MCP 활용 효율성 향상</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <div class="label">핵심 성과</div>
+          <ul class="impact">
+            <li>Custom GPT 대비 보안 정책 준수하면서 동등한 성능 구현</li>
+            <li>기존 N8N 워크플로우와의 원활한 연동으로 기존 투자 보호</li>
+            <li>MCP 프로토콜 기반 확장 가능한 Agent 아키텍처 구축</li>
+            <li>Odin Application 설치 및 GitLab CI/CD 파이프라인 구성 완료</li>
+            <li>ACL 기반 보안 접근 제어로 Meta/TikTok N8N 서버만 제한적 연결</li>
+            <li>Instructions & Arguments 최적화로 마케팅 업무 특화 Agent 완성</li>
+            <li>MCP Wiki 문서 작성 및 Front-end 시각화 대시보드 구축</li>
+            <li>상세 Args & Docstring 제공으로 정확한 도구 활용 가이드 완성</li>
+            <li>사용자 친화적 MCP 매뉴얼 제작 및 팀 내 가이드 배포</li>
+            <li>실무진 피드백 기반 지속적 성능 개선 체계 확립</li>
+          </ul>
+          
+          <div class="badges" style="margin-top: 12px;">
             <span class="badge">Claude AI</span>
-            <span class="badge">Prompt Engineering</span>
-            <span class="badge">Instructions</span>
+            <span class="badge">MCP</span>
+            <span class="badge">Odin Application</span>
+            <span class="badge">GitLab CI/CD</span>
+            <span class="badge">N8N Integration</span>
+            <span class="badge">ACL Security</span>
+            <span class="badge">Frontend Dashboard</span>
+            <span class="badge">Marketing Automation</span>
           </div>
         </div>
       </section>
 
       <div class="section-divider warn"></div>
-
-      <section class="section">
-        <div class="card section-header-warn">
-          <h2 class="section-title warn">🤝 ⑪ 실무 담당자들에게 이관</h2>
-        </div>
-        <div class="card">
-          <div class="label">업무 내용</div>
-          <p>개발된 시스템 및 프로세스를 실무 담당자들에게 교육 및 이관</p>
-          <div class="badges">
-            <span class="badge">Knowledge Transfer</span>
-            <span class="badge">Training</span>
-            <span class="badge">Documentation</span>
-          </div>
-        </div>
-      </section>
-
-      <div class="section-divider"></div>
 
       <section class="section">
         <div class="card section-header-primary">
@@ -958,23 +1189,6 @@
             <li><strong>비용 절감:</strong> 자동화를 통한 인력 운영비 절감</li>
             <li><strong>확장성:</strong> 50+ 대행사 관리 프로세스 확립</li>
           </ul>
-        </div>
-      </section>
-
-      <div class="section-divider"></div>
-
-      <section class="section">
-        <div class="card section-header-accent">
-          <h2 class="section-title accent">�� 링크 & 산출물 / Links & Deliverables</h2>
-        </div>
-        <div class="card qr-and-links">
-          <div class="qr-box">QR</div>
-          <div class="links">
-            <p><strong>Repository:</strong> Cafe24 Internal GitLab
-            <br/><strong>Dashboard:</strong> Marketing Agent Monitor
-            <br/><strong>Documentation:</strong> 운영 정책 가이드 (Confluence)
-            <br/><strong>API Docs:</strong> Meta/TikTok 연동 가이드</p>
-          </div>
         </div>
       </section>
     </article>

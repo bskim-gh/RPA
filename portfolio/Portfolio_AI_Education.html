@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Agent(AI) 교육 - 김보선 포트폴리오</title>
+  <title>AI 혁신 교육 프로그램 - 김보선 포트폴리오</title>
   <style>
     :root{
       --primary:#6366f1;
@@ -142,6 +142,188 @@
       opacity: 0.9;
     }
 
+    .highlight-box {
+      background: rgba(99,102,241,.1);
+      border: 1px solid rgba(99,102,241,.2);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 12px 0;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(234,179,8,.1);
+      color: #a16207;
+      border: 1px solid rgba(234,179,8,.25);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .tech-item {
+      background: rgba(16,185,129,.1);
+      color: #065f46;
+      border: 1px solid rgba(16,185,129,.25);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .tab-container {
+      margin-top: 16px;
+    }
+
+    .tab-buttons {
+      display: flex;
+      border-bottom: 2px solid var(--line);
+      margin-bottom: 16px;
+      gap: 4px;
+    }
+
+    .tab-button {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-bottom: none;
+      padding: 10px 16px;
+      cursor: pointer;
+      border-radius: 8px 8px 0 0;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      transition: all 0.2s ease;
+    }
+
+    .tab-button.active {
+      background: var(--card);
+      color: var(--primary);
+      border-color: var(--primary);
+      border-bottom: 2px solid var(--card);
+      margin-bottom: -2px;
+    }
+
+    .tab-button:hover:not(.active) {
+      background: var(--primary-ink);
+      color: var(--ink);
+    }
+
+    .tab-content {
+      display: none;
+      background: var(--card);
+      padding: 16px;
+      border-radius: 0 8px 8px 8px;
+      border: 1px solid var(--line);
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .management-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .image-item {
+      text-align: center;
+    }
+
+    .image-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: #f8fafc;
+    }
+
+    .image-item img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(15,23,42,.15);
+    }
+
+    .image-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-top: 8px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      position: relative;
+      margin: 5% auto;
+      padding: 0;
+      width: auto;
+      max-width: 90%;
+      max-height: 90%;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-image {
+      max-width: 90vw;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      display: block;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: white;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close:hover {
+      background: rgba(0,0,0,0.7);
+    }
+
+    @media (max-width: 900px) {
+      .management-images {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media print {
       body{ background: white; }
       .card{ box-shadow: none; }
@@ -152,8 +334,9 @@
 </head>
 <body>
   <div class="container">
+
     <div class="nav-buttons screen-only">
-            <a href="index.html" class="nav-btn primary">
+      <a href="index.html" class="nav-btn primary">
         ← 포트폴리오 목록
       </a>
     </div>
@@ -162,151 +345,922 @@
 
     <article class="project">
       <header class="header">
-        <h1>Agent(AI) 교육</h1>
-        <div class="sub">본부 임직원의 AI Agent 활용 역량 강화를 위한 교육 진행</div>
+        <h1>AI 혁신 교육 프로그램</h1>
+        <div class="sub">운영부서 병목 해결 및 AI 혁신 주도를 위한 실무 중심 교육 프로그램</div>
         <div class="meta-grid">
-          <div class="meta"><div class="label">기간 / Period</div><div class="value">상시</div></div>
-          <div class="meta"><div class="label">역할 / Role</div><div class="value">교육 기획 · 강사</div></div>
+          <div class="meta"><div class="label">기간 / Period</div><div class="value">2024.03 ~ 진행중</div></div>
+          <div class="meta"><div class="label">역할 / Role</div><div class="value">PM · 기술코칭 · 제작지원</div></div>
           <div class="meta"><div class="label">소속 / Company</div><div class="value">Cafe24 · AI 인프라팀</div></div>
         </div>
         <div class="kpi-chips">
-          <div class="chip"><span class="delta-up">▲</span> 교육 만족도 95% 달성</div>
-          <div class="chip"><span class="delta-up">▲</span> 각 팀별 RPA 전담 인력 2명 확보</div>
-          <div class="chip"><span class="delta-up">▲</span> AI 활용 역량 전사 확산</div>
+          <div class="chip"><span class="delta-up">▲</span> 28개 사내 Agent 구축 완료</div>
+          <div class="chip"><span class="delta-up">▲</span> N8N WF 도합 +500 제작</div>
+          <div class="chip"><span class="delta-up">▲</span> 팀 별 AI 혁신 담당인력 2명 육성</div>
+          <div class="chip"><span class="delta-up">▲</span> 우수사례 웨비나 운영</div>
         </div>
       </header>
 
       <section class="section">
-        <h2>① 개요 / Overview</h2>
+        <h2>① 교육 목적 & 철학 / Education Purpose & Philosophy</h2>
+        <div class="card">
+          <div class="highlight-box">
+            <h3 style="margin-top:0; color: var(--primary);">핵심 교육 철학</h3>
+            <p><strong>단순한 신기술 교육이 아닌, 실제 운영부서의 병목과 기술적 이슈를 해결하는 AI 혁신 주도</strong></p>
+          </div>
+          <div class="grid-2">
+            <div>
+              <div class="label">교육 접근법</div>
+              <ul class="impact">
+                <li>운영부서 병목 구간 우선 파악</li>
+                <li>기술적 이슈로 제작 불가한 영역 식별</li>
+                <li>관련 기술 및 매뉴얼 공유</li>
+                <li>실제 운영프로세스 도입 지원</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">기대 효과</div>
+              <ul class="impact">
+                <li>실무 중심의 AI 활용 역량 강화</li>
+                <li>부서별 맞춤형 솔루션 개발</li>
+                <li>전사 AI 혁신 문화 확산</li>
+                <li>업무 효율성 및 생산성 향상</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>② 교육 대상 & 운영 방식 / Target & Operation Method</h2>
         <div class="card grid-2">
           <div>
-            <div class="label">문맥 / Context</div>
+            <div class="label">교육 대상</div>
             <ul class="clean">
-              <li>AI 기술의 급속한 발전과 업무 적용 필요성</li>
-              <li>임직원들의 AI 도구 활용 역량 편차</li>
-              <li>업무 자동화 및 효율성 향상 요구</li>
+              <li><strong>웨비나:</strong> 우수사례 발표 및 전사 공유</li>
+              <li><strong>팀별 교육:</strong> 각 운영부서 실무진</li>
+              <li><strong>심화 과정:</strong> AI/RPA 전담 인력</li>
             </ul>
           </div>
           <div>
-            <div class="label">문제정의 / Problem</div>
+            <div class="label">운영 방식</div>
             <ul class="clean">
-              <li>AI 도구 활용법에 대한 체계적 교육 부재</li>
-              <li>실무 적용 가능한 사례 중심 교육 필요</li>
-              <li>팀별 AI 전문 인력 양성 필요</li>
+              <li><strong>2주 스프린트:</strong> 팀별 집중 교육 기간</li>
+              <li><strong>2일 스크럼:</strong> 진행상황 점검 및 피드백</li>
+              <li><strong>실습 중심:</strong> 이론보다 실무 적용 우선</li>
             </ul>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <h2>② 목표 & KPI / Goals & KPIs</h2>
+        <h2>③ 본인의 역할 / My Role</h2>
+        <div class="card">
+          <div class="grid-3">
+            <div>
+              <div class="role-badge">🎯 PM</div>
+              <div class="label">AI, RPA 교육 주도</div>
+              <ul class="clean">
+                <li>교육 커리큘럼 설계</li>
+                <li>진행 일정 관리</li>
+                <li>성과 측정 및 개선</li>
+                <li>팀별 맞춤형 교육 계획</li>
+              </ul>
+            </div>
+            <div>
+              <div class="role-badge">👨‍🏫 기술코칭</div>
+              <div class="label">기술 코칭 지원</div>
+              <ul class="clean">
+                <li>실습 가이드 제공</li>
+                <li>기술적 문제 해결</li>
+                <li>Best Practice 공유</li>
+                <li>개별 멘토링</li>
+              </ul>
+            </div>
+            <div>
+              <div class="role-badge">🛠️ 제작지원</div>
+              <div class="label">제작 필요 구간 지원</div>
+              <ul class="clean">
+                <li>프로토타입 개발</li>
+                <li>기술 검증</li>
+                <li>구현 가이드</li>
+                <li>배포 및 운영 지원</li>
+              </ul>
+                        </div>
+          </div>
+          
+          <div class="curriculum-item" style="margin-top: 20px;">
+            <h4 style="color: var(--ink); margin: 16px 0 8px 0; font-size: 15px;">교육 운영 체계</h4>
+            <div class="grid-3">
+              <div>
+                <div class="label">교육 개요</div>
+                                  <img src="../image/AI 교육.JPG" alt="AI 교육 개요" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); margin-top: 8px; cursor: pointer;" onclick="openModal(this)">
+              </div>
+              <div>
+                <div class="label">각 담당자 배정</div>
+                                  <img src="../image/역할.JPG" alt="담당자 역할 배정" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); margin-top: 8px; cursor: pointer;" onclick="openModal(this)">
+              </div>
+              <div>
+                <div class="label">교육 로드맵</div>
+                                  <img src="../image/로드맵.JPG" alt="교육 로드맵" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); margin-top: 8px; cursor: pointer;" onclick="openModal(this)">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>④ 교육 관리 프로세스 / Education Management Process</h2>
+        <div class="card">
+          <div class="highlight-box">
+            <h3 style="margin-top:0; color: var(--primary);">별도 관리 Front 구축</h3>
+            <p><strong>체계적인 교육 관리 및 성과 추적을 위한 전용 관리 시스템 개발</strong></p>
+          </div>
+          
+          <div class="grid-2">
+            <div>
+              <div class="label">구축 배경 및 사유</div>
+              <ul class="clean">
+                <li><strong>형상관리 이슈:</strong> 각 담당자들이 제작하면서 형상관리하는 시간 부족</li>
+                <li><strong>현황 파악 어려움:</strong> 인사팀이 전체 인원들의 작업결과를 쉽게 파악할 수 없음</li>
+                <li><strong>평가 체계 필요:</strong> 참여자들의 정확한 평가를 위한 구조화된 데이터 필요</li>
+                <li><strong>성과 공유:</strong> 웨비나 진행 및 인사팀 정보 전달로 프로젝트 참여도 향상</li>
+              </ul>
+            </div>
+            <div>
+              <div class="label">관리 시스템 구조</div>
+              <ul class="clean">
+                <li><strong>전체 현황 대시보드:</strong> 교육 진행률 및 참여자 현황 실시간 모니터링</li>
+                <li><strong>개별 제작 사양:</strong> Streamlit 기반 실시간 업로드 Middle ware 제공</li>
+                <li><strong>성과 자동 수집:</strong> Git, Wiki, GSheet의 경우 직접 개별 수집 WF 제작하여 매일 00시 자정 스케줄러를 통해 제작자의 형상관리 리소스 절감 지원</li>
+                <li><strong>인사 평가:</strong> 인사팀 협의 하여 객관적 평가 기준 및 자동 점수 산출</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <div class="label">관리 시스템 화면</div>
+            <div class="management-images">
+              <div class="image-item">
+                <img src="../image/A2A_전체현황.JPG" alt="A2A TF 전체현황" onclick="openModal(this)">
+                <div class="image-label">1. A2A TF 전체현황</div>
+              </div>
+              <div class="image-item">
+                <img src="../image/A2A_그룹전체.JPG" alt="A2A TF 그룹 전체" onclick="openModal(this)">
+                <div class="image-label">2. A2A TF 그룹 전체</div>
+              </div>
+              <div class="image-item">
+                <img src="../image/A2A_그룹상세.JPG" alt="A2A 그룹 상세" onclick="openModal(this)">
+                <div class="image-label">3. A2A 그룹 상세</div>
+              </div>
+              <div class="image-item">
+                <img src="../image/상세지표 관리.JPG" alt="A2A TF 개인 상세" onclick="openModal(this)">
+                <div class="image-label">4. A2A TF 개인 상세</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑤ 주요 교육 내용 / Main Curriculum</h2>
+        
+        <!-- n8n 교육 -->
+        <div class="card">
+          <h3 style="color: var(--primary); margin-top: 0;">🔄 n8n (Workflow Automation)</h3>
+          
+          <div class="tab-container">
+            <div class="tab-buttons">
+              <button class="tab-button active" onclick="showTab(event, 'n8n-basics')">기본 문법</button>
+              <button class="tab-button" onclick="showTab(event, 'n8n-credentials')">Credential 설정</button>
+              <button class="tab-button" onclick="showTab(event, 'n8n-builtin')">Built-in App</button>
+              <button class="tab-button" onclick="showTab(event, 'n8n-options')">App Options</button>
+              <button class="tab-button" onclick="showTab(event, 'n8n-results')">제작결과</button>
+            </div>
+
+            <div id="n8n-basics" class="tab-content active">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">N8N 문법 & 기본 설정</h4>
+              <ul class="clean">
+                <li><strong>워크플로우 설계:</strong> 노드 기반 비주얼 프로그래밍</li>
+                <li><strong>데이터 흐름:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>외부 Json import 시 version 체크</li>
+                    <li>Proxy를 통해 라우팅되는 N8N 구조로, 내부 Webhook 호출 양식 공유</li>
+                  </ul>
+                </li>
+                <li><strong>조건부 실행 로직:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>IF 노드 활용</li>
+                    <li>Filter 노드 활용</li>
+                    <li>Switch 노드 활용</li>
+                  </ul>
+                </li>
+                <li><strong>에러 핸들링:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>Error Trigger node 활용</li>
+                    <li>Node 별 Option 지정하여 에러 분기처리</li>
+                    <li>Stop: 에러 발생 시 워크플로우 중단</li>
+                    <li>Continue: 에러 무시하고 다음 노드 실행</li>
+                    <li>Continue using error: 에러 데이터를 다음 노드로 전달</li>
+                  </ul>
+                </li>
+                <li><strong>문서화 & 관리:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>Note 기능: 노드별 설명 및 문서화</li>
+                    <li>실행횟수 처리: 반복 실행 및 배치 처리 설정</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div id="n8n-credentials" class="tab-content">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">Credential 설정</h4>
+              <ul class="clean">
+                <li><strong>Google Console:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>API 및 서비스 관리자에서 필요한 라이브러리 활성화</li>
+                    <li>사용자 인증정보 → OAuth 2.0 웹앱 생성</li>
+                    <li>리디렉션 URL 설정 및 인증 플로우 구성</li>
+                    <li>Google 서비스 연동 처리 (Sheets, Drive, Gmail 등)</li>
+                  </ul>
+                </li>
+                <li><strong>Slack:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>Socket 모드 활성화</li>
+                    <li>User Scope 설정 (쓰기, 읽기, 참여 등)</li>
+                    <li>Slack Trigger를 위한 WebHook 설정방법 안내</li>
+                  </ul>
+                </li>
+                <li><strong>DBMS:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>PostgreSQL, MySQL 연결 설정</li>
+                    <li>host 별 N8N 접근 방화벽 이슈 해결</li>
+                  </ul>
+                </li>
+                <li><strong>Jira & Wiki:</strong> API 토큰 생성 및 인증 설정</li>
+                <li><strong>3rd Party 연동:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li><strong>Clova AI:</strong> Http node로 STT, OCR 활용 템플릿 제작 제공 (Token 중앙관리 이슈 대응)</li>
+                    <li><strong>채널톡:</strong> 외부 IP 이슈로 IS과 협의하여 방화벽 해제 후 Webhook trigger 교육진행</li>
+                    <li><strong>GPT:</strong> LLM 이슈로 외부→n8n 지정 port→내부 웹훅 호출을 통한 중앙관리 프로세스 구축 후 교육진행</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div id="n8n-builtin" class="tab-content">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">Built-in App 활용</h4>
+              <ul class="clean">
+                <li><strong>데이터 처리 노드:</strong> JSON 변환, 필터링, 집계</li>
+                <li><strong>Slack 연동:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>수신자 입력 문법 교육 (@, #)</li>
+                    <li>Block kit builder 활용</li>
+                    <li>슬랙 버전 업데이트로 인한 File attach 기능 N8N 연동 해제되어 별도 http node로 해결</li>
+                  </ul>
+                </li>
+                <li><strong>Google Sheets:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>데이터 읽기/쓰기, 자동 업데이트</li>
+                    <li>idx 매칭 방법 안내</li>
+                    <li>단일 컬럼만 PK 지정가능한 솔루션 제공</li>
+                    <li>CRUD 기능 별 option 설정방법 안내</li>
+                  </ul>
+                </li>
+                <li><strong>Jira:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>사내 Custom fields 혼재되어 Get option을 통해 원하는 Fields 제어 방법 교육</li>
+                    <li>JQL (Jira Query Language) 기본 사용방법 안내</li>
+                  </ul>
+                </li>
+                <li><strong>Salesforce:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>2가지 Org 개별 운용:
+                      <ul style="margin-top: 2px; margin-left: 12px; font-size: 12px;">
+                        <li>1차 Sandbox Credential 할당 활용교육 진행</li>
+                        <li>2차 실서버 Credential ↔ N8N 본 제작 진행</li>
+                      </ul>
+                    </li>
+                    <li>Org 별 서로 다른 Object로 운영되어 Get 옵션을 통하여 커스텀 object 제작에 대한 해결방안 전달</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div id="n8n-options" class="tab-content">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">App별 Option 설정</h4>
+              <ul class="clean">
+                <li><strong>Slack App Options:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>Channel 선택 및 사용자 멘션 설정</li>
+                    <li>메시지 포맷팅 (Markdown, Block Kit)</li>
+                    <li>첨부파일 및 이미지 업로드 옵션</li>
+                  </ul>
+                </li>
+                <li><strong>Google Sheets Options:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>시트 범위 지정 및 셀 주소 설정</li>
+                    <li>데이터 타입 변환 옵션</li>
+                    <li>헤더 행 처리 및 필터링 조건</li>
+                  </ul>
+                </li>
+                <li><strong>Jira Options:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>프로젝트 키 및 이슈 타입 설정</li>
+                    <li>필드 매핑 및 커스텀 필드 처리</li>
+                    <li>워크플로우 상태 전환 규칙</li>
+                  </ul>
+                </li>
+                <li><strong>Database Options:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>쿼리 파라미터 바인딩</li>
+                    <li>트랜잭션 처리 및 롤백 설정</li>
+                    <li>연결 풀 및 타임아웃 관리</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div id="n8n-results" class="tab-content">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">제작결과</h4>
+              
+              <div class="sub-tab-container">
+                <div class="tab-buttons">
+                  <button class="tab-button active" onclick="showTab(event, 'result-1')">SalesForce</button>
+                  <button class="tab-button" onclick="showTab(event, 'result-2')">Single Agent</button>
+                  <button class="tab-button" onclick="showTab(event, 'result-3')">Meta 광고생성</button>
+                  <button class="tab-button" onclick="showTab(event, 'result-4')">Google Slide 제안서</button>
+                  <button class="tab-button" onclick="showTab(event, 'result-5')">고객사 리포트</button>
+                </div>
+
+                <div id="result-1" class="tab-content active">
+                  <div class="image-item" style="text-align: center;">
+                    <img src="../image/salesfoce.JPG" alt="SalesForce 워크플로우" style="width: 100%; max-width: 800px; height: 450px; object-fit: contain; border-radius: 8px; border: 1px solid var(--line); cursor: pointer; background: #f8fafc;" onclick="openModal(this)">
+                    <div class="image-label">SalesForce 워크플로우</div>
+                  </div>
+                </div>
+
+                <div id="result-2" class="tab-content">
+                  <div class="image-item" style="text-align: center;">
+                    <img src="../image/Single Agent TEMP.JPG" alt="Single Agent Template" style="width: 100%; max-width: 800px; height: 450px; object-fit: contain; border-radius: 8px; border: 1px solid var(--line); cursor: pointer; background: #f8fafc;" onclick="openModal(this)">
+                    <div class="image-label">Single Agent Template</div>
+                  </div>
+                </div>
+
+                <div id="result-3" class="tab-content">
+                  <div class="image-item" style="text-align: center;">
+                    <img src="../image/Meta 광고생성.JPG" alt="Meta 광고생성 워크플로우" style="width: 100%; max-width: 800px; height: 450px; object-fit: contain; border-radius: 8px; border: 1px solid var(--line); cursor: pointer; background: #f8fafc;" onclick="openModal(this)">
+                    <div class="image-label">Meta 광고생성 워크플로우</div>
+                  </div>
+                </div>
+
+                <div id="result-4" class="tab-content">
+                  <div class="image-item" style="text-align: center;">
+                    <img src="../image/google 제안서 자동생성 WF.JPG" alt="Google Slide 제안서 자동생성" style="width: 100%; max-width: 800px; height: 450px; object-fit: contain; border-radius: 8px; border: 1px solid var(--line); cursor: pointer; background: #f8fafc;" onclick="openModal(this)">
+                    <div class="image-label">Google Slide 제안서 자동생성</div>
+                  </div>
+                </div>
+
+                <div id="result-5" class="tab-content">
+                  <div class="image-item" style="text-align: center;">
+                    <img src="../image/고객사 리포트 발송.JPG" alt="고객사 리포트 발송 워크플로우" style="width: 100%; max-width: 800px; height: 450px; object-fit: contain; border-radius: 8px; border: 1px solid var(--line); cursor: pointer; background: #f8fafc;" onclick="openModal(this)">
+                    <div class="image-label">고객사 리포트 발송 워크플로우</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-stack" style="margin-top: 16px;">
+            <span class="tech-item">n8n</span>
+            <span class="tech-item">Google API</span>
+            <span class="tech-item">Slack Socket</span>
+            <span class="tech-item">PostgreSQL</span>
+            <span class="tech-item">Clova OCR</span>
+            <span class="tech-item">GPT API</span>
+          </div>
+        </div>
+
+        <!-- Odin 교육 -->
+        <div class="card">
+          <h3 style="color: var(--primary); margin-top: 0;">⚡ Odin (Infrastructure & DevOps)</h3>
+          
+          <div class="tab-container">
+            <div class="tab-buttons">
+              <button class="tab-button active" onclick="showTab(event, 'odin-infra')">인프라 개발</button>
+              <button class="tab-button" onclick="showTab(event, 'odin-cicd')">CI/CD</button>
+              <button class="tab-button" onclick="showTab(event, 'odin-cluster')">클러스터 관리</button>
+            </div>
+
+            <div id="odin-infra" class="tab-content active">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">사내 인프라 기반 개발</h4>
+              <ul class="clean">
+                <li><strong>제작 프로세스:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>사내 인프라 기준 개발 가이드라인</li>
+                    <li>프로젝트 템플릿 및 구조 표준화</li>
+                    <li>코드 리뷰 및 승인 프로세스</li>
+                  </ul>
+                </li>
+                <li><strong>Odin App 운영:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>기본 앱 구조 및 아키텍처 이해</li>
+                    <li>배포 방식 및 환경 설정</li>
+                    <li>앱 라이프사이클 관리</li>
+                  </ul>
+                </li>
+                <li><strong>OdinServerless:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>서버리스 함수 개발 방법론</li>
+                    <li>이벤트 기반 아키텍처 설계</li>
+                    <li>함수 모니터링 및 디버깅</li>
+                  </ul>
+                </li>
+                <li><strong>개발환경:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>로컬 개발 환경 구축 및 설정 (Dependency, Docker 등)</li>
+                    <li>비개발자를 위한 Cursor 기반 개발 프로세스 공유</li>
+                    <li>Gitlab 사용가이드</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div id="odin-cicd" class="tab-content">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">CI/CD 설정</h4>
+              <ul class="clean">
+                <li><strong>파이프라인 구성:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>빌드, 테스트, 배포 자동화 설정</li>
+                    <li>단계별 게이트웨이 및 승인 프로세스 (사내 IS 협의 승인 프로세스 구축)</li>
+                    <li>환경별 배포 전략 (dev, staging, prod)</li>
+                  </ul>
+                </li>
+                <li><strong>GitLab 관리:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>레포지토리 설정 및 권한 관리 (팀내 공유 프로세스 가이드)</li>
+                    <li>브랜치 전략 (표준TEMP > Duplicate Custom 환경 제공)</li>
+                  </ul>
+                </li>
+                <li><strong>Docker 운영:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>FastAPI 기반 서비스 컨테이너 실행</li>
+                    <li>WAS(Web Application Server) 환경 컨테이너 운영</li>
+                    <li>Selenium 기반 Crawling 컨테이너 운영</li>
+                  </ul>
+                </li>
+                <li><strong>Dependency 관리:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>패키지 의존성 관리 및 버전 제어</li>
+                    <li>보안 취약점 스캔 및 대응</li>
+                    <li>라이선스 관리 및 컴플라이언스</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div id="odin-cluster" class="tab-content">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">클러스터 관리</h4>
+              <ul class="clean">
+                <li><strong>ACLs 생성:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>클러스터 접근 권한 설정 및 관리</li>
+                    <li>사용자 그룹별 권한 분리</li>
+                    <li>네임스페이스 기반 리소스 격리</li>
+                  </ul>
+                </li>
+                <li><strong>리소스 모니터링:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>CPU, 메모리, 네트워크 사용량 추적</li>
+                    <li>알림 및 임계값 설정</li>
+                  </ul>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div class="tech-stack" style="margin-top: 16px;">
+            <span class="tech-item">Odin</span>
+            <span class="tech-item">OdinServerless</span>
+            <span class="tech-item">GitLab CI/CD</span>
+            <span class="tech-item">Docker</span>
+          </div>
+        </div>
+
+        <!-- MCP 교육 -->
+        <div class="card">
+          <h3 style="color: var(--primary); margin-top: 0;">🤖 MCP (Model Context Protocol)</h3>
+          
+          <div class="tab-container">
+            <div class="tab-buttons">
+              <button class="tab-button active" onclick="showTab(event, 'mcp-basic')">기본 개념</button>
+              <button class="tab-button" onclick="showTab(event, 'mcp-instance')">인스턴스 운영</button>
+              <button class="tab-button" onclick="showTab(event, 'mcp-apply')">실무 적용</button>
+            </div>
+
+            <div id="mcp-basic" class="tab-content active">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">MCP 기본 개념</h4>
+              <ul class="clean">
+                <li><strong>프로토콜 이해:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>MCP 표준 및 통신 규격 이해</li>
+                    <li>프로토콜 버전별 차이점 및 호환성</li>
+                    <li>메시지 포맷 및 데이터 구조</li>
+                  </ul>
+                </li>
+                <li><strong>Context 관리:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>컨텍스트 유지 및 전달 메커니즘</li>
+                    <li>세션 관리 및 상태 저장</li>
+                    <li>컨텍스트 크기 최적화 전략</li>
+                  </ul>
+                </li>
+                <li><strong>모델 간 통신:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>AI 모델 간 데이터 교환 방식</li>
+                    <li>멀티모달 데이터 처리</li>
+                    <li>통신 최적화 및 지연 시간 관리</li>
+                  </ul>
+                </li>
+                <li><strong>보안 체계:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>인증 및 권한 부여 시스템</li>
+                    <li>데이터 암호화 및 전송 보안</li>
+                    <li>접근 제어 및 감사 로그</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div id="mcp-instance" class="tab-content">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">MCP 인스턴스 운영</h4>
+              <ul class="clean">
+                <li><strong>인스턴스 생성:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>개별 MCP 서버 구축 방법</li>
+                    <li>환경별 설정 및 구성 관리</li>
+                    <li>초기 설정 및 테스트 절차</li>
+                  </ul>
+                </li>
+                <li><strong>운영 프로세스:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>배포 자동화 및 버전 관리</li>
+                    <li>실시간 모니터링 및 헬스체크</li>
+                    <li>정기 유지보수 및 업데이트</li>
+                  </ul>
+                </li>
+                <li><strong>성능 최적화:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>응답 시간 및 처리량 개선</li>
+                    <li>리소스 사용량 최적화</li>
+                    <li>병목 지점 식별 및 해결</li>
+                  </ul>
+                </li>
+                <li><strong>장애 대응:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>에러 처리 및 복구 전략</li>
+                    <li>장애 예방 및 조기 감지</li>
+                    <li>백업 및 복구 계획</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div id="mcp-apply" class="tab-content">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">실무 적용</h4>
+              <ul class="clean">
+                <li><strong>API Gateway 연동:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>외부 서비스와의 통합 설계</li>
+                    <li>API 버전 관리 및 호환성</li>
+                    <li>요청/응답 변환 및 검증</li>
+                  </ul>
+                </li>
+                <li><strong>Load Balancing:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>트래픽 분산 알고리즘 설정</li>
+                    <li>고가용성 아키텍처 구성</li>
+                    <li>장애 복구 및 페일오버</li>
+                  </ul>
+                </li>
+                <li><strong>캐싱 전략:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>성능 향상을 위한 데이터 캐싱</li>
+                    <li>캐시 무효화 및 업데이트 전략</li>
+                    <li>분산 캐시 시스템 구축</li>
+                  </ul>
+                </li>
+                <li><strong>모니터링:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>실시간 상태 추적 및 메트릭 수집</li>
+                    <li>알림 시스템 및 임계값 설정</li>
+                    <li>성능 분석 및 리포팅</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tech-stack" style="margin-top: 16px;">
+            <span class="tech-item">MCP Protocol</span>
+            <span class="tech-item">Context Management</span>
+            <span class="tech-item">API Gateway</span>
+            <span class="tech-item">Load Balancing</span>
+          </div>
+        </div>
+
+        <!-- Agent 교육 -->
+        <div class="card">
+          <h3 style="color: var(--primary); margin-top: 0;">🧠 Agent (AI Agent Development)</h3>
+          
+          <div class="tab-container">
+            <div class="tab-buttons">
+              <button class="tab-button active" onclick="showTab(event, 'agent-basic')">Agent 기본</button>
+              <button class="tab-button" onclick="showTab(event, 'agent-node')">Agent Node</button>
+              <button class="tab-button" onclick="showTab(event, 'agent-apply')">사내 적용</button>
+            </div>
+
+            <div id="agent-basic" class="tab-content active">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">Agent 기본 개념</h4>
+              <ul class="clean">
+                <li><strong>AI Agent 개념:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>자율적 의사결정 시스템 이해</li>
+                    <li>Agent의 특성 및 능력 정의</li>
+                    <li>기존 AI 모델과의 차이점</li>
+                  </ul>
+                </li>
+                <li><strong>Agent 아키텍처:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>인식-계획-실행 구조 이해</li>
+                    <li>메모리 및 컨텍스트 관리</li>
+                    <li>도구 사용 및 외부 API 연동</li>
+                  </ul>
+                </li>
+                <li><strong>작업 계획 수립:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>목표 분해 및 세부 작업 정의</li>
+                    <li>실행 순서 및 우선순위 결정</li>
+                    <li>동적 계획 수정 및 적응</li>
+                  </ul>
+                </li>
+                <li><strong>의사결정 로직:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>규칙 기반 의사결정 시스템</li>
+                    <li>학습 기반 판단 및 개선</li>
+                    <li>불확실성 처리 및 리스크 관리</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div id="agent-node" class="tab-content">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">Agent Node 개발</h4>
+              <ul class="clean">
+                <li><strong>노드 기반 설계:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>모듈화된 Agent 구성 방법</li>
+                    <li>재사용 가능한 컴포넌트 설계</li>
+                    <li>노드 간 데이터 흐름 관리</li>
+                  </ul>
+                </li>
+                <li><strong>워크플로우 연동:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>n8n과의 통합 개발 방법</li>
+                    <li>커스텀 노드 개발 및 배포</li>
+                    <li>기존 워크플로우와의 호환성</li>
+                  </ul>
+                </li>
+                <li><strong>상태 관리:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>Agent 실행 상태 추적 방법</li>
+                    <li>상태 저장 및 복원 메커니즘</li>
+                    <li>분산 환경에서의 상태 동기화</li>
+                  </ul>
+                </li>
+                <li><strong>에러 처리:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>예외 상황 감지 및 대응</li>
+                    <li>자동 복구 및 재시도 로직</li>
+                    <li>장애 로깅 및 알림 시스템</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div id="agent-apply" class="tab-content">
+              <h4 style="color: var(--ink); margin: 0 0 12px 0; font-size: 15px;">사내 적용 Agent</h4>
+              <ul class="clean">
+                <li><strong>MCP 기반 시나리오 수행 Agent:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>업무별 특화 모델 개발 방법</li>
+                    <li>프롬프트 엔지니어링 기법</li>
+                    <li>파인튜닝 및 모델 최적화</li>
+                    <li>성능 평가 및 개선 프로세스</li>
+                  </ul>
+                </li>
+                <li><strong>Claude App:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>대화형 인터페이스 구축 방법</li>
+                    <li>멀티턴 대화 관리 및 컨텍스트 유지</li>
+                    <li>사용자 경험 최적화</li>
+                    <li>대화 품질 모니터링</li>
+                  </ul>
+                </li>
+                <li><strong>Claude Code:</strong>
+                  <ul style="margin-top: 4px; margin-left: 16px; font-size: 13px;">
+                    <li>자동 코드 생성 및 리뷰 시스템</li>
+                    <li>개발 워크플로우 통합 방법</li>
+                    <li>코드 품질 보장 및 테스트</li>
+                    <li>개발 생산성 향상 전략</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tech-stack" style="margin-top: 16px;">
+            <span class="tech-item">Custom GPT</span>
+            <span class="tech-item">Claude API</span>
+            <span class="tech-item">Agent Framework</span>
+            <span class="tech-item">Code Generation</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>⑥ 교육 성과 & KPI / Results & KPIs</h2>
         <div class="card">
           <table>
-            <thead><tr><th>목표 지표</th><th>Baseline</th><th>Target</th><th>Result</th><th>측정방법</th></tr></thead>
+            <thead><tr><th>지표</th><th>목표</th><th>달성</th><th>증감률</th><th>측정방법</th></tr></thead>
             <tbody>
-              <tr><td>교육 만족도</td><td>70%</td><td>90%</td><td>95%</td><td>교육 후 설문조사</td></tr>
-              <tr><td>팀별 전담 인력</td><td>0명</td><td>1명/팀</td><td>2명/팀</td><td>역량 평가 후 인증</td></tr>
-              <tr><td>실무 적용률</td><td>20%</td><td>80%</td><td>85%</td><td>교육 후 3개월 추적</td></tr>
+              <tr><td>교육 완료율</td><td>-</td><td>100%</td><td>100%</td><td>참여자 전원 Agent 제작 완료</td></tr>
+              <tr><td>리포팅 시간 단축</td><td>50%</td><td>80%</td><td>+60%</td><td>마케팅팀 업무 효율성 측정</td></tr>
+              <tr><td>수동 리소스 절감</td><td>30%</td><td>50%</td><td>+66.7%</td><td>운영팀 자동화 효과</td></tr>
+              <tr><td>팀별 전담인력</td><td>0명</td><td>팀별 2명</td><td>∞</td><td>역량 인증 완료</td></tr>
+              <tr><td>데이터 처리 리소스 절감</td><td>50%</td><td>70%</td><td>+40%</td><td>데이터팀 자동화 측정</td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
-
       <section class="section">
-        <h2>④ 교육 방법론 / Teaching Methodology</h2>
-        <div class="card">
-          <table>
-            <thead><tr><th>방법</th><th>설명</th><th>도구</th><th>효과</th></tr></thead>
-            <tbody>
-              <tr><td>실습 중심 교육</td><td>이론보다 실무 적용 중심</td><td>Claude, GPT</td><td>즉시 활용 가능</td></tr>
-              <tr><td>사례 기반 학습</td><td>실제 업무 시나리오 활용</td><td>n8n, Custom GPT</td><td>실무 적용률 향상</td></tr>
-              <tr><td>멘토링 시스템</td><td>교육 후 지속적 지원</td><td>Slack, 1:1 상담</td><td>지속적 성장</td></tr>
-              <tr><td>프로젝트 기반</td><td>팀별 실제 프로젝트 진행</td><td>MCP, Claude Code</td><td>실무 역량 강화</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>⑤ 결과 & 임팩트 / Results & Impact</h2>
-        <div class="card">
-          <table>
-            <thead><tr><th>지표</th><th>Before</th><th>After</th><th>증감</th><th>비고</th></tr></thead>
-            <tbody>
-              <tr><td>교육 만족도</td><td>70%</td><td>95%</td><td>+25%p</td><td>실습 중심 교육</td></tr>
-              <tr><td>팀별 전담 인력</td><td>0명</td><td>2명/팀</td><td>목표 200% 달성</td><td>역량 인증 완료</td></tr>
-              <tr><td>업무 자동화율</td><td>10%</td><td>60%</td><td>+50%p</td><td>RPA 도구 활용</td></tr>
-            </tbody>
-          </table>
-          <ul class="impact">
-            <li>교육 만족도 95% 달성으로 높은 학습 효과 확인</li>
-            <li>각 팀별 RPA 전담 인력 2명씩 확보로 자체 역량 구축</li>
-            <li>실무 적용률 85% 달성으로 교육 효과의 실질적 검증</li>
-            <li>AI 활용 문화 전사 확산으로 디지털 트랜스포메이션 가속화</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>⑥ 교육 성과 사례 / Success Cases</h2>
+        <h2>⑦ 우수사례 & 웨비나 / Success Cases & Webinars</h2>
         <div class="card grid-2">
           <div>
-            <div class="label">마케팅팀 사례</div>
-            <ul class="clean">
-              <li>광고 소재 자동 생성 시스템 구축</li>
+            <div class="label">🎯 마케팅</div>
+            <ul class="impact">
+              <li>광고 성과 데이터 자동 수집 (Google Ads → Sheets)</li>
+              <li>일일 리포트 자동 생성 및 Slack 알림</li>
               <li>고객 세그먼트 분석 자동화</li>
-              <li>캠페인 성과 리포팅 자동화</li>
+              <li><strong>효과:</strong> 리포팅 시간 80% 단축</li>
             </ul>
           </div>
           <div>
-            <div class="label">운영팀 사례</div>
-            <ul class="clean">
-              <li>고객 문의 자동 분류 시스템</li>
-              <li>재고 관리 알림 자동화</li>
-              <li>일일 운영 리포트 자동 생성</li>
+            <div class="label">🛠️ 운영</div>
+            <ul class="impact">
+              <li>Salesforce 고객 관리 자동화 구축</li>
+              <li>사내 회의 80% 자동화 진행</li>
+              <li>Claude app 활용 운영 문서화 80% AI 대체</li>
+              <li><strong>효과:</strong> 수동 리소스 50% 절감</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">💻 제작(Odin + Gitlab)</div>
+            <ul class="impact">
+              <li>Gitlab MCP 표준 Template 제공</li>
+              <li>각 그룹 단위 개별 MCP domain 할당</li>
+              <li>전체 MCP 중앙관리 > 추후 자율 운영 대안준비</li>
+              <li><strong>효과:</strong> Agent 제작 가능인원 40명 확보</li>
+            </ul>
+          </div>
+          <div>
+            <div class="label">📊 데이터</div>
+            <ul class="impact">
+              <li>n8n으로 사내 데이터 자동화 대체</li>
+              <li>모니터링 Agent 개발</li>
+              <li>Error Trigger 활용, 다양경로로 알람처리 빠르게 대응</li>
+              <li><strong>효과:</strong> 데이터 처리 리소스 70% 감소</li>
             </ul>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <h2>⑦ 교육 피드백 / Feedback</h2>
+        <h2>⑧ 링크 & 산출물 / Links & Deliverables</h2>
         <div class="card">
-          <ul class="impact">
-            <li><strong>마케팅팀:</strong> "실무에 바로 적용할 수 있는 내용들로 구성되어 매우 유용했습니다"</li>
-            <li><strong>운영팀:</strong> "AI 도구를 활용한 업무 자동화로 반복 업무가 크게 줄었습니다"</li>
-            <li><strong>개발팀:</strong> "MCP 프로토콜 교육으로 Agent 개발 역량이 크게 향상되었습니다"</li>
-            <li><strong>경영진:</strong> "전사 AI 역량 강화로 디지털 경쟁력이 크게 향상되었습니다"</li>
+          <p><strong>웨비나 산출물:</strong></p>
+          <ul class="clean" style="margin-top: 8px;">
+            <li><strong>2025-07 웨비나:</strong> <a href="https://naver.me/F3YkIv6g" target="_blank" style="color: var(--primary); text-decoration: underline;">우수사례 발표 및 Q&A</a></li>
+            <li><strong>2024-10 웨비나:</strong> <a href="https://naver.me/G9pVbzzp" target="_blank" style="color: var(--primary); text-decoration: underline;">AI 교육 성과 공유</a></li>
           </ul>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>⑧ 향후 계획 / Future Plans</h2>
-        <div class="card">
-          <ul class="impact">
-            <li>고급 AI 모델 활용 교육 과정 신설</li>
-            <li>부서별 맞춤형 AI 솔루션 개발 교육</li>
-            <li>AI 윤리 및 보안 교육 강화</li>
-            <li>외부 파트너사 대상 교육 프로그램 확장</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>⑨ 링크 & 산출물 / Links & Deliverables</h2>
-        <div class="card qr-and-links">
-          <div class="qr-box">QR</div>
-          <div class="links">
-            <p><strong>교육 자료:</strong> AI Agent 활용 가이드북
-            <br/><strong>실습 예제:</strong> 업무별 AI 활용 사례집
-            <br/><strong>Documentation:</strong> 교육 커리큘럼 및 평가 기준
-            <br/><strong>Certificate:</strong> AI Agent 활용 역량 인증서</p>
-          </div>
         </div>
       </section>
     </article>
   </div>
+
+  <!-- 이미지 모달 팝업 -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <img class="modal-image" id="modalImage">
+    </div>
+  </div>
+
+  <script>
+    function showTab(evt, tabName) {
+      evt.preventDefault();
+      evt.stopPropagation();
+      
+      // 모든 탭 콘텐츠와 버튼을 일단 찾기
+      var allTabContents = document.querySelectorAll('.tab-content');
+      var allTabButtons = document.querySelectorAll('.tab-button');
+      
+      // 클릭된 버튼의 부모 컨테이너 찾기
+      var parentContainer = evt.currentTarget.closest('.tab-container, .sub-tab-container');
+      
+      if (parentContainer) {
+        // 해당 컨테이너 내의 탭 콘텐츠와 버튼만 처리
+        var containerTabContents = parentContainer.querySelectorAll('.tab-content');
+        var containerTabButtons = parentContainer.querySelectorAll('.tab-buttons .tab-button');
+        
+        // 해당 컨테이너 내의 모든 탭 콘텐츠 숨기기
+        for (var i = 0; i < containerTabContents.length; i++) {
+          containerTabContents[i].classList.remove("active");
+        }
+        
+        // 해당 컨테이너 내의 모든 탭 버튼 비활성화
+        for (var i = 0; i < containerTabButtons.length; i++) {
+          containerTabButtons[i].classList.remove("active");
+        }
+      }
+      
+      // 선택된 탭 보이기 및 버튼 활성화
+      var targetTab = document.getElementById(tabName);
+      if (targetTab) {
+        targetTab.classList.add("active");
+        
+        // 제작결과 탭인 경우 첫 번째 하위 탭(SalesForce) 자동 활성화
+        if (tabName === 'n8n-results') {
+          // 잠시 후 하위 탭 활성화 (DOM 업데이트 후)
+          setTimeout(function() {
+            var firstSubTab = document.getElementById('result-1');
+            var firstSubButton = targetTab.querySelector('.tab-button');
+            
+            if (firstSubTab && firstSubButton) {
+              // 모든 하위 탭 콘텐츠 비활성화
+              var subTabContents = targetTab.querySelectorAll('.sub-tab-container .tab-content');
+              var subTabButtons = targetTab.querySelectorAll('.sub-tab-container .tab-button');
+              
+              for (var i = 0; i < subTabContents.length; i++) {
+                subTabContents[i].classList.remove('active');
+              }
+              for (var i = 0; i < subTabButtons.length; i++) {
+                subTabButtons[i].classList.remove('active');
+              }
+              
+              // 첫 번째 하위 탭 활성화
+              firstSubTab.classList.add('active');
+              firstSubButton.classList.add('active');
+            }
+          }, 10);
+        }
+      }
+      evt.currentTarget.classList.add("active");
+    }
+
+    // 이미지 모달 팝업 함수
+    function openModal(img) {
+      var modal = document.getElementById("imageModal");
+      var modalImg = document.getElementById("modalImage");
+      
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+    }
+
+    function closeModal() {
+      var modal = document.getElementById("imageModal");
+      modal.style.display = "none";
+    }
+
+    // 모달 외부 클릭 시 닫기
+    window.onclick = function(event) {
+      var modal = document.getElementById("imageModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    // ESC 키로 모달 닫기
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        var modal = document.getElementById("imageModal");
+        if (modal.style.display === "block") {
+          modal.style.display = "none";
+        }
+      }
+    });
+  </script>
 </body>
 </html> 
