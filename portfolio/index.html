@@ -138,25 +138,39 @@
       text-decoration: none;
     }
 
+    .nav-section {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(248, 250, 252, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.6);
+      padding: 12px 0;
+      margin-bottom: 24px;
+    }
+
     .back-link {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background: var(--card);
-      color: var(--ink);
-      padding: 12px 20px;
-      border-radius: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: var(--primary-ink);
+      padding: 10px 16px;
+      border-radius: 12px;
       font-size: 14px;
       font-weight: 600;
       text-decoration: none;
-      border: 1px solid var(--line);
-      box-shadow: 0 4px 12px rgba(15,23,42,.1);
+      border: 1px solid var(--primary);
+      box-shadow: 0 4px 12px rgba(15,23,42,.08);
       transition: all 0.3s ease;
     }
 
     .back-link:hover {
+      color: var(--primary-ink);
       background: var(--primary);
-      color: white;
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(15,23,42,.12);
       text-decoration: none;
     }
 
@@ -182,9 +196,11 @@
   </style>
 </head>
 <body>
-  <a href="../Resume_bosunkim.html" class="back-link">← 이력서로 돌아가기</a>
-  
   <div class="container">
+    <div class="nav-section">
+      <a href="../Resume_bosunkim.html" class="back-link">← 이력서로 돌아가기</a>
+    </div>
+    
     <header class="header">
       <h1>김보선 프로젝트 포트폴리오</h1>
       <div class="subtitle">AI Engineer · Agent·Automation Architect</div>
