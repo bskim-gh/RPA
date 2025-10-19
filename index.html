@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>김보선 프로젝트 포트폴리오 모음</title>
+  <style>
+    :root{
+      --primary:#6366f1;
+      --primary-ink:#eef2ff;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --line:#e5e7eb;
+      --accent:#10b981;
+      --warn:#eab308;
+      --danger:#ef4444;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { 
+      margin:0; padding:0; background: var(--bg); color: var(--ink);
+      font-family: 'Noto Sans KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      background: linear-gradient(135deg, rgba(99,102,241,.18), rgba(16,185,129,.15));
+      border: 1px solid var(--line);
+      border-radius: 24px; padding: 40px;
+      box-shadow: 0 10px 30px rgba(15,23,42,.04);
+    }
+
+    h1 { font-size: 36px; margin: 0 0 12px; letter-spacing: -0.02em; }
+    .subtitle { color: var(--muted); font-size: 18px; margin-bottom: 20px; }
+    .description { color: var(--ink); font-size: 16px; line-height: 1.6; max-width: 800px; margin: 0 auto; }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .portfolio-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 10px 30px rgba(15,23,42,.06);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(15,23,42,.1);
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 12px 0;
+      line-height: 1.3;
+    }
+
+    .card-period {
+      background: var(--primary);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .card-description {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      background: rgba(99, 102, 241, 0.1);
+      color: #4c1d95;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    .card-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+      color: white;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      
+      .header {
+        padding: 24px;
+        margin-bottom: 40px;
+      }
+      
+      h1 {
+        font-size: 28px;
+      }
+      
+      .subtitle {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>김보선 프로젝트 포트폴리오</h1>
+      <div class="subtitle">AI Engineer · Agent·Automation Architect</div>
+      <div class="description">
+        실무 경험과 AI 기술력을 결합해 RPA부터 Agent까지 진화하며, 업무 시나리오 단위로 커머스 혁신을 이끄는 전문가의 주요 프로젝트 포트폴리오입니다.
+      </div>
+    </header>
+
+    <div class="portfolio-grid">
+      <!-- 1. MCP Template Framework (2025.05 ~ 현재) -->
+      <div class="portfolio-card">
+        <h2 class="card-title">🚀 MCP Template Framework</h2>
+        <span class="card-period">2025.05 ~ 현재</span>
+        <p class="card-description">
+          Model Context Protocol 기반 템플릿 프레임워크 구축. FastMCP를 활용한 표준화된 Agent 개발 템플릿 및 SSE 통신 시스템.
+        </p>
+        <div class="card-tags">
+          <span class="tag">MCP Protocol</span>
+          <span class="tag">FastMCP</span>
+          <span class="tag">Python 3.10</span>
+          <span class="tag">SSE</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">GitLab CI/CD</span>
+          <span class="tag">Starlette</span>
+        </div>
+        <a href="portfolio/Portfolio_N8N_Agent_Framework.html" class="card-link">
+          📄 포트폴리오 보기
+        </a>
+      </div>
+
+      <!-- 2. 차세대 마케팅 Agent (2024.11 ~ 2025.04) -->
+      <div class="portfolio-card">
+        <h2 class="card-title">차세대 마케팅 Agent</h2>
+        <span class="card-period">2024.11 ~ 2025.04</span>
+        <p class="card-description">
+          Meta/TikTok 광고 운영 효율 극대화를 위한 실무형 Agent 개발. 50+ 운영대행사 실시간 감지 대응 프로세스 구축으로 24시간 무중단 모니터링 실현.
+        </p>
+        <div class="card-tags">
+          <span class="tag">Claude AI</span>
+          <span class="tag">MCP</span>
+          <span class="tag">N8N</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">React</span>
+          <span class="tag">GitLab CI/CD</span>
+          <span class="tag">Custom GPT</span>
+        </div>
+        <a href="portfolio/Portfolio_N8N_Agent_Marketing.html" class="card-link">
+          📄 포트폴리오 보기
+        </a>
+      </div>
+
+      <!-- 3. AI 혁신 교육 프로그램 (2024.03 ~ 진행중) -->
+      <div class="portfolio-card">
+        <h2 class="card-title">AI 혁신 교육 프로그램</h2>
+        <span class="card-period">2024.03 ~ 진행중</span>
+        <p class="card-description">
+          운영부서 병목 해결 및 AI 혁신 주도를 위한 실무 중심 교육 프로그램. 28개 사내 Agent 구축 완료, N8N WF 도합 +500 제작.
+        </p>
+        <div class="card-tags">
+          <span class="tag">N8N</span>
+          <span class="tag">Odin</span>
+          <span class="tag">MCP Protocol</span>
+          <span class="tag">Claude App</span>
+          <span class="tag">GitLab CI/CD</span>
+          <span class="tag">Agent Framework</span>
+        </div>
+        <a href="portfolio/Portfolio_N8N_RAP_Lecture.html" class="card-link">
+          📄 포트폴리오 보기
+        </a>
+      </div>
+
+      <!-- 4. 사내 BI 및 RPA 제작 (2022.08 ~ 2023.12) -->
+      <div class="portfolio-card">
+        <h2 class="card-title">사내 BI 및 RPA 제작</h2>
+        <span class="card-period">2022.08 ~ 2023.12</span>
+        <p class="card-description">
+          웹 반복업무 자동화·데이터 수집·보고 자동화 포트폴리오. 총 50+ 자동화 스크립트 개발, 보고·집계 90% 이상 시간 절감.
+        </p>
+        <div class="card-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Selenium IDE</span>
+          <span class="tag">Selenium WebDriver</span>
+          <span class="tag">MySQL/MariaDB</span>
+          <span class="tag">DataEye (Grafana)</span>
+          <span class="tag">Looker Studio</span>
+        </div>
+        <a href="portfolio/Portfolio_N8N_RPA.html" class="card-link">
+          📄 포트폴리오 보기
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 
